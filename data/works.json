@@ -1,0 +1,18 @@
+{
+  "works": [
+    { "title": "T-shirts do evento", "client": "Happiness & Leadership Summit", "category": "Estampagem", "image": "assets/uploads/work-02.jpg" },
+    { "title": "Fardamento completo", "client": "Rápido Mudei — Mudanças & Transportes", "category": "Fardamentos", "image": "assets/uploads/work-10.jpg" },
+    { "title": "Cartões de visita", "client": "Fluir Soluções Digitais", "category": "Gráfica", "image": "assets/uploads/work-01.jpg" },
+    { "title": "Fardamento de obra", "client": "Santos Capoto & Pintura", "category": "Fardamentos", "image": "assets/uploads/work-04.jpg" },
+    { "title": "Autocolantes recortados", "client": "AR Multimarcas", "category": "Gráfica", "image": "assets/uploads/work-14.jpg" },
+    { "title": "Bonés personalizados", "client": "Yasmim Carpintária", "category": "Fardamentos", "image": "assets/uploads/work-11.jpg" },
+    { "title": "T-shirts e brinde", "client": "Electro Corroios", "category": "Brindes", "image": "assets/uploads/work-09.jpg" },
+    { "title": "Cartões de visita", "client": "Ovos Deliciosos", "category": "Gráfica", "image": "assets/uploads/work-03.jpg" },
+    { "title": "Polos e bonés", "client": "Rápido Mudei", "category": "Fardamentos", "image": "assets/uploads/work-12.jpg" },
+    { "title": "T-shirts e polos", "client": "Marketing Digital JD", "category": "Estampagem", "image": "assets/uploads/work-08.jpg" },
+    { "title": "Fardamento de equipa", "client": "AVL Serviços Gerais", "category": "Fardamentos", "image": "assets/uploads/work-05.jpg" },
+    { "title": "T-shirts e boné", "client": "Aquarela — Artigos para Festa", "category": "Estampagem", "image": "assets/uploads/work-13.jpg" },
+    { "title": "Flyers e folhetos", "client": "JFS Pinturas em Geral", "category": "Gráfica", "image": "assets/uploads/work-06.jpg" },
+    { "title": "Fardamento & vestuário", "client": "Coragem & Resiliência", "category": "Fardamentos", "image": "assets/uploads/work-07.jpg" }
+  ]
+}

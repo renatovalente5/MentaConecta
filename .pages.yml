@@ -1,0 +1,57 @@
+# =====================================================================
+# Configuração do Backoffice (Pages CMS) — Menta Conecta
+# Gere Produtos e Portfólio + upload de imagens, sem tocar em código.
+# Docs: https://pagescms.org/docs/
+# =====================================================================
+
+media:
+  input: assets/uploads      # onde os ficheiros carregados são guardados no repo
+  output: /assets/uploads    # prefixo do caminho gravado no conteúdo (o site normaliza)
+
+settings:
+  merge: false               # grava diretamente no branch (sem pull requests)
+
+content:
+  # ---------------- CATÁLOGO DE PRODUTOS ----------------
+  - name: products
+    label: Produtos
+    type: file
+    path: data/products.json
+    icon: shopping-bag
+    fields:
+      - name: products
+        label: Produtos
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Nome, type: string }
+          - name: category
+            label: Categoria
+            type: select
+            options:
+              values: [Vestuário, Fardamentos, Gráfica, Brindes, Outro]
+          - { name: description, label: Descrição, type: text }
+          - { name: image, label: Imagem, type: image }
+          - { name: price, label: "Preço (opcional)", type: string }
+          - { name: featured, label: Mostrar como destaque, type: boolean }
+
+  # ---------------- PORTFÓLIO DE TRABALHOS ----------------
+  - name: works
+    label: Portfólio
+    type: file
+    path: data/works.json
+    icon: image
+    fields:
+      - name: works
+        label: Trabalhos
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Título, type: string }
+          - { name: client, label: Cliente, type: string }
+          - name: category
+            label: Categoria
+            type: select
+            options:
+              values: [Fardamentos, Estampagem, Gráfica, Brindes]
+          - { name: image, label: Imagem, type: image }

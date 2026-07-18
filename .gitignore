@@ -1,0 +1,14 @@
+# Ficheiros de origem (fotos originais em alta + logo) — mantidos localmente, não publicados
+_source/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node (caso se use tooling no futuro)
+node_modules/

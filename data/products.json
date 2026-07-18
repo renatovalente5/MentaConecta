@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "name": "T-shirt personalizada",
+      "category": "Vestuário",
+      "description": "T-shirts estampadas com a sua marca, evento ou campanha. Cores vivas e toque de qualidade.",
+      "image": "assets/uploads/work-02.jpg",
+      "price": "",
+      "featured": true
+    },
+    {
+      "name": "Boné personalizado",
+      "category": "Fardamentos",
+      "description": "Bonés com logótipo bordado ou estampado — o detalhe que valoriza a imagem da equipa.",
+      "image": "assets/uploads/work-11.jpg",
+      "price": "",
+      "featured": true
+    },
+    {
+      "name": "Cartões de visita",
+      "category": "Gráfica",
+      "description": "Cartões premium com acabamentos à escolha. A sua primeira impressão, bem feita.",
+      "image": "assets/uploads/work-01.jpg",
+      "price": "",
+      "featured": true
+    },
+    {
+      "name": "Polo bordado",
+      "category": "Fardamentos",
+      "description": "Polos elegantes com bordado ou estampagem, ideais para fardamento profissional.",
+      "image": "assets/uploads/work-12.jpg",
+      "price": "",
+      "featured": false
+    },
+    {
+      "name": "Fardamento de trabalho",
+      "category": "Fardamentos",
+      "description": "Conjuntos completos — t-shirts, coletes e calças — resistentes e com a sua identidade.",
+      "image": "assets/uploads/work-04.jpg",
+      "price": "",
+      "featured": false
+    },
+    {
+      "name": "Sweat / camisola estampada",
+      "category": "Vestuário",
+      "description": "Sweats e camisolas confortáveis, personalizadas com a sua marca ou coleção.",
+      "image": "assets/uploads/work-08.jpg",
+      "price": "",
+      "featured": false
+    },
+    {
+      "name": "Cavas / tank tops",
+      "category": "Vestuário",
+      "description": "Cavas leves para eventos, festas e verão — estampagem a cores à sua medida.",
+      "image": "assets/uploads/work-13.jpg",
+      "price": "",
+      "featured": false
+    },
+    {
+      "name": "Flyers & folhetos",
+      "category": "Gráfica",
+      "description": "Comunique promoções e serviços com flyers impressos com qualidade e rapidez.",
+      "image": "assets/uploads/work-06.jpg",
+      "price": "",
+      "featured": false
+    },
+    {
+      "name": "Autocolantes recortados",
+      "category": "Gráfica",
+      "description": "Autocolantes com corte à medida (die-cut) para embalagens, montras e viaturas.",
+      "image": "assets/uploads/work-14.jpg",
+      "price": "",
+      "featured": false
+    },
+    {
+      "name": "Porta-chaves & brindes",
+      "category": "Brindes",
+      "description": "Brindes personalizados que mantêm a sua marca presente no dia a dia dos clientes.",
+      "image": "assets/uploads/work-09.jpg",
+      "price": "",
+      "featured": false
+    }
+  ]
+}

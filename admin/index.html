@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Gestão de Conteúdos · Menta Conecta</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" href="../assets/img/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    body{min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(120% 90% at 80% -10%,#EAF7F1,rgba(234,247,241,0) 55%),linear-gradient(180deg,#fff,#F4F9F6);padding:2rem 1rem}
+    .admin{position:relative;max-width:640px;width:100%;background:#fff;border:1px solid var(--line);
+      border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:clamp(1.6rem,5vw,2.8rem);overflow:hidden}
+    .admin .facets{opacity:.35}
+    .admin__inner{position:relative;z-index:1}
+    .admin__logo{height:52px;width:auto;margin-bottom:1.4rem}
+    .admin h1{font-size:clamp(1.5rem,4vw,2rem);margin-bottom:.5rem}
+    .admin__lead{color:var(--muted);margin-bottom:1.6rem}
+    .admin__steps{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem}
+    .admin__step{display:flex;gap:.8rem;align-items:flex-start}
+    .admin__num{flex:none;width:26px;height:26px;border-radius:50%;background:var(--menta);color:#fff;
+      font-family:var(--font-brand);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center;margin-top:.1rem}
+    .admin__step p{color:var(--body);font-size:.95rem}
+    .admin__step strong{color:var(--ink)}
+    .admin__cta{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+    .admin__note{margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+    .admin__note strong{color:var(--ink)}
+    .admin__back{display:inline-block;margin-top:1rem;color:var(--menta-700);font-weight:600;font-size:.9rem}
+  </style>
+</head>
+<body>
+  <main class="admin">
+    <div class="facets" aria-hidden="true"></div>
+    <div class="admin__inner">
+      <img class="admin__logo" src="../assets/img/logo.png" alt="Menta Conecta" />
+      <h1>Gestão de Conteúdos</h1>
+      <p class="admin__lead">Adicione, edite ou remova <strong>produtos</strong> e <strong>trabalhos do portfólio</strong>, e carregue imagens — tudo sem tocar em código.</p>
+
+      <div class="admin__steps">
+        <div class="admin__step"><span class="admin__num">1</span><p>Clique em <strong>“Entrar na gestão”</strong> e inicie sessão (por email ou GitHub).</p></div>
+        <div class="admin__step"><span class="admin__num">2</span><p>Escolha <strong>Produtos</strong> ou <strong>Portfólio</strong> e adicione, edite ou apague itens e imagens.</p></div>
+        <div class="admin__step"><span class="admin__num">3</span><p>Clique em <strong>Guardar</strong>. O site atualiza-se automaticamente em cerca de <strong>1 a 2 minutos</strong>.</p></div>
+      </div>
+
+      <div class="admin__cta">
+        <a class="btn btn--primary btn--lg" href="https://app.pagescms.org/renatovalente5/MentaConecta/main" target="_blank" rel="noopener">Entrar na gestão →</a>
+      </div>
+      <p class="admin__note" style="margin-top:1rem">Em alternativa, abra <a href="https://app.pagescms.org" target="_blank" rel="noopener">app.pagescms.org</a> e escolha o repositório <strong>MentaConecta</strong>.</p>
+
+      <p class="admin__note"><strong>Primeira utilização (configuração):</strong> é necessário instalar a app <em>Pages CMS</em> no repositório do GitHub e convidar o utilizador por email. Instruções completas em <code>BACKOFFICE.md</code>.</p>
+
+      <a class="admin__back" href="../">← Voltar ao site</a>
+    </div>
+  </main>
+</body>
+</html>
