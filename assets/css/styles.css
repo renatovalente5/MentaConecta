@@ -414,6 +414,28 @@ a.contact__card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border
 .map-facade .btn{position:relative}
 @media (max-width:600px){.map-facade{height:300px}}
 
+/* ---------------- BANNER DE COOKIES ---------------- */
+.cookie{position:fixed;left:0;right:0;bottom:0;z-index:150;
+  padding:0 var(--gutter) calc(14px + env(safe-area-inset-bottom));pointer-events:none}
+.cookie[hidden]{display:none}
+.cookie__inner{pointer-events:auto;max-width:var(--container);margin:0 auto 14px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);
+  padding:1.1rem 1.25rem;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;
+  animation:cookie-up .4s var(--ease) both}
+@keyframes cookie-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cookie__text{flex:1;min-width:250px}
+.cookie__text strong{font-family:var(--font-brand);color:var(--ink);display:block;margin-bottom:.25rem;font-size:1rem}
+.cookie__text p{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0}
+.cookie__text a{color:var(--menta-700);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.cookie__actions{display:flex;gap:.6rem;flex:none}
+.cookie__actions .btn{padding:.75em 1.5em}
+@media (max-width:560px){
+  .cookie__inner{padding:1rem}
+  .cookie__actions{width:100%}
+  .cookie__actions .btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){.cookie__inner{animation:none}}
+
 /* ---------------- RESPONSIVO NAV ---------------- */
 @media (max-width:900px){
   .nav__primary,.nav__cta{display:none}

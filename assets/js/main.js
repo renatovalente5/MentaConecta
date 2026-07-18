@@ -126,20 +126,55 @@
     });
   }
 
-  /* ---------- Mapa: carregar só sob pedido (privacidade) ---------- */
-  var mapFacade = doc.getElementById('map-facade');
-  if (mapFacade) {
-    mapFacade.addEventListener('click', function () {
-      var src = mapFacade.getAttribute('data-map-embed');
+  /* ---------- Consentimento de cookies + Mapa (Google Maps) ---------- */
+  (function () {
+    var KEY = 'menta-consent';                       // 'accepted' | 'rejected'
+    var banner = doc.getElementById('cookie-banner');
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function showBanner() { if (banner) banner.hidden = false; }
+    function hideBanner() { if (banner) banner.hidden = true; }
+
+    // Carrega o Google Maps (substitui a "facade" pelo iframe)
+    function loadMap() {
+      var host = doc.getElementById('map-facade');   // só existe enquanto o mapa não foi carregado
+      if (!host) return;
       var iframe = doc.createElement('iframe');
-      iframe.src = src;
-      iframe.title = mapFacade.getAttribute('data-map-title') || 'Mapa';
+      iframe.src = host.getAttribute('data-map-embed');
+      iframe.title = host.getAttribute('data-map-title') || 'Mapa';
       iframe.loading = 'lazy';
       iframe.setAttribute('referrerpolicy', 'no-referrer');
       iframe.style.cssText = 'display:block;width:100%;height:380px;border:0';
-      mapFacade.replaceWith(iframe);
+      host.replaceWith(iframe);
+    }
+
+    // Estado inicial: aceite → carrega mapa; indeciso → mostra banner; recusado → nada
+    var current = get();
+    if (current === 'accepted') { loadMap(); }
+    else if (current !== 'rejected') { showBanner(); }
+
+    // Botões do banner (Aceitar / Recusar)
+    if (banner) {
+      banner.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-cookie]'); if (!b) return;
+        if (b.getAttribute('data-cookie') === 'accept') { set('accepted'); hideBanner(); loadMap(); }
+        else { set('rejected'); hideBanner(); }
+      });
+    }
+
+    // Clicar na facade do mapa: se já aceitou, carrega; senão pede consentimento
+    var facade = doc.getElementById('map-facade');
+    if (facade) {
+      facade.addEventListener('click', function () {
+        if (get() === 'accepted') { loadMap(); } else { showBanner(); }
+      });
+    }
+
+    // "Gerir cookies" (footer / política de cookies) reabre o banner
+    doc.querySelectorAll('[data-cookie-manage]').forEach(function (el) {
+      el.addEventListener('click', function (e) { e.preventDefault(); showBanner(); });
     });
-  }
+  })();
 
   /* ---------- Imagens editáveis pelo backoffice (data/content.json) ---------- */
   (function () {
