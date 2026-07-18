@@ -55,3 +55,31 @@ content:
             options:
               values: [Fardamentos, Estampagem, Gráfica, Brindes]
           - { name: image, label: Imagem, type: image }
+
+  # ---------------- IMAGENS DAS SECÇÕES DO SITE ----------------
+  # Permite trocar as imagens do topo (hero), dos serviços e do "Sobre".
+  - name: content
+    label: Imagens do site
+    type: file
+    path: data/content.json
+    icon: layout
+    fields:
+      - name: hero
+        label: Topo (Destaque)
+        type: object
+        fields:
+          - { name: image_main, label: Imagem principal (grande), type: image }
+          - { name: image_top, label: Imagem pequena (topo), type: image }
+          - { name: image_bottom, label: Imagem pequena (base), type: image }
+      - name: servicos
+        label: Serviços
+        type: object
+        fields:
+          - { name: image_fardamentos, label: Imagem — Fardamentos & Vestuário, type: image }
+          - { name: image_grafica, label: Imagem — Gráfica Rápida, type: image }
+          - { name: image_brindes, label: Imagem — Brindes & Merchandising, type: image }
+      - name: sobre
+        label: Sobre
+        type: object
+        fields:
+          - { name: image, label: Imagem da secção "Sobre", type: image }

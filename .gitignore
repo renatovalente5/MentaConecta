@@ -5,10 +5,11 @@ _source/
 .DS_Store
 Thumbs.db
 
-# Editores
+# Editores / ferramentas locais
 .vscode/
 .idea/
 *.swp
+.claude/
 
 # Node (caso se use tooling no futuro)
 node_modules/

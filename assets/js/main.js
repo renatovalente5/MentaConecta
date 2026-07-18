@@ -141,6 +141,33 @@
     });
   }
 
+  /* ---------- Imagens editáveis pelo backoffice (data/content.json) ---------- */
+  (function () {
+    var slots = doc.querySelectorAll('[data-img]');
+    if (!slots.length) return;
+    function normImg(p) { if (!p) return ''; if (/^https?:\/\//.test(p)) return p; return p.replace(/^\/+/, ''); }
+    var MAP = {
+      'hero-main': ['hero', 'image_main'],
+      'hero-top': ['hero', 'image_top'],
+      'hero-bottom': ['hero', 'image_bottom'],
+      'servico-fardamentos': ['servicos', 'image_fardamentos'],
+      'servico-grafica': ['servicos', 'image_grafica'],
+      'servico-brindes': ['servicos', 'image_brindes'],
+      'sobre': ['sobre', 'image']
+    };
+    fetch('data/content.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (c) {
+        slots.forEach(function (el) {
+          var path = MAP[el.getAttribute('data-img')];
+          if (!path) return;
+          var val = c && c[path[0]] && c[path[0]][path[1]];
+          if (val) { var n = normImg(val); if (n && n !== el.getAttribute('src')) el.src = n; }
+        });
+      })
+      .catch(function () { /* mantém as imagens por defeito definidas no HTML */ });
+  })();
+
   /* ---------- Ano no footer ---------- */
   var y = doc.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();

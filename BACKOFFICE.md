@@ -15,7 +15,7 @@ A configuração está em [`.pages.yml`](.pages.yml).
 3. **Instalar a app “Pages CMS”** no repositório `renatovalente5/MentaConecta`
    (quando pedido, dar acesso a este repositório).
 4. Abrir o projeto no Pages CMS. O `.pages.yml` é detetado automaticamente e devem
-   aparecer duas coleções: **Produtos** e **Portfólio**.
+   aparecer três coleções: **Produtos**, **Portfólio** e **Imagens do site**.
 5. Testar: adicionar/editar/remover um item e carregar uma imagem. Guardar e confirmar
    que o site atualiza em ~1–2 min.
 
@@ -30,16 +30,19 @@ de conta GitHub. Pode depois gerir Produtos e Portfólio.
 ## Como o cliente usa (resumo)
 
 1. Abrir `/admin` no site (ou app.pagescms.org) e iniciar sessão.
-2. Escolher **Produtos** ou **Portfólio**.
+2. Escolher **Produtos**, **Portfólio** ou **Imagens do site**.
 3. **Adicionar** (＋), **editar** ou **remover** itens; carregar imagens no campo *Imagem*.
+   Em **Imagens do site** pode trocar as imagens do topo (hero), dos serviços e do “Sobre”.
 4. **Guardar** — o site atualiza sozinho em ~1–2 minutos.
 
 ## Notas técnicas
 
 - As imagens carregadas vão para `assets/uploads/`. O caminho gravado pode começar por
-  `/` — o frontend normaliza (`normImg()` em `catalog.js`/`portfolio.js`) para funcionar
-  no subpath do GitHub Pages (`/MentaConecta/`).
+  `/` — o frontend normaliza (`normImg()` em `catalog.js`, `portfolio.js` e `main.js`)
+  para funcionar no subpath do GitHub Pages (`/MentaConecta/`).
+- **Todas as imagens das secções são editáveis:** o topo (hero), os serviços e o “Sobre”
+  são geridos na coleção **Imagens do site** (`data/content.json`); Produtos e Portfólio
+  têm as suas próprias imagens. Se o `content.json` não carregar, o site mantém as imagens
+  por defeito definidas no HTML (nunca fica sem imagem).
 - Recomende-se ao cliente carregar imagens já otimizadas para web (≤ ~1500 px, < 500 KB)
   para manter o site rápido e o repositório leve.
-- As imagens do design (hero, serviços, sobre) estão em `assets/img/portfolio/` e **não**
-  são geridas pelo CMS (não podem ser apagadas por engano no backoffice).

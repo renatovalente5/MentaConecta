@@ -28,6 +28,7 @@
 }
 .site-header.is-scrolled .nav__logo{height:44px}
 
+.nav__primary{margin-left:auto}            /* agrupa as tabs à direita, junto ao botão */
 .nav__primary ul{display:flex;align-items:center;gap:.35rem}
 .nav__links a{
   display:inline-block;font-family:var(--font-brand);font-weight:500;
@@ -282,8 +283,7 @@ body.lb-open{overflow:hidden}
 /* ---------------- SOBRE ---------------- */
 .about__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
 .about__media{position:relative}
-.about__media picture{display:block;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/4.4}
-.about__media img{width:100%;height:100%;object-fit:cover}
+.about__media>img{display:block;width:100%;aspect-ratio:4/4.4;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
 .about__badge{position:absolute;right:-14px;bottom:-14px;background:#fff;border-radius:var(--radius);padding:.7rem .8rem;box-shadow:var(--shadow)}
 .about__badge img{width:52px;height:auto}
 .about__body p{color:var(--body);margin-bottom:1rem}
@@ -352,6 +352,12 @@ a.contact__card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border
 .footer__col a{color:#9FB8B0;font-size:.92rem;transition:color var(--t-fast)}
 .footer__col a:hover{color:var(--menta-300)}
 .footer__col li{color:#9FB8B0;font-size:.92rem}
+/* Contactos com ícones */
+.footer__contact li{display:flex;align-items:center;gap:.65rem}
+.footer__cic{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:none;
+  border-radius:9px;background:rgba(255,255,255,.07);color:var(--menta-300)}
+.footer__cic svg{width:16px;height:16px;fill:currentColor}
+.footer__contact a{word-break:break-word}
 .footer__bottom{position:relative;z-index:1;margin-top:clamp(2.5rem,5vw,3.5rem);border-top:1px solid rgba(255,255,255,.1)}
 .footer__bottom-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem 1.4rem;padding-block:1.4rem}
 .footer__legal-id{font-size:.84rem;color:#7E968E}
