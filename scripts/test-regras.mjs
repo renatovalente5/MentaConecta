@@ -775,7 +775,7 @@ prova('nifValido, numeroPortugues, eTelemovel, whatsappValido, emailValido, corV
   assert.equal(R.numeroPortugues('123456789'), null);
   assert.ok(R.eTelemovel('966 635 602') && !R.eTelemovel('212 345 678'));
   assert.ok(R.whatsappValido('351966635602') && !R.whatsappValido('966635602'));
-  assert.ok(R.emailValido('encomendas@mentapersonalizado.pt') && !R.emailValido('encomendas@'));
+  assert.ok(R.emailValido('encomendas@mentapersonalizados.pt') && !R.emailValido('encomendas@'));
   assert.ok(R.corValida('#1b1D24') && !R.corValida('#1B1D2') && !R.corValida('1B1D24'));
   assert.ok(R.horaValida('00:00') && R.horaValida('23:59') && !R.horaValida('24:00') && !R.horaValida('9:00'));
   assert.ok(R.redeValida('instagram', 'https://www.instagram.com/menta.conecta/') && !R.redeValida('tiktok', 'https://www.tiktok.com/@menta'));
