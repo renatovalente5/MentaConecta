@@ -11,7 +11,8 @@
 .js .titulo.visivel .p { animation: palavra .75s var(--mola) both; animation-delay: calc(.05s + var(--i) * .06s); }
 @keyframes palavra { from { transform: translateY(.5em) rotate(2.5deg); opacity: 0; } }
 /* O H1 do início não espera pelo scroll e só se mexe (nunca começa invisível: é o
-   maior elemento do primeiro ecrã, o LCP). */
+   maior elemento do primeiro ecrã, o LCP). Nasce `.visivel` (paginas.mjs): sem isso
+   ficava até 2,5 s no estado escondido — descido e rodado, com o traço a riscá-lo. */
 .js .titulo--heroi .p { opacity: 1 !important; animation: palavra-so-mexe .8s var(--mola) both !important; animation-delay: calc(.08s + var(--i) * .07s) !important; }
 @keyframes palavra-so-mexe { from { transform: translateY(.42em) rotate(2deg); } }
 .js .titulo.visivel .destaque, .js .titulo--heroi .destaque { animation: registo 1.2s var(--suave) both; animation-delay: .35s; }

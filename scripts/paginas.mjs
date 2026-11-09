@@ -147,7 +147,7 @@ export function inicio() {
   <div class="contentor heroi__grelha">
     <div class="heroi__texto">
       <p class="etiqueta">${esc(marca.servicos)}</p>
-      <h1 class="titulo titulo--heroi"><span class="so-leitor">Fardas e brindes com a sua marca.</span><span aria-hidden="true">${titulo({ antes: 'Fardas e brindes', destaque: 'com a sua marca.', nivel: 1 }).replace(/^<h1 class="titulo">|<\/h1>$/g, '')}</span></h1>
+      <h1 class="titulo titulo--heroi visivel"><span class="so-leitor">Fardas e brindes com a sua marca.</span><span aria-hidden="true">${titulo({ antes: 'Fardas e brindes', destaque: 'com a sua marca.', nivel: 1 }).replace(/^<h1 class="titulo">|<\/h1>$/g, '')}</span></h1>
       <p class="lead heroi__lead">Escolha o artigo, a cor e a quantidade, veja o preço na hora e envie o pedido pelo WhatsApp.</p>
       <div class="accoes">
         <a class="botao botao--principal vivo" href="${u('produtos/')}">Ver produtos ${icone('seta', { classe: 'seta' })}</a>
@@ -172,7 +172,7 @@ export function inicio() {
     <header class="seccao__topo">
       <p class="etiqueta">Produtos</p>
       ${titulo({ antes: 'Tudo o que leva', destaque: 'a sua marca.', id: 'produtos-t' })}
-      <p class="lead">Escolha uma família para ver os modelos, as cores e os preços.</p>
+      <p class="lead">Escolha uma família para ver cada modelo, com as cores e o preço.</p>
     </header>
     <ul class="amostras" role="list">${familias.map(amostraFamilia).join('')}</ul>
   </div>
@@ -603,7 +603,7 @@ ${marca.demo ? '<p><strong>Esta é uma pré-visualização do site: os produtos,
 <h2>Como se faz um pedido</h2>
 <ol>
   <li>Escolhe os produtos no site e envia-nos o pedido por WhatsApp ou por e-mail. Isto é um pedido de orçamento e não o obriga a nada.</li>
-  <li>Respondemos com o orçamento e a maquete: o total com IVA e portes, o prazo e as condições.</li>
+  <li>Enviamos o orçamento e a maquete: o total com IVA e portes, o prazo e as condições.</li>
   <li>A encomenda fica feita quando aceita o orçamento e a maquete, por escrito. Enviamos-lhe a confirmação por e-mail, com estas condições.</li>
 </ol>
 <h2>Prazos e entrega</h2>
