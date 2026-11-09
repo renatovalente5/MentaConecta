@@ -12,10 +12,11 @@ import { verificarIdentificacao } from '../legal-comum/index.mjs';
 
 const SAIDA = process.env.SAIDA ? resolve(process.env.SAIDA) : join(RAIZ, '_site');
 
-if (dominio && marca.demo) {
-  console.error('ERRO: há CNAME (domínio próprio) e a pré-visualização continua ligada (marca.demo). Desligue-a antes de publicar no domínio.');
-  process.exit(1);
-}
+// Uma pré-visualização pode viver no domínio (9 nov 2026: o Renato quis abrir o site no
+// mentaconecta.pt antes de a Menta dar a firma, o NIF e a morada). Continua com a faixa, o
+// `noindex`, os preços de exemplo e o prefixo de teste nas mensagens, e sem sitemap; o site
+// fica a sério com `demo: false`, e aí a identificação que falte pára a publicação.
+if (dominio && marca.demo) console.log(`  aviso: pré-visualização no domínio ${dominio} (marca.demo)`);
 // A identificação do prestador (DL 7/2004, art. 10.º): em pré-visualização avisa;
 // com o site a sério, pára a publicação se faltar alguma coisa.
 const id = verificarIdentificacao({ nome: marca.firma, formaJuridica: marca.formaJuridica, nif: marca.nif, morada: [marca.morada, marca.codigoPostal, marca.localidade].filter(Boolean).join(', '), email: marca.email, telefone: marca.telefone, sociedade: marca.sociedade }, { modo: marca.demo ? 'avisar' : 'bloquear', ecra: 'dados/marca.json' });
@@ -69,8 +70,11 @@ escrever('assets/catalogo.json', JSON.stringify(catalogo));
 
 escrever('manifest.webmanifest', JSON.stringify({ name: marca.nome, short_name: marca.nome, start_url: u(''), display: 'standalone', background_color: '#F4FAF7', theme_color: '#F4FAF7', icons: [{ src: u('assets/icone-192.png'), sizes: '192x192', type: 'image/png' }, { src: u('assets/icone-512.png'), sizes: '512x512', type: 'image/png' }] }));
 // robots.txt: no endereço de projecto do GitHub, o /MentaConecta/robots.txt não conta
-// (só o da raiz do anfitrião); a página diz `noindex`. Com domínio: sitemap.
-if (dominio) {
+// (só o da raiz do anfitrião); a página diz `noindex`. Com domínio: sitemap — menos numa
+// pré-visualização, que diz `noindex` em todas as páginas.
+if (dominio && marca.demo) {
+  escrever('robots.txt', 'User-agent: *\nAllow: /\n');
+} else if (dominio) {
   escrever('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${abs('sitemap.xml')}\n`);
   escrever('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paginas.map((c) => `  <url><loc>${abs(c)}</loc></url>`).join('\n')}\n</urlset>\n`);
 }

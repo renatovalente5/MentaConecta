@@ -32,7 +32,7 @@ for (const f of paginas) {
   const d = h.match(/<meta name="description" content="([^"]+)"/)?.[1];
   if (!t) mal(`${rel}: sem <title>`); else { if (titulos.has(t)) mal(`${rel}: título repetido de ${titulos.get(t)}`); titulos.set(t, rel); }
   if (!d) mal(`${rel}: sem descrição`); else if (!rel.startsWith('404')) { if (descricoes.has(d)) mal(`${rel}: descrição repetida de ${descricoes.get(d)}`); descricoes.set(d, rel); }
-  if (!dominio && !h.includes('<meta name="robots" content="noindex">')) mal(`${rel}: sem domínio e sem noindex`);
+  if ((!dominio || marca.demo) && !h.includes('<meta name="robots" content="noindex">')) mal(`${rel}: ${dominio ? 'pré-visualização' : 'sem domínio'} e sem noindex`);
   if (marca.demo && h.includes('"@type":"Product"')) mal(`${rel}: dados estruturados de produto numa pré-visualização`);
   // Carregamentos: tudo do próprio site.
   for (const [, u] of h.matchAll(/<(?:script|img|iframe|source|video|audio)[^>]+\bsrc="([^"]+)"/g)) if (/^https?:/.test(u)) mal(`${rel}: carrega de fora: ${u}`);
@@ -112,7 +112,7 @@ if (css > 70 * 1024) mal(`CSS com ${Math.round(css / 1024)} KB comprimido (máxi
 // O movimento tem travão.
 const mov = readFileSync(join(RAIZ, 'assets/css/movimento.css'), 'utf8');
 if (!/prefers-reduced-motion: reduce/.test(mov) || !/data-movimento="parado"/.test(mov)) mal('movimento.css sem a versão parada');
-if (dominio && marca.demo) mal('domínio próprio com a pré-visualização ligada');
+if (dominio && marca.demo && existsSync(join(SAIDA, 'sitemap.xml'))) mal('sitemap numa pré-visualização (as páginas dizem noindex)');
 
 console.log(`${paginas.length} páginas · JS ${Math.round(js / 1024)} KB · CSS ${Math.round(css / 1024)} KB (gzip)`);
 if (erros.length) { console.log(`✗ ${erros.length} problema(s):\n  ${erros.join('\n  ')}`); process.exit(1); }
