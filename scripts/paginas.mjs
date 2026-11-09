@@ -4,6 +4,7 @@ import { icone, iconeFamilia } from './icones.mjs';
 import { instancia, AREAS } from '../assets/js/desenhos.js';
 import { euros, comIva, desde, unitario, total, minimo, GRUPOS_COR, textoSobre } from '../assets/js/preco.js';
 import { ralHtml, livroReclamacoes } from '../legal-comum/index.mjs';
+import { textoDoHorario } from './regras.mjs';
 
 const IVA = marca.iva ?? 23;
 const comI = (c) => comIva(c, IVA);
@@ -432,7 +433,7 @@ export function paginaKits() {
   </div>
 </section>
 <section class="seccao seccao--kits-pagina">
-  <div class="contentor kits-config" data-kits>
+  <div class="contentor kits-config" data-kits data-iva="${IVA}">
     ${kits.map((k) => {
       const pecas = k.pecas.map((pc) => ({ ...pc, p: produtos.find((x) => x.slug === pc.produto) }));
       const preco = Math.round(k.preco * 100);
@@ -548,7 +549,7 @@ export function paginaContactos() {
   <div class="contentor contactos-info">
     <div class="horario">
       <h2>${icone('relogio')}Horário</h2>
-      <dl>${marca.horarioTexto.map((h) => `<div><dt>${esc(h.dias)}</dt><dd>${esc(h.horas)}</dd></div>`).join('')}</dl>
+      <dl>${textoDoHorario(marca.horario).map((h) => `<div><dt>${esc(h.dias)}</dt><dd>${esc(h.horas)}</dd></div>`).join('')}</dl>
       <p>${esc(marca.atendimento)}</p>
     </div>
     <div class="horario">

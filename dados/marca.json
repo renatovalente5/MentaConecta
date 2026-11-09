@@ -40,11 +40,5 @@
   "duvida": "Olá! Tenho uma dúvida sobre {produto}.",
   "maquete": "Olá! Gostava de pedir uma maquete. Envio já o logótipo.",
   "teste": "[Teste — pré-visualização] "
- },
- "horarioTexto": [
-  {
-   "dias": "Segunda a sexta",
-   "horas": "9h00 – 18h30"
-  }
- ]
+ }
 }

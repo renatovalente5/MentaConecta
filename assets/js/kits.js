@@ -2,7 +2,11 @@
 import { euros, comIva, IVA_NORMAL, corParaAcento } from './preco.js';
 import { juntar, abrirGaveta, aviso } from './orcamento.js';
 
-const par = (c) => `<span class="preco-par"><span><b class="preco-num">${euros(c)}</b> <small>+ IVA</small></span><span><b class="preco-num">${euros(comIva(c, IVA_NORMAL))}</b> <small>com IVA</small></span></span>`;
+// O IVA é o dos dados da loja (marca.iva, que a página diz em data-iva); isento (0): um preço só.
+const IVA = Number(document.querySelector('[data-kits]')?.dataset.iva ?? IVA_NORMAL);
+const par = (c) => (IVA
+  ? `<span class="preco-par"><span><b class="preco-num">${euros(c)}</b> <small>+ IVA</small></span><span><b class="preco-num">${euros(comIva(c, IVA))}</b> <small>com IVA</small></span></span>`
+  : `<span class="preco-par"><b class="preco-num">${euros(c)}</b> <small>isento de IVA</small></span>`);
 document.querySelectorAll('[data-kit]').forEach((kit) => {
   const preco = Number(kit.dataset.preco), minimo = Number(kit.dataset.minimo);
   const pessoas = kit.querySelector('[data-pessoas]');

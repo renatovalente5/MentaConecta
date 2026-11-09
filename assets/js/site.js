@@ -99,7 +99,9 @@ botoesMov.forEach((b) => b.addEventListener('click', () => {
 }));
 marcarMovimento();
 
-/* ——— Estado do atendimento (a partir do horário) ——— */
+/* ——— Estado do atendimento (a partir do horário) ———
+   Os dias do horário são os das regras (scripts/regras.mjs): 1 = segunda … 7 = domingo. Um dia pode
+   ter mais de uma linha (de manhã e à tarde); uma linha sem horas é «por marcação» e não conta. */
 const DIAS = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
 function agoraLisboa() {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Lisbon', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).map((x) => [x.type, x.value]));
@@ -108,13 +110,14 @@ function agoraLisboa() {
 const minutos = (h) => { const [a, b] = h.split(':').map(Number); return a * 60 + b; };
 function estadoAtendimento(HORARIO) {
   const { dia, min } = agoraLisboa();
-  const abertos = HORARIO.filter((h) => h.abre);
-  const hoje = abertos.find((h) => h.dias.includes(dia));
-  if (hoje && min >= minutos(hoje.abre) && min < minutos(hoje.fecha)) return { aberto: true, texto: 'Atendimento aberto agora' };
+  const abertos = HORARIO.filter((h) => h.abre && h.fecha);
+  // O domingo do relógio (0) é o 7 do horário.
+  const doDia = (d) => abertos.filter((h) => h.dias.includes(d || 7)).sort((a, b) => minutos(a.abre) - minutos(b.abre));
+  if (doDia(dia).some((h) => min >= minutos(h.abre) && min < minutos(h.fecha))) return { aberto: true, texto: 'Atendimento aberto agora' };
   for (let k = 0; k < 8; k++) {
-    const d = (dia + k) % 7; const h = abertos.find((x) => x.dias.includes(d));
+    const d = (dia + k) % 7;
+    const h = doDia(d).find((x) => k > 0 || min < minutos(x.abre));
     if (!h) continue;
-    if (k === 0 && min >= minutos(h.abre)) continue;
     const quando = k === 0 ? 'hoje' : k === 1 ? 'amanhã' : DIAS[d];
     return { aberto: false, texto: `Respondemos ${quando} a partir das ${h.abre.replace(':', 'h')}` };
   }

@@ -1,10 +1,13 @@
 // GERA O SITE em _site/ (sem dependências: `node scripts/gerar.mjs`).
-// Lê dados/, escreve uma página por endereço, o catálogo que o browser usa
-// (orçamento, kits), o manifesto, o robots e — só com domínio — o sitemap.
+// Lê dados/ pelas regras (scripts/regras.mjs, via site.mjs: o que pára a publicação
+// pára aqui, e os rascunhos e os artigos e packs com erros ficam de fora), escreve
+// uma página por endereço, o catálogo que o browser usa (orçamento, kits), o
+// manifesto, o robots e — só com domínio — o sitemap.
 import { writeFileSync, mkdirSync, rmSync, cpSync, readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname, relative, resolve } from 'node:path';
-import { RAIZ, BASE, SITE, u, abs, dominio, marca, familias, produtos, kits, cores } from './site.mjs';
+import { RAIZ, BASE, SITE, u, abs, dominio, marca, familias, produtos, kits, cores, conferencia, foraDoSite } from './site.mjs';
 import * as P from './paginas.mjs';
+import { descreverEfeitos } from './regras.mjs';
 import { verificarIdentificacao } from '../legal-comum/index.mjs';
 
 const SAIDA = process.env.SAIDA ? resolve(process.env.SAIDA) : join(RAIZ, '_site');
@@ -17,6 +20,12 @@ if (dominio && marca.demo) {
 // com o site a sério, pára a publicação se faltar alguma coisa.
 const id = verificarIdentificacao({ nome: marca.firma, formaJuridica: marca.formaJuridica, nif: marca.nif, morada: [marca.morada, marca.codigoPostal, marca.localidade].filter(Boolean).join(', '), email: marca.email, telefone: marca.telefone, sociedade: marca.sociedade }, { modo: marca.demo ? 'avisar' : 'bloquear', ecra: 'dados/marca.json' });
 if (id?.problemas?.length) console.log(`  aviso (pré-visualização): identificação por completar — ${[...new Set(id.problemas.map((p) => p.campo))].join(', ')}`);
+// O que as regras tiraram do site (a cópia neutralizada) e os avisos dos dados.
+for (const e of conferencia.neutro.efeitos) console.log(`  aviso: ${e.tipo === 'pack' ? 'Packs' : 'Artigos'} › ${e.nome}: ${descreverEfeitos(e)}`);
+{
+  const n = conferencia.problemas.filter((p) => p.classe === 'avisa').length;
+  if (n) console.log(`  aviso: ${n} ${n === 1 ? 'aviso' : 'avisos'} nos dados (node scripts/guarda.mjs diz quais)`);
+}
 
 // O CSS: as partes por ordem num só ficheiro (um pedido).
 const PARTES = ['base', 'desenhos', 'componentes', 'paginas', 'movimento'];
@@ -67,5 +76,6 @@ if (dominio) {
 }
 writeFileSync(join(SAIDA, '.nojekyll'), '');
 
-console.log(`gerado em ${relative(process.cwd(), SAIDA) || '.'}/ — ${paginas.length + 1} páginas (${produtos.length} produtos, ${familias.length} famílias)`);
+const fora = foraDoSite.artigos.length + foraDoSite.familias.length + foraDoSite.kits.length;
+console.log(`gerado em ${relative(process.cwd(), SAIDA) || '.'}/ — ${paginas.length + 1} páginas (${produtos.length} produtos, ${familias.length} famílias, ${kits.length} packs)${fora ? ` — fora do site: ${foraDoSite.artigos.length} produtos, ${foraDoSite.familias.length} famílias, ${foraDoSite.kits.length} packs` : ''}`);
 console.log(`  base: ${BASE || '/'}   site: ${SITE}${marca.demo ? '   [pré-visualização]' : ''}`);

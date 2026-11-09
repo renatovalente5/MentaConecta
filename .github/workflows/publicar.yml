@@ -24,6 +24,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      # As regras dos dados (scripts/regras.mjs, as mesmas que o painel vai usar),
+      # à prova com dados de ensaio e com os dados de hoje.
+      - name: Testar as regras
+        run: node scripts/test-regras.mjs
+      # A guarda dos dados: pára só o que não se contorna (a estrutura, a marca, os
+      # contactos…). Um artigo ou um pack com um erro sai do site e os outros
+      # publicam-se: o gerador aplica a mesma neutralização à cópia que lê.
+      - name: Guarda dos dados
+        run: node scripts/guarda.mjs
       # Sem dependências: não há npm ci. O CNAME, quando existir, decide se o
       # site se constrói para a raiz de um domínio ou para /MentaConecta/.
       - name: Gerar o site

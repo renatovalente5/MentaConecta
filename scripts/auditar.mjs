@@ -3,7 +3,8 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { RAIZ, BASE, dominio, marca, produtos, familia } from './site.mjs';
+import { RAIZ, BASE, dominio, marca, produtos, cores, conferencia, foraDoSite } from './site.mjs';
+import { problemasDoArtigo, familiasDe } from './regras.mjs';
 import { PARES, COR, medir } from './contrastes.mjs';
 import { total, minimo, euros, comIva } from '../assets/js/preco.js';
 
@@ -58,6 +59,7 @@ for (const f of paginas) {
 }
 
 // Os preços que se vêem = as contas do preco.js.
+const familiasDasRegras = familiasDe(conferencia.dados.familias);
 for (const p of produtos) {
   const f = join(SAIDA, `produtos/${p.familia}/${p.slug}/index.html`);
   if (!existsSync(f)) { mal(`falta a página de ${p.slug}`); continue; }
@@ -67,9 +69,35 @@ for (const p of produtos) {
   const com = h.match(/data-preco-com>([^<]+)</)?.[1]?.trim();
   if (sem !== euros(t)) mal(`${p.slug}: preço sem IVA «${sem}» ≠ contas «${euros(t)}»`);
   if (com !== euros(comIva(t, marca.iva ?? 23))) mal(`${p.slug}: preço com IVA «${com}» ≠ contas`);
-  let antes = Infinity;
-  for (const l of p.quantidades) { const u = l.preco / l.q; if (u > antes + 1e-9) mal(`${p.slug}: o preço por unidade sobe no escalão de ${l.q}`); antes = u; }
-  if (familia(p.familia)?.grupo === 'Têxtil' && !/%/.test(p.especificacoes?.Tecido || '')) mal(`${p.slug}: têxtil sem a composição em % (Reg. 1007/2011)`);
+  // As regras (scripts/regras.mjs, as da guarda e do painel: o preço por unidade que não sobe, a
+  // composição dos têxteis…): um produto no site não tem nenhum erro — o gerador escondeu os que tinham.
+  const { coresDet, ...artigo } = p;
+  for (const x of problemasDoArtigo(artigo, { nome: p.slug, familias: familiasDasRegras, cores })) if (x.classe !== 'avisa') mal(`${p.slug}: está no site com um erro das regras — ${x.mensagem}`);
+}
+
+// O que está fora do site (os rascunhos, os artigos e os packs com erros, as famílias sem artigos)
+// não aparece em lado nenhum: nem página, nem ligação, nem no catálogo, nem no sitemap.
+{
+  const catalogo = JSON.parse(readFileSync(join(SAIDA, 'assets/catalogo.json'), 'utf8'));
+  const sitemap = existsSync(join(SAIDA, 'sitemap.xml')) ? readFileSync(join(SAIDA, 'sitemap.xml'), 'utf8') : '';
+  const htmls = paginas.map((f) => [relative(SAIDA, f), readFileSync(f, 'utf8')]);
+  const emLadoNenhum = (o, caminho, marcas) => {
+    if (caminho && existsSync(join(SAIDA, caminho))) mal(`${o}: está fora do site, mas tem página (${caminho})`);
+    if (caminho && sitemap.includes(`/${caminho}<`)) mal(`${o}: está fora do site, mas está no sitemap`);
+    for (const [rel, h] of htmls) for (const m of marcas) if (h.includes(m)) mal(`${rel}: mostra ${o}, que está fora do site (${m})`);
+  };
+  for (const a of foraDoSite.artigos) {
+    if (catalogo.produtos.some((x) => x.slug === a.slug)) mal(`produto ${a.slug}: está fora do site, mas está no catálogo`);
+    emLadoNenhum(`o produto ${a.slug}`, `produtos/${a.familia}/${a.slug}/`, [`${BASE}/produtos/${a.familia}/${a.slug}/`, `"slug":"${a.slug}"`]);
+  }
+  for (const f of foraDoSite.familias) {
+    if (catalogo.familias.some((x) => x.slug === f)) mal(`família ${f}: está fora do site, mas está no catálogo`);
+    emLadoNenhum(`a família ${f}`, `produtos/${f}/`, [`${BASE}/produtos/${f}/`]);
+  }
+  for (const k of foraDoSite.kits) {
+    if (catalogo.kits.some((x) => x.slug === k)) mal(`pack ${k}: está fora do site, mas está no catálogo`);
+    emLadoNenhum(`o pack ${k}`, null, [`id="kit-${k}"`, `data-kit="${k}"`]);
+  }
 }
 
 // Contrastes medidos.

@@ -8,6 +8,8 @@ import { icone, iconeFamilia } from './icones.mjs';
 import { sprite } from '../assets/js/desenhos.js';
 import { desde, euros } from '../assets/js/preco.js';
 import { VERSAO as VERSAO_LEGAL, livroReclamacoes } from '../legal-comum/index.mjs';
+import { conferir } from './guarda.mjs';
+import { ordemDe } from './regras.mjs';
 
 export const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = 'MentaConecta';
@@ -22,15 +24,30 @@ export const u = (p = '') => `${BASE}/${String(p).replace(/^\//, '')}`;
 export const abs = (p = '') => `${SITE}${u(p)}`;
 
 export const ler = (p) => JSON.parse(readFileSync(join(RAIZ, p), 'utf8'));
-export const marca = ler('dados/marca.json');
-export const familias = ler('dados/familias.json');
-const CORES = ler('dados/cores.json');
+/* OS DADOS PASSAM PELAS REGRAS (scripts/regras.mjs, as mesmas do painel), pela guarda: o que pára a
+   publicação pára aqui também, e o site lê a CÓPIA NEUTRALIZADA — sem os rascunhos (`publicado:
+   false`), sem os artigos e os packs com erros, sem as famílias que ficam sem artigos e sem os packs
+   com um artigo que não está no site. Os ficheiros de dados/ não mudam. */
+export const conferencia = conferir(RAIZ);
+{
+  const param = conferencia.problemas.filter((p) => p.classe === 'bloqueia');
+  if (param.length) {
+    console.error(`A publicação parou: ${param.length} ${param.length === 1 ? 'problema' : 'problemas'} nos dados (node scripts/guarda.mjs diz tudo).`);
+    for (const p of param) console.error(`  ✗ ${p.ecra}: ${p.mensagem}`);
+    process.exit(1);
+  }
+}
+export const marca = JSON.parse(conferencia.dados.marca);
+const CORES = JSON.parse(conferencia.dados.cores);
 export const cores = CORES;
-// Os produtos: um ficheiro cada (como o painel os vai gravar), pela ordem do campo `ordem`.
-export const produtos = readdirSync(join(RAIZ, 'dados/produtos')).filter((f) => f.endsWith('.json'))
-  .map((f) => ler(`dados/produtos/${f}`)).sort((a, b) => a.ordem - b.ordem)
-  .map((p) => ({ ...p, coresDet: p.cores.map((k) => { const c = CORES[k]; if (!c) throw new Error(`${p.slug}: cor desconhecida «${k}»`); return { chave: k, ...c }; }) }));
-export const kits = ler('dados/kits.json');
+// As famílias com artigos no site, pela ordem do ficheiro.
+export const familias = conferencia.site.familias;
+// Os produtos: um ficheiro cada (como o painel os vai gravar), só os do site, pela ordem do campo `ordem`.
+export const produtos = conferencia.site.artigos
+  .map((p) => ({ ...p, ordem: ordemDe(p), coresDet: p.cores.map((k) => ({ chave: k, ...CORES[k] })) }));
+export const kits = conferencia.site.kits;
+// O que não vai para o site (a auditoria confere que não aparece em lado nenhum).
+export const foraDoSite = conferencia.site.fora;
 /* VERSÕES POR CONTEÚDO. O GitHub Pages guarda os ficheiros 10 minutos: com um
    número só no ponto de entrada, os módulos importados ficavam da versão anterior.
    O mapa de importação dá a cada módulo o resumo do seu próprio conteúdo. */
