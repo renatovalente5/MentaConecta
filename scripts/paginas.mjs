@@ -1,5 +1,5 @@
 // AS PÁGINAS. Cada função devolve o HTML de uma página inteira (via `pagina()`).
-import { pagina, titulo, esc, u, abs, marca, familias, produtos, kits, cores, produtosDe, familia, desdeFamilia, whatsapp, telefoneHtml, porDefinir, ou, ler, legal, logotipo } from './site.mjs';
+import { pagina, titulo, esc, u, abs, marca, familias, produtos, kits, cores, produtosDe, familia, desdeFamilia, whatsapp, telefoneHtml, porDefinir, ou, ler, legal, logotipo, ogDaFamilia } from './site.mjs';
 import { icone, iconeFamilia } from './icones.mjs';
 import { instancia, AREAS } from '../assets/js/desenhos.js';
 import { euros, comIva, desde, unitario, total, minimo, GRUPOS_COR, textoSobre } from '../assets/js/preco.js';
@@ -301,7 +301,7 @@ export function paginaFamilia(f) {
 ${f.duvidas?.length ? duvidas(f.duvidas, { id: 'duvidas-familia', tituloAntes: 'Dúvidas sobre', destaque: f.nome.toLowerCase() + '.' }) : ''}`;
   const ld = [m.ld, f.duvidas?.length ? faqLd(f.duvidas) : null,
     marca.demo ? null : { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: ps.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`produtos/${f.slug}/${p.slug}/`), name: p.titulo })) }];
-  return pagina({ caminho: `produtos/${f.slug}/`, titulo: `${f.h1.antes} ${f.h1.destaque}`, descricao: `${f.frase} Desde ${euros(d)} + IVA por unidade. Maquete grátis e acompanhamento por WhatsApp.`, corpo, classe: 'p-familia', jsonld: ld, desenhos: [...ps.map((p) => p.desenho), ...f.desenhos], scripts: ['familia.js'], og: `og/${f.slug}.png` });
+  return pagina({ caminho: `produtos/${f.slug}/`, titulo: `${f.h1.antes} ${f.h1.destaque}`, descricao: `${f.frase} Desde ${euros(d)} + IVA por unidade. Maquete grátis e acompanhamento por WhatsApp.`, corpo, classe: 'p-familia', jsonld: ld, desenhos: [...ps.map((p) => p.desenho), ...f.desenhos], scripts: ['familia.js'], og: ogDaFamilia(f.slug) });
 }
 
 /* ———————————————————————————————— PRODUTO ———————————————————————————————— */
@@ -415,9 +415,9 @@ ${f.duvidas?.length ? duvidas(f.duvidas, { id: 'duvidas-produto', tituloAntes: '
   const ld = [m.ld];
   if (!marca.demo) {
     const precos = p.quantidades.map((l) => comI(unitario(p, l.q)) / 100);
-    ld.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.titulo, description: p.descricao, brand: { '@type': 'Brand', name: marca.nome }, image: abs(`assets/og/${p.familia}.png`), url: abs(`produtos/${f.slug}/${p.slug}/`), offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: Math.min(...precos).toFixed(2), highPrice: Math.max(...precos).toFixed(2), offerCount: p.quantidades.length } });
+    ld.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.titulo, description: p.descricao, brand: { '@type': 'Brand', name: marca.nome }, image: abs(`assets/${ogDaFamilia(p.familia)}`), url: abs(`produtos/${f.slug}/${p.slug}/`), offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: Math.min(...precos).toFixed(2), highPrice: Math.max(...precos).toFixed(2), offerCount: p.quantidades.length } });
   }
-  return pagina({ caminho: `produtos/${f.slug}/${p.slug}/`, titulo: `${p.titulo} personalizad${f.artigo === 'o' ? 'o' : 'a'}`, descricao: `${p.descricao} Desde ${euros(desde(p))} + IVA por unidade, com ${(p.opcoes?.[0]?.opcoes?.[0]?.nome || 'personalização').toLowerCase()} e maquete grátis.`, corpo, classe: 'p-produto', jsonld: ld, desenhos: [p.desenho, ...combina.map((x) => x.desenho)], scripts: ['produto.js'], og: `og/${f.slug}.png` });
+  return pagina({ caminho: `produtos/${f.slug}/${p.slug}/`, titulo: `${p.titulo} personalizad${f.artigo === 'o' ? 'o' : 'a'}`, descricao: `${p.descricao} Desde ${euros(desde(p))} + IVA por unidade, com ${(p.opcoes?.[0]?.opcoes?.[0]?.nome || 'personalização').toLowerCase()} e maquete grátis.`, corpo, classe: 'p-produto', jsonld: ld, desenhos: [p.desenho, ...combina.map((x) => x.desenho)], scripts: ['produto.js'], og: ogDaFamilia(f.slug) });
 }
 
 /* ———————————————————————————————— PACKS ———————————————————————————————— */

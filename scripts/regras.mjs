@@ -72,7 +72,7 @@ export const FICHEIROS = Object.freeze({
 export const PASTAS = Object.freeze({ artigos: 'dados/produtos' });
 export const ficheiroDoArtigo = (nome) => `${PASTAS.artigos}/${nome}.json`;
 /* O nome de cada ficheiro, para os ecrãs. */
-export const NOMES_FICHEIROS = Object.freeze({ marca: 'Dados da loja', familias: 'Famílias', cores: 'Cores', kits: 'Packs', duvidas: 'Dúvidas' });
+export const NOMES_FICHEIROS = Object.freeze({ marca: 'Dados da marca', familias: 'Famílias', cores: 'Cores', kits: 'Packs', duvidas: 'Dúvidas' });
 
 /* Os campos de um artigo, PELA ORDEM DO FORMULÁRIO (e de um artigo novo, no ficheiro). Uma chave nova
    entra por esta ordem (ordenarComo()); as que já estão no ficheiro ficam onde estão. */
@@ -597,11 +597,11 @@ export const BLOQUEADOS_MARCA = Object.freeze(['nome', 'demo', 'endereco', 'mens
 export function problemasDaMarca(d, { producao } = {}) {
   const ficheiro = FICHEIROS.marca;
   const out = [];
-  const ecraDe = (s) => `Dados da loja › ${SECCOES_MARCA[s] || s}`;
+  const ecraDe = (s) => `Dados da marca › ${SECCOES_MARCA[s] || s}`;
   const bloqueia = (chave, s, campo, mensagem) => out.push({ classe: 'bloqueia', chave: `marca:${chave}`, ficheiro, ecra: ecraDe(s), campo, mensagem });
   const avisa = (chave, s, campo, mensagem, extra = {}) => out.push({ classe: 'avisa', chave: `marca:${chave}`, ficheiro, ecra: ecraDe(s), campo, mensagem, ...extra });
   const lembra = (chave, s, campo, mensagem) => avisa(chave, s, campo, mensagem, { lembrete: true });
-  if (!eObjecto(d)) { bloqueia('forma', 'marca', undefined, 'Os dados da loja não têm a forma certa. Só o Renato os pode corrigir.'); return out; }
+  if (!eObjecto(d)) { bloqueia('forma', 'marca', undefined, 'Os dados da marca não têm a forma certa. Só o Renato os pode corrigir.'); return out; }
   const aSerio = typeof producao === 'boolean' ? producao : d.demo === false;
 
   /* Um texto: obrigatório ou não, o tamanho, os caracteres invisíveis e as alegações. */
@@ -1109,8 +1109,9 @@ export function paraOSite(dados = {}, neutro = null) {
  *   'artigo':   as chaves que não são CAMPOS_ARTIGO não mudam; o slug (o endereço) também não, depois
  *               de escrito;
  *   'marca':    BLOQUEADOS_MARCA não mudam, e não aparecem chaves novas que não sejam CAMPOS_MARCA;
- *   'familias': as famílias são as mesmas, pela mesma ordem (o slug), e o grupo de cada uma não muda (é
- *               ele que diz se a família é têxtil); as chaves que não são CAMPOS_FAMILIA não mudam;
+ *   'familias': nenhuma família sai (pelo slug) e o grupo de cada uma não muda (é ele que diz se a
+ *               família é têxtil); a ordem muda (é a do menu) e entram famílias novas, com qualquer
+ *               grupo; as chaves que não são CAMPOS_FAMILIA não mudam (nem aparecem numa nova);
  *   'kits':     em cada pack, as chaves que não são CAMPOS_PACK não mudam (os packs entram e saem);
  *   'cores':    em cada cor, as chaves que não são CAMPOS_COR não mudam (as cores entram e saem: uma
  *               cor em uso não sai, mas isso é um problema das regras, problemasDasCores);
@@ -1132,11 +1133,20 @@ export function mudancasBloqueadas(antes, depois, qual = 'marca') {
     return out;
   }
   if (qual === 'familias') {
+    /* Pelo slug (o painel muda a ordem e junta famílias): nenhuma sai, e as que não têm a forma de
+       uma família (sem slug) ficam como estavam, pela mesma ordem. */
     const a = lista(antes); const d = lista(depois);
-    if (a.length !== d.length) return [{ caminho: 'familias', motivo: 'quantas' }];
-    a.forEach((f, i) => {
-      for (const k of ['slug', 'grupo']) if (!mesmoValor(obj(f)[k], obj(d[i])[k])) out.push({ caminho: `${i}.${k}`, motivo: 'mudou' });
-      foraDosCampos(obj(f), obj(d[i]), CAMPOS_FAMILIA, `${i}.`);
+    const temSlug = (f) => eObjecto(f) && typeof f.slug === 'string';
+    const deDepois = new Map();
+    d.forEach((f, i) => { if (temSlug(f) && !deDepois.has(f.slug)) deDepois.set(f.slug, i); });
+    const deAntes = new Map(a.filter(temSlug).map((f) => [f.slug, f]));
+    for (const [s] of deAntes) if (!deDepois.has(s)) out.push({ caminho: s, motivo: 'saiu' });
+    if (!mesmoValor(a.filter((f) => !temSlug(f)), d.filter((f) => !temSlug(f)))) out.push({ caminho: 'familias', motivo: 'forma' });
+    d.forEach((f, i) => {
+      if (!temSlug(f)) return;
+      const f0 = deAntes.get(f.slug);
+      if (f0 && !mesmoValor(f0.grupo, f.grupo)) out.push({ caminho: `${i}.grupo`, motivo: 'mudou' });
+      foraDosCampos(obj(f0), f, CAMPOS_FAMILIA, `${i}.`);
     });
     return out;
   }

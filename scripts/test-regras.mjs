@@ -425,7 +425,7 @@ prova('um artigo a chegar ao limite do painel: lembrete', () => {
 });
 
 /* ------------------------------------------------------------- a marca -- */
-grupo('os dados da loja (problemasDaMarca)');
+grupo('os dados da marca (problemasDaMarca)');
 const M = (s) => `bloqueia marca:${s}`;
 prova('os dados de ensaio não têm problemas', () => igual(daMarca(), []));
 prova('não é um objecto: bloqueia', () => { igual(R.problemasDaMarca(null), [M('forma')]); igual(R.problemasDaMarca([]), [M('forma')]); });
@@ -846,13 +846,19 @@ prova('mudancasBloqueadas: a marca (o nome, a pré-visualização, o endereço e
   assert.deepEqual(R.mudancasBloqueadas(m, { ...m, formaJuridica: 'lda' }, 'marca'), []);
   assert.deepEqual(R.mudancasBloqueadas(m, m), []);
 });
-prova('mudancasBloqueadas: as famílias (as mesmas, pela mesma ordem; o grupo não muda)', () => {
+prova('mudancasBloqueadas: as famílias (nenhuma sai e o grupo não muda; a ordem muda e entram novas)', () => {
   const f = familiasBase();
   assert.deepEqual(R.mudancasBloqueadas(f, f.map((x) => ({ ...x, nome: `${x.nome}!`, icone: 'caneca' })), 'familias'), []);
-  assert.deepEqual(R.mudancasBloqueadas(f, [f[0]], 'familias'), [{ caminho: 'familias', motivo: 'quantas' }]);
-  assert.deepEqual(R.mudancasBloqueadas(f, [f[1], f[0]], 'familias').map((x) => x.caminho).filter((c) => c.endsWith('slug')), ['0.slug', '1.slug']);
+  assert.deepEqual(R.mudancasBloqueadas(f, [f[0]], 'familias'), [{ caminho: 'canetas', motivo: 'saiu' }]);
+  assert.deepEqual(R.mudancasBloqueadas(f, [f[1], f[0]], 'familias'), []);
+  const nova = { slug: 'canecas', nome: 'Canecas', grupo: 'Cozinha', icone: 'caneca', desenhos: ['caneca'], coresCapa: ['#FFFFFF', '#1B1D24'], frase: 'x', vantagens: [], h1: { antes: 'Canecas', destaque: 'personalizadas' } };
+  assert.deepEqual(R.mudancasBloqueadas(f, [f[0], nova, f[1]], 'familias'), []);
+  assert.deepEqual(R.mudancasBloqueadas(f, [...f, { ...nova, cupao: 1 }], 'familias'), [{ caminho: '2.cupao', motivo: 'chave_nova' }]);
   assert.deepEqual(R.mudancasBloqueadas(f, [{ ...f[0], grupo: 'Acessórios' }, f[1]], 'familias'), [{ caminho: '0.grupo', motivo: 'mudou' }]);
+  assert.deepEqual(R.mudancasBloqueadas(f, [f[1], { ...f[0], grupo: 'Acessórios' }], 'familias'), [{ caminho: '1.grupo', motivo: 'mudou' }]);
   assert.deepEqual(R.mudancasBloqueadas(f, [{ ...f[0], novo: 1 }, f[1]], 'familias'), [{ caminho: '0.novo', motivo: 'chave_nova' }]);
+  assert.deepEqual(R.mudancasBloqueadas([...f, 'x'], [...f], 'familias'), [{ caminho: 'familias', motivo: 'forma' }]);
+  assert.deepEqual(R.mudancasBloqueadas([...f, 'x'], [f[1], 'x', f[0]], 'familias'), []);
 });
 prova('mudancasBloqueadas: os packs, as cores e as dúvidas (entram e saem; só as chaves desconhecidas não)', () => {
   const k = packsBase();
@@ -898,7 +904,7 @@ prova('um artigo com um erro e outro em rascunho: sai com 0, e diz o que fica fo
 prova('o que não se contorna (o WhatsApp mal escrito, um JSON partido): sai com 1', () => {
   const r = correrGuarda((p) => mudarJson(p, 'dados/marca.json', (m) => { m.whatsapp = '966635602'; }));
   assert.equal(r.status, 1, r.stdout + r.stderr);
-  assert.ok(r.stdout.includes('Dados da loja › Contactos'), r.stdout);
+  assert.ok(r.stdout.includes('Dados da marca › Contactos'), r.stdout);
   assert.equal(correrGuarda((p) => writeFileSync(join(p, 'dados/kits.json'), '[{')).status, 1);
 });
 
@@ -937,12 +943,14 @@ prova('os rascunhos funcionam com os dados de hoje: um artigo que um pack usa, e
   const rascunhos = new Set([doPack, ...Object.keys(d.artigos).filter((n) => ler(n).familia === familia)].filter(Boolean));
   for (const n of rascunhos) d.artigos[n] = R.serializar({ ...ler(n), publicado: false });
   const s = R.paraOSite(d);
-  assert.ok(rascunhos.size >= 2);
+  /* Os dados de hoje são da dona (o painel junta, apaga packs, muda a ordem): o que se prova não
+     depende de quantos há — só de haver um pack no site para o lado dos packs. */
+  assert.ok(rascunhos.size >= 1);
   assert.ok(!s.artigos.some((a) => rascunhos.has(a.slug)));
   assert.equal(s.artigos.length, antes.artigos.filter((a) => !rascunhos.has(a.slug)).length);
   assert.ok(!s.familias.some((f) => f.slug === familia) && s.fora.familias.includes(familia));
-  const packsFora = kits.filter((k) => k.pecas.some((pc) => rascunhos.has(pc.produto))).map((k) => k.slug);
-  assert.ok(packsFora.length >= 1);
+  const packsFora = Array.isArray(kits) ? kits.filter((k) => Array.isArray(k?.pecas) && k.pecas.some((pc) => rascunhos.has(pc?.produto))).map((k) => k.slug) : [];
+  if (doPack) assert.ok(packsFora.length >= 1);
   assert.deepEqual(s.kits.map((k) => k.slug), antes.kits.map((k) => k.slug).filter((k) => !packsFora.includes(k)));
   const todos = R.problemas(d);
   const novos = todos.filter((p) => !PROBLEMAS_DE_HOJE.some((q) => q.chave === p.chave));

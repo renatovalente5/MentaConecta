@@ -72,6 +72,9 @@ export const whatsapp = (texto = marca.mensagens.geral) =>
   `https://wa.me/${porDefinir(marca.whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent(prefixoTeste() + texto)}`;
 
 export const produtosDe = (slug) => produtos.filter((p) => p.familia === slug);
+/* A imagem de partilha de uma família (scripts/imagens.mjs faz uma por família, à mão): uma família
+   criada no painel ainda não tem a dela, e partilha a do site até alguém correr o imagens.mjs. */
+export const ogDaFamilia = (slug) => (existsSync(join(RAIZ, `assets/og/${slug}.png`)) ? `og/${slug}.png` : 'og/menta.png');
 export const familia = (slug) => familias.find((f) => f.slug === slug);
 export const desdeFamilia = (slug) => Math.min(...produtosDe(slug).map(desde));
 
