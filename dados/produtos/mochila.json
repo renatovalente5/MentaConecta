@@ -1,0 +1,61 @@
+{
+ "slug": "mochila",
+ "familia": "acessorios",
+ "nome": "Saco mochila",
+ "tipo": "Saco",
+ "grupoTipo": "Sacos",
+ "desenho": "saco-mochila",
+ "frase": "Fecho de cordões, leve e prático.",
+ "descricao": "Saco mochila em poliéster 210D, com fecho de cordões que servem de alças. Para eventos, ginásios e escolas.",
+ "cores": [
+  "preto",
+  "branco",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-relva",
+  "amarelo",
+  "laranja",
+  "rosa",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 64
+  },
+  {
+   "q": 50,
+   "preco": 112.5
+  },
+  {
+   "q": 100,
+   "preco": 199
+  },
+  {
+   "q": 250,
+   "preco": 447.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Uma face",
+     "acrescimo": 0
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 25 × 25 cm"
+ },
+ "especificacoes": {
+  "Material": "Poliéster 210D",
+  "Medidas": "37 × 41 cm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 25,
+ "titulo": "Saco mochila"
+}

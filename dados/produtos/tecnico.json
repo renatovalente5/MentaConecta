@@ -1,0 +1,66 @@
+{
+ "slug": "tecnico",
+ "familia": "polos",
+ "nome": "Técnico",
+ "tipo": "Polo",
+ "desenho": "polo",
+ "frase": "Secagem rápida, para o calor.",
+ "descricao": "Polo de poliéster técnico, leve e respirável, que seca depressa. Para eventos e equipas no exterior.",
+ "cores": [
+  "branco",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-lima",
+  "laranja",
+  "cinza"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 139
+  },
+  {
+   "q": 25,
+   "preco": 325
+  },
+  {
+   "q": 50,
+   "preco": 599
+  },
+  {
+   "q": 100,
+   "preco": 1090
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Peito e costas",
+     "acrescimo": 3.5,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Peito": "até 10 × 8 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % poliéster, 150 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Personalização": "Bordado",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 15,
+ "titulo": "Polo técnico"
+}

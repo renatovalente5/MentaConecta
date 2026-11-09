@@ -1,0 +1,69 @@
+{
+ "slug": "bone",
+ "familia": "acessorios",
+ "nome": "Boné 5 painéis",
+ "tipo": "Boné",
+ "grupoTipo": "Bonés e chapéus",
+ "desenho": "bone",
+ "frase": "Algodão escovado, fecho ajustável.",
+ "descricao": "Boné de 5 painéis em algodão escovado, com ilhós bordados e fecho ajustável atrás.",
+ "cores": [
+  "preto",
+  "branco",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "cinza",
+  "verde-garrafa",
+  "bege",
+  "laranja",
+  "amarelo",
+  "bordeaux",
+  "rosa"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 149
+  },
+  {
+   "q": 50,
+   "preco": 269
+  },
+  {
+   "q": 100,
+   "preco": 489
+  },
+  {
+   "q": 250,
+   "preco": 1112.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado na frente",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Frente e lateral",
+     "acrescimo": 1.2,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 10 × 5 cm"
+ },
+ "especificacoes": {
+  "Material": "100 % algodão escovado",
+  "Tamanho": "Único, ajustável",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 22,
+ "titulo": "Boné 5 painéis"
+}

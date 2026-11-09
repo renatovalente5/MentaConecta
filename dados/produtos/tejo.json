@@ -1,0 +1,69 @@
+{
+ "slug": "tejo",
+ "familia": "canetas",
+ "nome": "Tejo",
+ "tipo": "Caneta",
+ "desenho": "caneta-touch",
+ "tinta": "azul",
+ "frase": "Alumínio com ponteira táctil.",
+ "descricao": "Caneta de alumínio anodizado com mecanismo de clique e ponteira táctil para ecrãs. Leve, resistente e com tinta azul de longa duração.",
+ "cores": [
+  "preto",
+  "branco",
+  "prateado",
+  "azul-royal",
+  "azul-marinho",
+  "vermelho",
+  "verde",
+  "amarelo",
+  "laranja",
+  "rosa-choque"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 32.5
+  },
+  {
+   "q": 50,
+   "preco": 52.5
+  },
+  {
+   "q": 100,
+   "preco": 89
+  },
+  {
+   "q": 250,
+   "preco": 172.5
+  },
+  {
+   "q": 500,
+   "preco": 290
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Alumínio anodizado",
+  "Tinta": "Azul",
+  "Área de gravação": "40 × 6 mm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 1,
+ "titulo": "Caneta Tejo"
+}

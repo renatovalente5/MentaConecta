@@ -1,0 +1,64 @@
+{
+ "familia": "agendas",
+ "tipo": "Agenda",
+ "desenho": "agenda",
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a seco na capa",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.8,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "cores": [
+  "preto",
+  "azul-marinho",
+  "vermelho",
+  "castanho",
+  "cinza-chumbo",
+  "verde-garrafa"
+ ],
+ "areas": {
+  "Capa": "até 8 × 6 cm"
+ },
+ "slug": "semanal-a5",
+ "nome": "Semanal A5",
+ "grupoTipo": "Agenda",
+ "frase": "A semana à vista.",
+ "descricao": "Agenda A5 de 2027 com a semana em duas páginas, capa em pele sintética, elástico e fita marcadora.",
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 212.5
+  },
+  {
+   "q": 50,
+   "preco": 395
+  },
+  {
+   "q": 100,
+   "preco": 720
+  },
+  {
+   "q": 250,
+   "preco": 1662.5
+  }
+ ],
+ "especificacoes": {
+  "Formato": "A5 (14,8 × 21 cm)",
+  "Páginas": "128, semana em duas páginas",
+  "Capa": "Pele sintética",
+  "Mínimo": "25 unidades"
+ },
+ "titulo": "Agenda semanal A5",
+ "ordem": 44
+}

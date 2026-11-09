@@ -1,0 +1,64 @@
+{
+ "familia": "guarda-chuvas",
+ "tipo": "Guarda-chuva",
+ "desenho": "guarda-chuva",
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão num gomo",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Impressão em dois gomos",
+     "acrescimo": 1.2,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "slug": "dobravel",
+ "nome": "Dobrável",
+ "grupoTipo": "Dobrável",
+ "frase": "Cabe na mala, com bolsa.",
+ "descricao": "Guarda-chuva dobrável de 21 polegadas, com bolsa e abertura manual. Fechado mede 24 cm.",
+ "cores": [
+  "preto",
+  "azul-marinho",
+  "vermelho",
+  "rosa-choque",
+  "cinza-chumbo",
+  "azul-royal"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 212.5
+  },
+  {
+   "q": 50,
+   "preco": 395
+  },
+  {
+   "q": 100,
+   "preco": 740
+  },
+  {
+   "q": 250,
+   "preco": 1725
+  }
+ ],
+ "areas": {
+  "Gomo": "até 15 × 8 cm"
+ },
+ "especificacoes": {
+  "Tecido": "Poliéster pongee 190T",
+  "Diâmetro": "96 cm",
+  "Fechado": "24 cm",
+  "Mínimo": "25 unidades"
+ },
+ "titulo": "Guarda-chuva dobrável",
+ "ordem": 40
+}

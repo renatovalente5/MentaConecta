@@ -1,0 +1,69 @@
+{
+ "slug": "lanyard",
+ "familia": "acessorios",
+ "nome": "Fita de pescoço",
+ "tipo": "Lanyard",
+ "grupoTipo": "Fitas de pescoço",
+ "desenho": "lanyard",
+ "frase": "20 mm, impressa a cores.",
+ "descricao": "Fita de pescoço de 20 mm em poliéster, impressa a cores, com mosquetão e fecho de segurança. Inclui porta-cartões.",
+ "cores": [
+  "preto",
+  "branco",
+  "azul-marinho",
+  "azul-royal",
+  "turquesa",
+  "vermelho",
+  "verde-relva",
+  "amarelo",
+  "laranja",
+  "rosa",
+  "roxo",
+  "cinza"
+ ],
+ "quantidades": [
+  {
+   "q": 50,
+   "preco": 99
+  },
+  {
+   "q": 100,
+   "preco": 169
+  },
+  {
+   "q": 250,
+   "preco": 372.5
+  },
+  {
+   "q": 500,
+   "preco": 675
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Uma face",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Duas faces",
+     "acrescimo": 0.3
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Fita": "toda a volta",
+  "Cartão": "8,5 × 5,4 cm"
+ },
+ "especificacoes": {
+  "Material": "Poliéster",
+  "Largura": "20 mm",
+  "Extra": "Porta-cartões e fecho de segurança",
+  "Mínimo": "50 unidades"
+ },
+ "ordem": 26,
+ "titulo": "Fita de pescoço"
+}

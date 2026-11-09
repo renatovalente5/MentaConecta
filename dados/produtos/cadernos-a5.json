@@ -1,0 +1,61 @@
+{
+ "slug": "cadernos-a5",
+ "familia": "agendas",
+ "nome": "Cadernos A5",
+ "tipo": "Caderno",
+ "grupoTipo": "Caderno",
+ "desenho": "caderno",
+ "unidade": "cadernos",
+ "frase": "Capa rígida, elástico e fita.",
+ "descricao": "Caderno A5 de capa rígida com 80 folhas pautadas, elástico e marcador de fita. Logótipo impresso na capa.",
+ "cores": [
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-garrafa",
+  "amarelo",
+  "cinza",
+  "kraft"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 112.5
+  },
+  {
+   "q": 50,
+   "preco": 200
+  },
+  {
+   "q": 100,
+   "preco": 360
+  },
+  {
+   "q": 250,
+   "preco": 812.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão na capa",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Gravação em relevo seco",
+     "acrescimo": 0.9
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Formato": "A5, 80 folhas pautadas",
+  "Capa": "Rígida",
+  "Mínimo": "25 cadernos"
+ },
+ "ordem": 42,
+ "titulo": "Cadernos A5"
+}

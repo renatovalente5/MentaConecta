@@ -1,0 +1,192 @@
+{
+ "amarelo": {
+  "nome": "Amarelo",
+  "hex": "#F6D32D",
+  "grupo": "amarelos"
+ },
+ "amarelo-fluor": {
+  "nome": "Amarelo flúor",
+  "hex": "#E8F531",
+  "grupo": "amarelos"
+ },
+ "areia": {
+  "nome": "Areia",
+  "hex": "#D8C9AE",
+  "grupo": "castanhos"
+ },
+ "azul-celeste": {
+  "nome": "Azul celeste",
+  "hex": "#86BDE8",
+  "grupo": "azuis"
+ },
+ "azul-marinho": {
+  "nome": "Azul marinho",
+  "hex": "#1C2541",
+  "grupo": "azuis"
+ },
+ "azul-petroleo": {
+  "nome": "Azul petróleo",
+  "hex": "#1F4E5F",
+  "grupo": "azuis"
+ },
+ "azul-royal": {
+  "nome": "Azul royal",
+  "hex": "#1E4FB8",
+  "grupo": "azuis"
+ },
+ "bege": {
+  "nome": "Bege",
+  "hex": "#D8C9AE",
+  "grupo": "castanhos"
+ },
+ "bordeaux": {
+  "nome": "Bordeaux",
+  "hex": "#6D1A2C",
+  "grupo": "vermelhos"
+ },
+ "branco": {
+  "nome": "Branco",
+  "hex": "#FFFFFF",
+  "grupo": "brancos"
+ },
+ "branco-mate": {
+  "nome": "Branco mate",
+  "hex": "#F4F4F2",
+  "grupo": "brancos"
+ },
+ "castanho": {
+  "nome": "Castanho",
+  "hex": "#5A3A28",
+  "grupo": "castanhos"
+ },
+ "cinza": {
+  "nome": "Cinza",
+  "hex": "#8E9399",
+  "grupo": "pretos"
+ },
+ "cinza-chumbo": {
+  "nome": "Cinza chumbo",
+  "hex": "#4A4D55",
+  "grupo": "pretos"
+ },
+ "cinza-mescla": {
+  "nome": "Cinza mescla",
+  "hex": "#B9BBBF",
+  "grupo": "pretos"
+ },
+ "fucsia": {
+  "nome": "Fúcsia",
+  "hex": "#D3195F",
+  "grupo": "vermelhos"
+ },
+ "grafite": {
+  "nome": "Grafite",
+  "hex": "#3B3F48",
+  "grupo": "pretos"
+ },
+ "kraft": {
+  "nome": "Kraft",
+  "hex": "#C9A77C",
+  "grupo": "castanhos"
+ },
+ "laranja": {
+  "nome": "Laranja",
+  "hex": "#F37021",
+  "grupo": "amarelos"
+ },
+ "laranja-fluor": {
+  "nome": "Laranja flúor",
+  "hex": "#FF6A2B",
+  "grupo": "amarelos"
+ },
+ "mostarda": {
+  "nome": "Mostarda",
+  "hex": "#D9A42B",
+  "grupo": "amarelos"
+ },
+ "natural": {
+  "nome": "Natural",
+  "hex": "#EFE8D8",
+  "grupo": "brancos"
+ },
+ "prateado": {
+  "nome": "Prateado",
+  "hex": "#C9CED6",
+  "grupo": "pretos"
+ },
+ "preto": {
+  "nome": "Preto",
+  "hex": "#1B1D24",
+  "grupo": "pretos"
+ },
+ "preto-mate": {
+  "nome": "Preto mate",
+  "hex": "#26282F",
+  "grupo": "pretos"
+ },
+ "rosa": {
+  "nome": "Rosa",
+  "hex": "#F29BC0",
+  "grupo": "vermelhos"
+ },
+ "rosa-choque": {
+  "nome": "Rosa choque",
+  "hex": "#E85A9B",
+  "grupo": "vermelhos"
+ },
+ "rosa-fluor": {
+  "nome": "Rosa flúor",
+  "hex": "#FF4F9A",
+  "grupo": "vermelhos"
+ },
+ "rosa-velho": {
+  "nome": "Rosa velho",
+  "hex": "#D9A3A6",
+  "grupo": "vermelhos"
+ },
+ "roxo": {
+  "nome": "Roxo",
+  "hex": "#5B2A86",
+  "grupo": "roxos"
+ },
+ "terracota": {
+  "nome": "Terracota",
+  "hex": "#C46A4A",
+  "grupo": "castanhos"
+ },
+ "turquesa": {
+  "nome": "Turquesa",
+  "hex": "#0E9AAE",
+  "grupo": "azuis"
+ },
+ "verde": {
+  "nome": "Verde",
+  "hex": "#2E9E4F",
+  "grupo": "verdes"
+ },
+ "verde-garrafa": {
+  "nome": "Verde garrafa",
+  "hex": "#155E3B",
+  "grupo": "verdes"
+ },
+ "verde-lima": {
+  "nome": "Verde lima",
+  "hex": "#B5D334",
+  "grupo": "verdes"
+ },
+ "verde-relva": {
+  "nome": "Verde relva",
+  "hex": "#2E9E4F",
+  "grupo": "verdes"
+ },
+ "verde-salvia": {
+  "nome": "Verde sálvia",
+  "hex": "#9CAF88",
+  "grupo": "verdes"
+ },
+ "vermelho": {
+  "nome": "Vermelho",
+  "hex": "#C8102E",
+  "grupo": "vermelhos"
+ }
+}

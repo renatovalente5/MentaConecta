@@ -1,0 +1,74 @@
+{
+ "slug": "gola-redonda",
+ "familia": "sweatshirts",
+ "nome": "Gola redonda",
+ "tipo": "Sweatshirt",
+ "desenho": "sweat",
+ "frase": "280 g, felpa por dentro.",
+ "descricao": "Sweatshirt de gola redonda em algodão e poliéster de 280 g, felpada por dentro, com punhos e cintura canelados.",
+ "cores": [
+  "branco",
+  "cinza-mescla",
+  "cinza-chumbo",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "verde-garrafa",
+  "bordeaux",
+  "vermelho",
+  "mostarda",
+  "areia",
+  "rosa"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 189
+  },
+  {
+   "q": 25,
+   "preco": 449
+  },
+  {
+   "q": 50,
+   "preco": 839
+  },
+  {
+   "q": 100,
+   "preco": 1590
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão na frente",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 1.2,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.6,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 29 × 21 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "80 % algodão, 20 % poliéster, 280 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 16,
+ "titulo": "Sweatshirt gola redonda"
+}

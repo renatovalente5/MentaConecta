@@ -1,0 +1,65 @@
+{
+ "slug": "tote",
+ "familia": "acessorios",
+ "nome": "Saco tote",
+ "tipo": "Saco",
+ "grupoTipo": "Sacos",
+ "desenho": "saco-tote",
+ "frase": "Algodão de 140 g, alças compridas.",
+ "descricao": "Saco de algodão de 140 g com alças compridas, para levar ao ombro. Reutilizável e com muito espaço para a sua marca.",
+ "cores": [
+  "natural",
+  "branco",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-garrafa",
+  "amarelo",
+  "laranja",
+  "rosa"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 79
+  },
+  {
+   "q": 50,
+   "preco": 139
+  },
+  {
+   "q": 100,
+   "preco": 249
+  },
+  {
+   "q": 250,
+   "preco": 562.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Uma face",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Duas faces",
+     "acrescimo": 0.9
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 30 × 30 cm"
+ },
+ "especificacoes": {
+  "Material": "100 % algodão, 140 g/m²",
+  "Medidas": "38 × 42 cm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 24,
+ "titulo": "Saco tote"
+}

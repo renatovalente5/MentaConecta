@@ -1,0 +1,66 @@
+{
+ "slug": "manga-comprida",
+ "familia": "polos",
+ "nome": "Manga comprida",
+ "tipo": "Polo",
+ "desenho": "polo-ml",
+ "frase": "O piqué para os dias frescos.",
+ "descricao": "Polo de manga comprida em algodão piqué, com punhos canelados. Para equipas que trabalham ao ar livre.",
+ "cores": [
+  "branco",
+  "cinza-mescla",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "verde-garrafa",
+  "vermelho",
+  "bordeaux"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 179
+  },
+  {
+   "q": 25,
+   "preco": 422.5
+  },
+  {
+   "q": 50,
+   "preco": 795
+  },
+  {
+   "q": 100,
+   "preco": 1490
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Peito e costas",
+     "acrescimo": 3.5,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Peito": "até 10 × 8 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % algodão piqué, 210 g/m²",
+  "Tamanhos": "S a 3XL",
+  "Personalização": "Bordado",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 14,
+ "titulo": "Polo manga comprida"
+}

@@ -1,0 +1,65 @@
+{
+ "slug": "sado",
+ "familia": "canetas",
+ "nome": "Sado",
+ "tipo": "Caneta",
+ "desenho": "caneta-bambu",
+ "tinta": "azul",
+ "frase": "Corpo colorido com pega de bambu.",
+ "descricao": "Caneta de alumínio com pega em bambu natural: confortável de segurar.",
+ "cores": [
+  "preto",
+  "branco",
+  "azul-marinho",
+  "vermelho",
+  "verde",
+  "laranja"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 35
+  },
+  {
+   "q": 50,
+   "preco": 60
+  },
+  {
+   "q": 100,
+   "preco": 105
+  },
+  {
+   "q": 250,
+   "preco": 225
+  },
+  {
+   "q": 500,
+   "preco": 395
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Alumínio e bambu",
+  "Tinta": "Azul",
+  "Área de gravação": "35 × 6 mm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 3,
+ "titulo": "Caneta Sado"
+}

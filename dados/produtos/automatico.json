@@ -1,0 +1,66 @@
+{
+ "familia": "guarda-chuvas",
+ "tipo": "Guarda-chuva",
+ "desenho": "guarda-chuva",
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão num gomo",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Impressão em dois gomos",
+     "acrescimo": 1.2,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "slug": "automatico",
+ "nome": "Automático",
+ "grupoTipo": "Clássico",
+ "frase": "Abre num botão, 8 varetas.",
+ "descricao": "Guarda-chuva de 23 polegadas com abertura automática, 8 varetas em fibra de vidro e cabo curvo.",
+ "cores": [
+  "preto",
+  "azul-marinho",
+  "vermelho",
+  "azul-royal",
+  "verde",
+  "branco",
+  "amarelo",
+  "laranja"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 237.5
+  },
+  {
+   "q": 50,
+   "preco": 440
+  },
+  {
+   "q": 100,
+   "preco": 820
+  },
+  {
+   "q": 250,
+   "preco": 1912.5
+  }
+ ],
+ "areas": {
+  "Gomo": "até 20 × 10 cm"
+ },
+ "especificacoes": {
+  "Tecido": "Poliéster pongee 190T",
+  "Diâmetro": "103 cm",
+  "Varetas": "8, em fibra de vidro",
+  "Mínimo": "25 unidades"
+ },
+ "titulo": "Guarda-chuva automático",
+ "ordem": 39
+}

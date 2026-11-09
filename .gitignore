@@ -1,0 +1,5 @@
+_fonte/
+_site/
+.DS_Store
+node_modules/
+assets/css/site.css

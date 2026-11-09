@@ -1,0 +1,72 @@
+{
+ "slug": "pique",
+ "familia": "polos",
+ "nome": "Piqué",
+ "tipo": "Polo",
+ "desenho": "polo",
+ "frase": "Piqué de 210 g, gola canelada.",
+ "descricao": "Polo de algodão piqué de 210 g, com gola e punhos canelados e três botões. Fresco e com bom aspecto o dia inteiro.",
+ "cores": [
+  "branco",
+  "cinza-mescla",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "azul-celeste",
+  "turquesa",
+  "verde-garrafa",
+  "verde-relva",
+  "amarelo",
+  "laranja",
+  "vermelho",
+  "bordeaux",
+  "rosa"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 149
+  },
+  {
+   "q": 25,
+   "preco": 349
+  },
+  {
+   "q": 50,
+   "preco": 645
+  },
+  {
+   "q": 100,
+   "preco": 1190
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Peito e costas",
+     "acrescimo": 3.5,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Peito": "até 10 × 8 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % algodão piqué, 210 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Personalização": "Bordado",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 13,
+ "titulo": "Polo piqué"
+}

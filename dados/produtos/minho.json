@@ -1,0 +1,64 @@
+{
+ "slug": "minho",
+ "familia": "canetas",
+ "nome": "Minho",
+ "tipo": "Caneta",
+ "desenho": "caneta-fina",
+ "tinta": "preta",
+ "frase": "Aço inox brilhante, com estojo.",
+ "descricao": "Caneta de aço inoxidável com acabamento brilhante, entregue em estojo individual. Para ofertas que se guardam.",
+ "cores": [
+  "prateado",
+  "preto",
+  "azul-marinho",
+  "grafite"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 62.5
+  },
+  {
+   "q": 50,
+   "preco": 112.5
+  },
+  {
+   "q": 100,
+   "preco": 199
+  },
+  {
+   "q": 250,
+   "preco": 447.5
+  },
+  {
+   "q": 500,
+   "preco": 845
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Aço inoxidável",
+  "Tinta": "Preta",
+  "Área de gravação": "40 × 5 mm",
+  "Extra": "Estojo individual",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 6,
+ "titulo": "Caneta Minho"
+}

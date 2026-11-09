@@ -1,0 +1,516 @@
+[
+ {
+  "slug": "canetas",
+  "nome": "Canetas",
+  "grupo": "Escrita e escritório",
+  "icone": "caneta",
+  "singular": "caneta",
+  "artigo": "a",
+  "desenhos": [
+   "caneta-touch",
+   "caneta-bambu",
+   "caneta-clique"
+  ],
+  "coresCapa": [
+   "#D81C5C",
+   "#FFEC08",
+   "#1B1D24"
+  ],
+  "frase": "Alumínio, bambu ou metal, gravadas a laser com o seu logótipo.",
+  "sublinhado": "tinta",
+  "vantagens": [
+   "Gravação a laser incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Pronto 5 a 7 dias úteis após a maquete"
+  ],
+  "filtros": {
+   "tinta": true
+  },
+  "duvidas": [
+   {
+    "p": "A gravação está incluída no preço?",
+    "r": "Sim. O preço de cada quantidade já inclui a gravação a laser de uma face e os portes para Portugal Continental."
+   },
+   {
+    "p": "Que tinta têm as canetas?",
+    "r": "Cada modelo diz a cor da tinta na ficha: azul ou preta. Para outra tinta, pergunte-nos."
+   },
+   {
+    "p": "A gravação a laser sai a cores?",
+    "r": "Não: o laser tira a camada de cor e deixa à vista o metal, por isso o logótipo fica num tom claro e não sai com o tempo. Para cores, escolha a impressão UV."
+   }
+  ],
+  "h1": {
+   "antes": "Canetas",
+   "destaque": "personalizadas"
+  }
+ },
+ {
+  "slug": "t-shirts",
+  "nome": "T-shirts",
+  "grupo": "Têxtil",
+  "icone": "tshirt",
+  "singular": "t-shirt",
+  "artigo": "a",
+  "desenhos": [
+   "tshirt",
+   "tshirt-tecnica",
+   "tshirt"
+  ],
+  "coresCapa": [
+   "#FFEC08",
+   "#1B1D24",
+   "#209478"
+  ],
+  "frase": "Do algodão leve ao premium, em mais de 20 cores.",
+  "sublinhado": "costura",
+  "vantagens": [
+   "Impressão a cores incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Tamanhos do XS ao 3XL"
+  ],
+  "filtros": {
+   "cor": true
+  },
+  "duvidas": [
+   {
+    "p": "Posso misturar tamanhos na mesma encomenda?",
+    "r": "Pode. A quantidade conta as t-shirts do mesmo modelo e cor, em todos os tamanhos."
+   },
+   {
+    "p": "Que tamanho de impressão está incluído?",
+    "r": "Até A4 na frente. Nas costas, escolha «Frente e costas»."
+   },
+   {
+    "p": "A impressão aguenta lavagens?",
+    "r": "Sim. A impressão DTF aguenta lavagens a 40 °C do avesso, sem secar na máquina."
+   }
+  ],
+  "h1": {
+   "antes": "T-shirts",
+   "destaque": "personalizadas"
+  }
+ },
+ {
+  "slug": "polos",
+  "nome": "Polos",
+  "grupo": "Têxtil",
+  "icone": "polo",
+  "singular": "polo",
+  "artigo": "o",
+  "desenhos": [
+   "polo",
+   "polo-ml",
+   "polo"
+  ],
+  "coresCapa": [
+   "#209478",
+   "#D81C5C",
+   "#FFFFFF"
+  ],
+  "frase": "Piqué de manga curta ou comprida, com bordado no peito.",
+  "sublinhado": "costura",
+  "vantagens": [
+   "Bordado no peito incluído",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Tamanhos do XS ao 3XL"
+  ],
+  "filtros": {
+   "cor": true
+  },
+  "duvidas": [
+   {
+    "p": "O bordado tem limite de cores?",
+    "r": "Até 8 cores de linha no peito estão incluídas. Para mais, enviamos a maquete com as opções."
+   },
+   {
+    "p": "Posso pôr o nome de cada pessoa?",
+    "r": "Pode. Diga-nos na mensagem: cada nome tem um pequeno acréscimo, que vai na proposta."
+   }
+  ],
+  "h1": {
+   "antes": "Polos",
+   "destaque": "bordados"
+  }
+ },
+ {
+  "slug": "sweatshirts",
+  "nome": "Sweatshirts",
+  "grupo": "Têxtil",
+  "icone": "hoodie",
+  "singular": "sweatshirt",
+  "artigo": "a",
+  "desenhos": [
+   "hoodie",
+   "sweat",
+   "hoodie"
+  ],
+  "coresCapa": [
+   "#F48020",
+   "#FFEC08",
+   "#1B1D24"
+  ],
+  "frase": "Com ou sem capuz, quentes para o ano inteiro.",
+  "sublinhado": "costura",
+  "vantagens": [
+   "Impressão ou bordado",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Tamanhos do XS ao 3XL"
+  ],
+  "filtros": {
+   "cor": true
+  },
+  "duvidas": [
+   {
+    "p": "Impressão ou bordado?",
+    "r": "A impressão é melhor para logótipos grandes e com muitas cores; o bordado, para o peito e para durar anos."
+   }
+  ],
+  "h1": {
+   "antes": "Sweatshirts",
+   "destaque": "personalizadas"
+  }
+ },
+ {
+  "slug": "casacos",
+  "nome": "Casacos",
+  "grupo": "Têxtil",
+  "icone": "casaco",
+  "singular": "casaco",
+  "artigo": "o",
+  "desenhos": [
+   "softshell",
+   "polar",
+   "colete"
+  ],
+  "coresCapa": [
+   "#1B1D24",
+   "#E43C30",
+   "#FFEC08"
+  ],
+  "frase": "Softshell, polar e coletes para o trabalho e para o frio.",
+  "sublinhado": "costura",
+  "vantagens": [
+   "Bordado no peito incluído",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Tamanhos do S ao 3XL"
+  ],
+  "filtros": {
+   "cor": true
+  },
+  "duvidas": [
+   {
+    "p": "Os casacos são impermeáveis?",
+    "r": "O softshell repele a água e corta o vento; o polar é para o frio seco. A ficha de cada modelo diz o tecido."
+   }
+  ],
+  "h1": {
+   "antes": "Casacos e coletes",
+   "destaque": "bordados"
+  }
+ },
+ {
+  "slug": "acessorios",
+  "nome": "Acessórios",
+  "grupo": "Acessórios",
+  "icone": "bone",
+  "singular": "acessório",
+  "artigo": "o",
+  "desenhos": [
+   "bone",
+   "saco-tote",
+   "lanyard"
+  ],
+  "coresCapa": [
+   "#9C2060",
+   "#EFE8D8",
+   "#209478"
+  ],
+  "frase": "Bonés, chapéus, sacos e fitas de pescoço.",
+  "sublinhado": "marcador",
+  "vantagens": [
+   "Personalização incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Ideais para eventos"
+  ],
+  "filtros": {
+   "cor": true,
+   "tipo": true
+  },
+  "duvidas": [
+   {
+    "p": "Fazem fitas de pescoço com fecho de segurança?",
+    "r": "Sim: todas as fitas de pescoço levam fecho de segurança no pescoço."
+   }
+  ],
+  "h1": {
+   "antes": "Bonés, sacos e fitas",
+   "destaque": "com a sua marca"
+  }
+ },
+ {
+  "slug": "garrafas-economicas",
+  "nome": "Garrafas económicas",
+  "grupo": "Garrafas",
+  "icone": "garrafa",
+  "singular": "garrafa",
+  "artigo": "a",
+  "desenhos": [
+   "garrafa-aluminio",
+   "garrafa-aluminio",
+   "garrafa-aluminio"
+  ],
+  "coresCapa": [
+   "#44A088",
+   "#D81C5C",
+   "#1B1D24"
+  ],
+  "frase": "Alumínio leve, gravado a laser.",
+  "sublinhado": "onda",
+  "vantagens": [
+   "Gravação a laser incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Leves e reutilizáveis"
+  ],
+  "filtros": {
+   "cor": true
+  },
+  "duvidas": [
+   {
+    "p": "São térmicas?",
+    "r": "Não: são de alumínio, leves e mais em conta. Para manter a temperatura, veja as garrafas térmicas."
+   },
+   {
+    "p": "Podem ir à máquina de lavar loiça?",
+    "r": "Recomendamos lavar à mão: dura mais a cor e a gravação."
+   }
+  ],
+  "h1": {
+   "antes": "Garrafas",
+   "destaque": "económicas"
+  }
+ },
+ {
+  "slug": "garrafas-termicas",
+  "nome": "Garrafas térmicas",
+  "grupo": "Garrafas",
+  "icone": "garrafa-termica",
+  "singular": "garrafa",
+  "artigo": "a",
+  "desenhos": [
+   "garrafa-termica",
+   "copo-termico",
+   "garrafa-termica"
+  ],
+  "coresCapa": [
+   "#E43C30",
+   "#209478",
+   "#1B1D24"
+  ],
+  "frase": "Térmicas e copos em inox, gravados a laser.",
+  "sublinhado": "onda",
+  "vantagens": [
+   "Gravação a laser incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Frio 24 h, quente 12 h"
+  ],
+  "filtros": {
+   "cor": true,
+   "tipo": true
+  },
+  "duvidas": [
+   {
+    "p": "Quanto tempo mantêm a temperatura?",
+    "r": "As térmicas mantêm as bebidas frias até 24 horas e quentes até 12. As de alumínio não são térmicas."
+   },
+   {
+    "p": "Podem ir à máquina de lavar loiça?",
+    "r": "Recomendamos lavar à mão: dura mais a cor e a gravação."
+   }
+  ],
+  "h1": {
+   "antes": "Garrafas e copos",
+   "destaque": "térmicos"
+  }
+ },
+ {
+  "slug": "impressao",
+  "nome": "Impressão",
+  "grupo": "Impressão",
+  "icone": "impressao",
+  "singular": "trabalho",
+  "artigo": "o",
+  "desenhos": [
+   "cartoes",
+   "flyer",
+   "autocolantes"
+  ],
+  "coresCapa": [
+   "#1B1D24",
+   "#FFEC08",
+   "#D81C5C"
+  ],
+  "frase": "Cartões, flyers, autocolantes e roll-ups.",
+  "sublinhado": "marcador",
+  "vantagens": [
+   "Revisão do ficheiro incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de imprimir",
+   "Prova de cor antes de imprimir"
+  ],
+  "filtros": {
+   "tipo": true
+  },
+  "duvidas": [
+   {
+    "p": "Têm de ser os vossos designers a fazer o ficheiro?",
+    "r": "Não. Pode enviar o seu ficheiro pronto; nós revemos sem custo. Se precisar, também o desenhamos."
+   },
+   {
+    "p": "Que formato de ficheiro devo enviar?",
+    "r": "PDF em alta resolução, com 3 mm de sangria. Se não souber o que isto é, envie o que tem e tratamos do resto."
+   }
+  ],
+  "h1": {
+   "antes": "Impressão",
+   "destaque": "com a sua marca"
+  }
+ },
+ {
+  "slug": "porta-chaves",
+  "nome": "Porta-chaves",
+  "grupo": "Acessórios",
+  "icone": "porta-chaves",
+  "singular": "porta-chaves",
+  "artigo": "o",
+  "desenhos": [
+   "porta-chaves",
+   "porta-chaves-redondo",
+   "porta-chaves"
+  ],
+  "frase": "Em alumínio ou acrílico, com argola de aço.",
+  "vantagens": [
+   "Gravação ou impressão incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Argola em aço"
+  ],
+  "filtros": {
+   "cor": true,
+   "tipo": true
+  },
+  "duvidas": [
+   {
+    "p": "Qual é a quantidade mínima?",
+    "r": "50 unidades. Para menos, diga-nos o que precisa e vemos o que é possível."
+   },
+   {
+    "p": "Gravação ou impressão?",
+    "r": "No metal gravamos a laser, que não sai; no acrílico imprimimos a cores."
+   }
+  ],
+  "h1": {
+   "antes": "Porta-chaves",
+   "destaque": "com a sua marca"
+  },
+  "coresCapa": [
+   "#F89C1C",
+   "#209478",
+   "#1B1D24"
+  ]
+ },
+ {
+  "slug": "guarda-chuvas",
+  "nome": "Guarda-chuvas",
+  "grupo": "Acessórios",
+  "icone": "guarda-chuva",
+  "singular": "guarda-chuva",
+  "artigo": "o",
+  "desenhos": [
+   "guarda-chuva",
+   "guarda-chuva",
+   "guarda-chuva"
+  ],
+  "frase": "Automáticos, de golfe e dobráveis.",
+  "vantagens": [
+   "Impressão num gomo incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Varetas em fibra de vidro"
+  ],
+  "filtros": {
+   "cor": true,
+   "tipo": true
+  },
+  "duvidas": [
+   {
+    "p": "Onde vai o logótipo?",
+    "r": "Num gomo, ou em dois gomos opostos para se ver dos dois lados."
+   },
+   {
+    "p": "Aguentam o vento?",
+    "r": "As varetas em fibra de vidro dobram sem partir. O de golfe é o mais resistente."
+   }
+  ],
+  "h1": {
+   "antes": "Guarda-chuvas",
+   "destaque": "personalizados"
+  },
+  "coresCapa": [
+   "#209478",
+   "#D81C5C",
+   "#FFEC08"
+  ]
+ },
+ {
+  "slug": "agendas",
+  "nome": "Agendas",
+  "grupo": "Escrita e escritório",
+  "icone": "agenda",
+  "singular": "agenda",
+  "artigo": "a",
+  "desenhos": [
+   "agenda",
+   "caderno",
+   "agenda"
+  ],
+  "frase": "Agendas de 2027 e cadernos A5, com capa gravada.",
+  "vantagens": [
+   "Gravação a seco incluída",
+   "Portes incluídos no continente",
+   "Maquete antes de decidir",
+   "Elástico e fita marcadora"
+  ],
+  "filtros": {
+   "cor": true,
+   "tipo": true
+  },
+  "duvidas": [
+   {
+    "p": "Para que ano são as agendas?",
+    "r": "Para 2027, de janeiro a dezembro. Os cadernos não têm datas."
+   },
+   {
+    "p": "Como fica o logótipo na capa?",
+    "r": "Gravado a seco, em relevo e sem tinta, ou impresso a cores."
+   }
+  ],
+  "h1": {
+   "antes": "Agendas e cadernos",
+   "destaque": "com o seu logótipo"
+  },
+  "coresCapa": [
+   "#D81C5C",
+   "#1B1D24",
+   "#209478"
+  ]
+ }
+]

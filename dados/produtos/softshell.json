@@ -1,0 +1,65 @@
+{
+ "slug": "softshell",
+ "familia": "casacos",
+ "nome": "Softshell",
+ "tipo": "Casaco",
+ "desenho": "softshell",
+ "frase": "3 camadas, corta o vento.",
+ "descricao": "Casaco softshell de 3 camadas, repelente de água e corta-vento, com bolsos com fecho.",
+ "cores": [
+  "preto",
+  "cinza-chumbo",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-garrafa",
+  "laranja",
+  "cinza"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 329
+  },
+  {
+   "q": 25,
+   "preco": 792.5
+  },
+  {
+   "q": 50,
+   "preco": 1495
+  },
+  {
+   "q": 100,
+   "preco": 2850
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Peito e costas",
+     "acrescimo": 4,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Peito": "até 10 × 8 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "94 % poliéster, 6 % elastano, com membrana, 300 g/m²",
+  "Tamanhos": "S a 3XL",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 19,
+ "titulo": "Casaco softshell"
+}

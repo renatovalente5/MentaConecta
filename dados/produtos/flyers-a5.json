@@ -1,0 +1,74 @@
+{
+ "slug": "flyers-a5",
+ "familia": "impressao",
+ "nome": "Flyers A5",
+ "tipo": "Flyers",
+ "grupoTipo": "Flyers",
+ "desenho": "flyer",
+ "unidade": "flyers",
+ "frase": "Papel de 135 g, a cores.",
+ "descricao": "Flyers A5 (148 × 210 mm) impressos a cores em papel couché de 135 g.",
+ "cores": [
+  "fucsia",
+  "azul-royal",
+  "preto",
+  "amarelo",
+  "verde-relva",
+  "laranja",
+  "turquesa",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 250,
+   "preco": 39
+  },
+  {
+   "q": 500,
+   "preco": 55
+  },
+  {
+   "q": 1000,
+   "preco": 79
+  },
+  {
+   "q": 2500,
+   "preco": 149
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Faces",
+   "opcoes": [
+    {
+     "nome": "Só frente",
+     "fator": 1
+    },
+    {
+     "nome": "Frente e verso",
+     "fator": 1.25
+    }
+   ]
+  },
+  {
+   "grupo": "Papel",
+   "opcoes": [
+    {
+     "nome": "135 g",
+     "fator": 1
+    },
+    {
+     "nome": "170 g",
+     "fator": 1.15
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Papel": "Couché 135 g/m²",
+  "Formato": "A5, 148 × 210 mm",
+  "Mínimo": "250 flyers"
+ },
+ "ordem": 33,
+ "titulo": "Flyers A5"
+}

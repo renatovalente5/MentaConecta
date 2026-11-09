@@ -1,0 +1,98 @@
+/* MENTA CONECTA — MOVIMENTO. Tudo o que mexe está aqui, para se poder ler, parar e
+   desligar num sítio só:
+   · `prefers-reduced-motion: reduce` desliga tudo (no fim do ficheiro);
+   · `html[data-movimento="parado"]` («Pausar movimento», WCAG 2.2.2) pára o que
+     se repete; as entradas (menos de 1 s, uma vez) continuam;
+   · `.fora` (fora do ecrã, posto pelo site.js) pausa o que se repete. */
+
+/* ——— Títulos: as palavras sobem, o destaque acerta o registo, o traço desenha-se ——— */
+.js .titulo .p { display: inline-block; }
+.js .titulo:not(.visivel) .p { transform: translateY(.5em) rotate(2.5deg); opacity: 0; }
+.js .titulo.visivel .p { animation: palavra .75s var(--mola) both; animation-delay: calc(.05s + var(--i) * .06s); }
+@keyframes palavra { from { transform: translateY(.5em) rotate(2.5deg); opacity: 0; } }
+/* O H1 do início não espera pelo scroll e só se mexe (nunca começa invisível: é o
+   maior elemento do primeiro ecrã, o LCP). */
+.js .titulo--heroi .p { opacity: 1 !important; animation: palavra-so-mexe .8s var(--mola) both !important; animation-delay: calc(.08s + var(--i) * .07s) !important; }
+@keyframes palavra-so-mexe { from { transform: translateY(.42em) rotate(2deg); } }
+.js .titulo.visivel .destaque, .js .titulo--heroi .destaque { animation: registo 1.2s var(--suave) both; animation-delay: .35s; }
+@keyframes registo {
+  from { text-shadow: -.05em -.02em 0 rgba(32, 148, 120, .75), .045em .025em 0 rgba(255, 236, 8, .95); }
+  to { text-shadow: 0 0 0 rgba(32, 148, 120, 0), 0 0 0 rgba(255, 236, 8, 0); }
+}
+/* O traço desenha-se com um recorte (clip-path), não com o tracejado: com
+   `vector-effect: non-scaling-stroke` o comprimento do traço deixa de bater
+   com o `pathLength` e ficava a meio. */
+.js .titulo:not(.visivel) .traco, .js .produto__nome:not(.visivel) .traco { clip-path: inset(0 100% 0 0); }
+.js .titulo.visivel .traco, .js .titulo--heroi .traco, .js .produto__nome.visivel .traco {
+  animation: traco-desenha .9s var(--suave) .55s both, traco-tinta 8s ease-in-out 3.5s infinite;
+}
+@keyframes traco-desenha { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+/* De vez em quando o traço volta a passar a tinta: sai pela direita e volta a
+   entrar pela esquerda (o «sublinhado em movimento»). */
+@keyframes traco-tinta { 0%, 84% { clip-path: inset(0 0 0 0); } 91% { clip-path: inset(0 0 0 100%); } 91.01% { clip-path: inset(0 100% 0 0); } 100% { clip-path: inset(0 0 0 0); } }
+.js .titulo:not(.visivel) .traco-faceta { transform: scale(0); }
+.js .titulo.visivel .traco-faceta, .js .titulo--heroi .traco-faceta { animation: faceta-cai .55s var(--mola) 1.35s both, faceta-bate 8s ease-in-out 3.5s infinite; }
+@keyframes faceta-cai { from { transform: translateY(-.6em) scale(0); } }
+@keyframes faceta-bate { 0%, 96% { transform: none; } 98% { transform: scale(1.5); } }
+.produto__nome .traco path { stroke: var(--amarelo); stroke-width: 7; }
+
+/* ——— Entradas ao aparecer (uma vez) ——— */
+.js .revelar:not(.visivel) { opacity: 0; transform: translateY(26px); }
+.js .revelar.visivel { animation: entra .7s var(--suave) both; animation-delay: calc(var(--d, 0) * 70ms); }
+@keyframes entra { from { opacity: 0; transform: translateY(26px); } }
+.js .cartao.revelar:not(.visivel) { transform: translateY(18px) scale(.98); }
+.visivel .icone-familia g, .icone-familia.visivel g { animation: acerta .8s var(--mola) .25s both; }
+.icone-familia .if-c { --dx: -1.6px; --dy: -1px; } .icone-familia .if-m { --dx: 1.4px; --dy: .6px; } .icone-familia .if-a { --dx: -.4px; --dy: 1.6px; }
+
+/* ——— O palco do início ——— */
+.palco__peca { animation: flutua 6.5s ease-in-out infinite; animation-delay: calc(var(--i) * -1.3s); }
+@keyframes flutua { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.palco__peca--caneta { animation-name: flutua-caneta; }
+@keyframes flutua-caneta { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -8px; rotate: -3deg; } }
+.js .palco__peca { opacity: 1; }
+.palco.entra .palco__peca { animation: chega .9s var(--mola) both, flutua 6.5s ease-in-out infinite; animation-delay: calc(.2s + var(--i) * .1s), calc(var(--i) * -1.3s); }
+@keyframes chega { from { opacity: 0; transform: scale(.6) translateY(30px); } }
+.palco.entra .palco__fundo { animation: fundo-cresce 1s var(--mola) both; }
+@keyframes fundo-cresce { from { transform: scale(.2); } }
+.palco__facetas i { animation: faceta-gira 1.2s var(--suave) .4s both, faceta-flutua 7s ease-in-out 1.6s infinite; }
+.palco__facetas i:nth-child(2n) { animation-delay: .55s, 2.4s; }
+@keyframes faceta-gira { from { transform: scale(.4) rotate(-120deg); opacity: 0; } }
+@keyframes faceta-flutua { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+
+/* ——— Os passos: a linha enche com o scroll ——— */
+@supports (animation-timeline: view()) {
+  .passos::before { animation: linha-enche linear both; animation-timeline: view(); animation-range: entry 30% cover 55%; }
+  @keyframes linha-enche { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (max-width: 760px) { @keyframes linha-enche { from { transform: scaleY(0); } to { transform: scaleY(1); } } }
+}
+
+/* ——— Pausas ——— */
+.fora, .fora *, .fora *::before, .fora *::after { animation-play-state: paused !important; }
+html[data-movimento="parado"] .palco__peca,
+html[data-movimento="parado"] .botao--principal.vivo::after { animation: none !important; }
+html[data-movimento="parado"] .traco { animation: traco-desenha .9s var(--suave) .55s both !important; }
+html[data-movimento="parado"] .traco-faceta { animation: faceta-cai .55s var(--mola) 1.35s both !important; }
+html[data-movimento="parado"] .botao-movimento { color: var(--amarelo); }
+
+/* ——— Transições entre páginas ——— */
+@view-transition { navigation: auto; }
+.cabecalho { view-transition-name: cabecalho; }
+::view-transition-group(desenho) { animation-duration: .55s; animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
+::view-transition-old(desenho), ::view-transition-new(desenho) { height: 100%; object-fit: contain; }
+::view-transition-old(desenho) { animation: vt-cede .55s linear both; }
+::view-transition-new(desenho) { animation: none; }
+@keyframes vt-cede { 0%, 40% { opacity: 1; } 80%, 100% { opacity: 0; } }
+::view-transition-old(root) { animation: vt-sai .2s cubic-bezier(.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: vt-entra .45s .08s cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes vt-sai { to { opacity: 0; } }
+@keyframes vt-entra { from { opacity: 0; transform: translateY(14px); } }
+
+/* ——— Sem movimento (preferência do sistema) ——— */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .js .titulo:not(.visivel) .p, .js .revelar:not(.visivel) { opacity: 1; transform: none; }
+  .js .titulo:not(.visivel) .traco, .js .produto__nome:not(.visivel) .traco { clip-path: none; }
+  .js .titulo:not(.visivel) .traco-faceta { transform: none; }
+  .palco__peca { animation: none !important; }
+}

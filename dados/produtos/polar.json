@@ -1,0 +1,65 @@
+{
+ "slug": "polar",
+ "familia": "casacos",
+ "nome": "Polar meio fecho",
+ "tipo": "Polar",
+ "desenho": "polar",
+ "frase": "Quente e leve, com meio fecho.",
+ "descricao": "Polar de 280 g com meio fecho e gola subida. Quente, leve e fácil de lavar.",
+ "cores": [
+  "preto",
+  "cinza-chumbo",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-garrafa",
+  "bordeaux",
+  "areia"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 229
+  },
+  {
+   "q": 25,
+   "preco": 547.5
+  },
+  {
+   "q": 50,
+   "preco": 1035
+  },
+  {
+   "q": 100,
+   "preco": 1950
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Peito e costas",
+     "acrescimo": 4,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Peito": "até 10 × 8 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % poliéster polar, 280 g/m²",
+  "Tamanhos": "S a 3XL",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 20,
+ "titulo": "Polar meio fecho"
+}

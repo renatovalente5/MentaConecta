@@ -1,0 +1,68 @@
+{
+ "slug": "aluminio-750",
+ "familia": "garrafas-economicas",
+ "nome": "Alumínio 750 ml",
+ "tipo": "Garrafa",
+ "grupoTipo": "Alumínio",
+ "desenho": "garrafa-aluminio",
+ "frase": "Leve, com mosquetão na tampa.",
+ "descricao": "Garrafa de alumínio de 750 ml com tampa de rosca e mosquetão. Leve para levar a todo o lado. Não é térmica.",
+ "cores": [
+  "prateado",
+  "preto",
+  "branco",
+  "azul-royal",
+  "azul-marinho",
+  "vermelho",
+  "verde",
+  "amarelo",
+  "rosa-choque",
+  "turquesa"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 99
+  },
+  {
+   "q": 50,
+   "preco": 177.5
+  },
+  {
+   "q": 100,
+   "preco": 319
+  },
+  {
+   "q": 250,
+   "preco": 722.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.6,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 6 × 10 cm"
+ },
+ "especificacoes": {
+  "Material": "Alumínio",
+  "Capacidade": "750 ml",
+  "Térmica": "Não",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 28,
+ "titulo": "Garrafa de alumínio 750 ml"
+}

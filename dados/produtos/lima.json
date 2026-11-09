@@ -1,0 +1,66 @@
+{
+ "slug": "lima",
+ "familia": "canetas",
+ "nome": "Lima",
+ "tipo": "Caneta",
+ "desenho": "caneta-clique",
+ "tinta": "azul",
+ "frase": "Alumínio de toque suave.",
+ "descricao": "Caneta de alumínio com acabamento de toque suave e clip metálico.",
+ "cores": [
+  "preto",
+  "branco",
+  "azul-marinho",
+  "azul-royal",
+  "verde",
+  "turquesa",
+  "rosa-choque"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 30
+  },
+  {
+   "q": 50,
+   "preco": 50
+  },
+  {
+   "q": 100,
+   "preco": 85
+  },
+  {
+   "q": 250,
+   "preco": 165
+  },
+  {
+   "q": 500,
+   "preco": 280
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Alumínio com acabamento soft-touch",
+  "Tinta": "Azul",
+  "Área de gravação": "45 × 6 mm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 5,
+ "titulo": "Caneta Lima"
+}

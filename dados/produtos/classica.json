@@ -1,0 +1,76 @@
+{
+ "slug": "classica",
+ "familia": "t-shirts",
+ "nome": "Clássica",
+ "tipo": "T-shirt",
+ "desenho": "tshirt",
+ "frase": "180 g, o equilíbrio certo.",
+ "descricao": "T-shirt de algodão penteado de 180 g, mais encorpada e com costuras reforçadas. A que mais pedem para equipas.",
+ "cores": [
+  "branco",
+  "natural",
+  "cinza-mescla",
+  "cinza-chumbo",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "azul-celeste",
+  "turquesa",
+  "verde-garrafa",
+  "verde-relva",
+  "verde-lima",
+  "amarelo",
+  "laranja",
+  "vermelho",
+  "bordeaux",
+  "rosa",
+  "fucsia",
+  "roxo",
+  "castanho"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 69
+  },
+  {
+   "q": 25,
+   "preco": 152
+  },
+  {
+   "q": 50,
+   "preco": 272
+  },
+  {
+   "q": 100,
+   "preco": 499
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Frente",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.2
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 29 × 21 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % algodão penteado, 180 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Impressão": "DTF a cores",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 9,
+ "titulo": "T-shirt Clássica"
+}

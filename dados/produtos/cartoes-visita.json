@@ -1,0 +1,74 @@
+{
+ "slug": "cartoes-visita",
+ "familia": "impressao",
+ "nome": "Cartões de visita",
+ "tipo": "Cartões",
+ "grupoTipo": "Cartões",
+ "desenho": "cartoes",
+ "unidade": "cartões",
+ "frase": "350 g, cantos rectos ou redondos.",
+ "descricao": "Cartões de visita em papel de 350 g, 85 × 55 mm, impressos a cores. A cor é a do fundo do cartão.",
+ "cores": [
+  "branco",
+  "preto",
+  "azul-marinho",
+  "kraft",
+  "fucsia",
+  "amarelo",
+  "verde-garrafa",
+  "cinza"
+ ],
+ "quantidades": [
+  {
+   "q": 100,
+   "preco": 18
+  },
+  {
+   "q": 250,
+   "preco": 26
+  },
+  {
+   "q": 500,
+   "preco": 35
+  },
+  {
+   "q": 1000,
+   "preco": 49
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Faces",
+   "opcoes": [
+    {
+     "nome": "Só frente",
+     "fator": 1
+    },
+    {
+     "nome": "Frente e verso",
+     "fator": 1.3
+    }
+   ]
+  },
+  {
+   "grupo": "Acabamento",
+   "opcoes": [
+    {
+     "nome": "Mate",
+     "fator": 1
+    },
+    {
+     "nome": "Soft-touch",
+     "fator": 1.4
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Papel": "350 g/m²",
+  "Formato": "85 × 55 mm",
+  "Mínimo": "100 cartões"
+ },
+ "ordem": 32,
+ "titulo": "Cartões de visita"
+}

@@ -1,0 +1,60 @@
+{
+ "slug": "chapeu",
+ "familia": "acessorios",
+ "nome": "Chapéu pescador",
+ "tipo": "Chapéu",
+ "grupoTipo": "Bonés e chapéus",
+ "desenho": "chapeu",
+ "frase": "O bucket hat de algodão.",
+ "descricao": "Chapéu de pescador em algodão, com aba pespontada. Para festivais, eventos e merchandising.",
+ "cores": [
+  "preto",
+  "branco",
+  "natural",
+  "azul-marinho",
+  "verde-garrafa",
+  "bege",
+  "laranja",
+  "rosa"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 174
+  },
+  {
+   "q": 50,
+   "preco": 315
+  },
+  {
+   "q": 100,
+   "preco": 569
+  },
+  {
+   "q": 250,
+   "preco": 1297.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado na frente",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 9 × 5 cm"
+ },
+ "especificacoes": {
+  "Material": "100 % algodão",
+  "Tamanho": "Único",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 23,
+ "titulo": "Chapéu pescador"
+}

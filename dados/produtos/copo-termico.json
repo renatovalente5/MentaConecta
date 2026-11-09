@@ -1,0 +1,65 @@
+{
+ "slug": "copo-termico",
+ "familia": "garrafas-termicas",
+ "nome": "Copo térmico 400 ml",
+ "tipo": "Copo térmico",
+ "grupoTipo": "Copos",
+ "desenho": "copo-termico",
+ "frase": "Para o café do caminho.",
+ "descricao": "Copo térmico de 400 ml com tampa anti-salpicos. Cabe no porta-copos do carro.",
+ "cores": [
+  "preto-mate",
+  "branco-mate",
+  "azul-petroleo",
+  "verde-salvia",
+  "areia",
+  "terracota",
+  "rosa-velho",
+  "cinza"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 224
+  },
+  {
+   "q": 50,
+   "preco": 417.5
+  },
+  {
+   "q": 100,
+   "preco": 769
+  },
+  {
+   "q": 250,
+   "preco": 1787.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.6,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 6 × 8 cm"
+ },
+ "especificacoes": {
+  "Material": "Aço inoxidável com parede dupla",
+  "Capacidade": "400 ml",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 31,
+ "titulo": "Copo térmico 400 ml"
+}

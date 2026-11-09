@@ -1,0 +1,59 @@
+{
+ "slug": "roll-up",
+ "familia": "impressao",
+ "nome": "Roll-up 85 × 200",
+ "tipo": "Roll-up",
+ "grupoTipo": "Grande formato",
+ "desenho": "rollup",
+ "unidade": "roll-ups",
+ "frase": "Estrutura e saco de transporte.",
+ "descricao": "Roll-up de 85 × 200 cm com estrutura de alumínio, lona impressa a cores e saco de transporte.",
+ "cores": [
+  "fucsia",
+  "azul-royal",
+  "preto",
+  "amarelo",
+  "verde-relva",
+  "laranja"
+ ],
+ "quantidades": [
+  {
+   "q": 1,
+   "preco": 79
+  },
+  {
+   "q": 2,
+   "preco": 150
+  },
+  {
+   "q": 5,
+   "preco": 355
+  },
+  {
+   "q": 10,
+   "preco": 690
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Lona",
+   "opcoes": [
+    {
+     "nome": "Standard",
+     "fator": 1
+    },
+    {
+     "nome": "Anti-reflexo",
+     "fator": 1.2
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Medidas": "85 × 200 cm",
+  "Estrutura": "Alumínio, com saco",
+  "Mínimo": "1 roll-up"
+ },
+ "ordem": 35,
+ "titulo": "Roll-up 85 × 200"
+}

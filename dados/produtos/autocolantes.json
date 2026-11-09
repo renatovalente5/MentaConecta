@@ -1,0 +1,61 @@
+{
+ "slug": "autocolantes",
+ "familia": "impressao",
+ "nome": "Autocolantes recortados",
+ "tipo": "Autocolantes",
+ "grupoTipo": "Autocolantes",
+ "desenho": "autocolantes",
+ "unidade": "autocolantes",
+ "frase": "Recortados à forma do logótipo.",
+ "descricao": "Autocolantes de vinil impressos a cores e recortados à forma que quiser. Resistentes à água.",
+ "cores": [
+  "fucsia",
+  "amarelo",
+  "turquesa",
+  "preto",
+  "branco",
+  "laranja",
+  "verde-relva",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 100,
+   "preco": 29
+  },
+  {
+   "q": 250,
+   "preco": 49
+  },
+  {
+   "q": 500,
+   "preco": 79
+  },
+  {
+   "q": 1000,
+   "preco": 129
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Tamanho",
+   "opcoes": [
+    {
+     "nome": "5 × 5 cm",
+     "fator": 1
+    },
+    {
+     "nome": "8 × 8 cm",
+     "fator": 1.6
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Vinil branco",
+  "Acabamento": "Brilho, resistente à água",
+  "Mínimo": "100 autocolantes"
+ },
+ "ordem": 34,
+ "titulo": "Autocolantes recortados"
+}

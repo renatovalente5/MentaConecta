@@ -1,0 +1,60 @@
+{
+ "slug": "cromado",
+ "familia": "porta-chaves",
+ "nome": "Cromado",
+ "tipo": "Porta-chaves",
+ "grupoTipo": "Metal",
+ "desenho": "porta-chaves",
+ "frase": "Metal pesado, acabamento espelhado.",
+ "descricao": "Porta-chaves em metal cromado, pesado e com acabamento espelhado, gravado a laser. Vem numa caixa individual.",
+ "cores": [
+  "prateado",
+  "preto-mate"
+ ],
+ "quantidades": [
+  {
+   "q": 50,
+   "preco": 149
+  },
+  {
+   "q": 100,
+   "preco": 269
+  },
+  {
+   "q": 250,
+   "preco": 612.5
+  },
+  {
+   "q": 500,
+   "preco": 1150
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser numa face",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Gravação nas duas faces",
+     "acrescimo": 0.45,
+     "tecnica": "gravacao"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 3 × 2 cm"
+ },
+ "especificacoes": {
+  "Material": "Liga de zinco cromada",
+  "Medidas": "4,5 × 2,5 cm",
+  "Embalagem": "Caixa individual",
+  "Mínimo": "50 unidades"
+ },
+ "titulo": "Porta-chaves cromado",
+ "ordem": 37
+}

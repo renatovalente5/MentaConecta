@@ -1,0 +1,64 @@
+{
+ "slug": "termica-750",
+ "familia": "garrafas-termicas",
+ "nome": "Térmica 750 ml",
+ "tipo": "Garrafa térmica",
+ "grupoTipo": "Térmicas",
+ "desenho": "garrafa-termica",
+ "frase": "A grande, para o dia inteiro.",
+ "descricao": "Garrafa térmica de 750 ml em aço inox, para quem passa o dia fora. Parede dupla e tampa de inox.",
+ "cores": [
+  "preto-mate",
+  "branco-mate",
+  "azul-petroleo",
+  "verde-salvia",
+  "areia",
+  "cinza"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 312.5
+  },
+  {
+   "q": 50,
+   "preco": 585
+  },
+  {
+   "q": 100,
+   "preco": 1079
+  },
+  {
+   "q": 250,
+   "preco": 2512.5
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.6,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 6 × 12 cm"
+ },
+ "especificacoes": {
+  "Material": "Aço inoxidável com parede dupla",
+  "Capacidade": "750 ml",
+  "Térmica": "24 h frio, 12 h quente",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 30,
+ "titulo": "Garrafa térmica 750 ml"
+}

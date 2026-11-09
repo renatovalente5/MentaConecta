@@ -1,0 +1,68 @@
+{
+ "slug": "hoodie-fecho",
+ "familia": "sweatshirts",
+ "nome": "Hoodie fecho",
+ "tipo": "Sweatshirt com capuz",
+ "desenho": "hoodie",
+ "frase": "Com fecho, capuz e bolsos.",
+ "descricao": "Sweatshirt com capuz e fecho completo, bolsos laterais e punhos canelados, em algodão e poliéster de 300 g.",
+ "cores": [
+  "natural",
+  "cinza-mescla",
+  "preto",
+  "azul-marinho",
+  "verde-salvia",
+  "terracota"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 279
+  },
+  {
+   "q": 25,
+   "preco": 665
+  },
+  {
+   "q": 50,
+   "preco": 1245
+  },
+  {
+   "q": 100,
+   "preco": 2350
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão na frente",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 1.2,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.6,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 25 × 15 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "80 % algodão, 20 % poliéster, 300 g/m²",
+  "Tamanhos": "XS a 2XL",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 18,
+ "titulo": "Hoodie com fecho"
+}

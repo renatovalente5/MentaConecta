@@ -1,0 +1,68 @@
+{
+ "slug": "essencial",
+ "familia": "t-shirts",
+ "nome": "Essencial",
+ "tipo": "T-shirt",
+ "desenho": "tshirt",
+ "frase": "150 g, leve e ao melhor preço.",
+ "descricao": "T-shirt de algodão de 150 g, de corte clássico. Para eventos, festas e grandes quantidades.",
+ "cores": [
+  "branco",
+  "cinza-mescla",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "turquesa",
+  "verde-garrafa",
+  "amarelo",
+  "laranja",
+  "vermelho",
+  "rosa",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 59
+  },
+  {
+   "q": 25,
+   "preco": 129
+  },
+  {
+   "q": 50,
+   "preco": 229
+  },
+  {
+   "q": 100,
+   "preco": 419
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Frente",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.2
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 29 × 21 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % algodão, 150 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Impressão": "DTF a cores",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 8,
+ "titulo": "T-shirt Essencial"
+}

@@ -1,0 +1,119 @@
+[
+ {
+  "slug": "arranque",
+  "nome": "Arranque",
+  "frase": "Para a equipa começar a vestir a marca.",
+  "pecas": [
+   {
+    "produto": "classica",
+    "quantidade": 2,
+    "cor": "preto"
+   },
+   {
+    "produto": "pique",
+    "quantidade": 1,
+    "cor": "azul-marinho"
+   }
+  ],
+  "preco": 39.9,
+  "minimo": 5,
+  "inclui": [
+   "Logótipo na frente de cada peça",
+   "Maquete grátis",
+   "Portes incluídos no continente"
+  ]
+ },
+ {
+  "slug": "oficina",
+  "nome": "Oficina",
+  "frase": "Farda completa para o dia-a-dia de trabalho.",
+  "destaque": true,
+  "pecas": [
+   {
+    "produto": "classica",
+    "quantidade": 3,
+    "cor": "cinza-chumbo"
+   },
+   {
+    "produto": "gola-redonda",
+    "quantidade": 1,
+    "cor": "preto"
+   },
+   {
+    "produto": "softshell",
+    "quantidade": 1,
+    "cor": "preto"
+   }
+  ],
+  "preco": 99,
+  "minimo": 3,
+  "inclui": [
+   "Logótipo na frente e nas costas",
+   "Maquete grátis",
+   "Portes incluídos no continente"
+  ]
+ },
+ {
+  "slug": "evento",
+  "nome": "Evento",
+  "frase": "Pack de boas-vindas para feiras, corridas e festas.",
+  "pecas": [
+   {
+    "produto": "essencial",
+    "quantidade": 1,
+    "cor": "amarelo"
+   },
+   {
+    "produto": "bone",
+    "quantidade": 1,
+    "cor": "preto"
+   },
+   {
+    "produto": "tote",
+    "quantidade": 1,
+    "cor": "natural"
+   }
+  ],
+  "preco": 17.9,
+  "minimo": 20,
+  "inclui": [
+   "Logótipo em todas as peças",
+   "Maquete grátis",
+   "Portes incluídos no continente"
+  ]
+ },
+ {
+  "slug": "escritorio",
+  "nome": "Escritório",
+  "frase": "Boas-vindas para quem entra na equipa.",
+  "pecas": [
+   {
+    "produto": "pique",
+    "quantidade": 1,
+    "cor": "branco"
+   },
+   {
+    "produto": "diaria-a5",
+    "quantidade": 1,
+    "cor": "preto"
+   },
+   {
+    "produto": "tejo",
+    "quantidade": 1,
+    "cor": "preto"
+   },
+   {
+    "produto": "cadernos-a5",
+    "quantidade": 1,
+    "cor": "preto"
+   }
+  ],
+  "preco": 29.9,
+  "minimo": 10,
+  "inclui": [
+   "Logótipo em todas as peças",
+   "Maquete grátis",
+   "Portes incluídos no continente"
+  ]
+ }
+]

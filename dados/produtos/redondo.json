@@ -1,0 +1,66 @@
+{
+ "slug": "redondo",
+ "familia": "porta-chaves",
+ "nome": "Redondo",
+ "tipo": "Porta-chaves",
+ "grupoTipo": "Acrílico",
+ "desenho": "porta-chaves-redondo",
+ "frase": "Acrílico, impresso a cores.",
+ "descricao": "Porta-chaves redondo em acrílico com argola de aço, impresso a cores. O logótipo fica com todas as cores dele.",
+ "cores": [
+  "branco",
+  "preto",
+  "amarelo",
+  "rosa-choque",
+  "azul-royal",
+  "verde",
+  "laranja",
+  "turquesa"
+ ],
+ "quantidades": [
+  {
+   "q": 50,
+   "preco": 64
+  },
+  {
+   "q": 100,
+   "preco": 109
+  },
+  {
+   "q": 250,
+   "preco": 237.5
+  },
+  {
+   "q": 500,
+   "preco": 425
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão a cores numa face",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Impressão nas duas faces",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "Ø 4 cm"
+ },
+ "especificacoes": {
+  "Material": "Acrílico",
+  "Diâmetro": "4,5 cm",
+  "Argola": "Aço, 25 mm",
+  "Mínimo": "50 unidades"
+ },
+ "titulo": "Porta-chaves redondo",
+ "ordem": 38
+}

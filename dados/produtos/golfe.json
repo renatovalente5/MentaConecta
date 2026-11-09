@@ -1,0 +1,63 @@
+{
+ "familia": "guarda-chuvas",
+ "tipo": "Guarda-chuva",
+ "desenho": "guarda-chuva",
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão num gomo",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Impressão em dois gomos",
+     "acrescimo": 1.2,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "slug": "golfe",
+ "nome": "Golfe",
+ "grupoTipo": "Golfe",
+ "frase": "Grande, para dois.",
+ "descricao": "Guarda-chuva de golfe de 30 polegadas, com abertura automática e cabo direito. Cabem duas pessoas.",
+ "cores": [
+  "preto",
+  "azul-marinho",
+  "vermelho",
+  "branco",
+  "verde-garrafa"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 362.5
+  },
+  {
+   "q": 50,
+   "preco": 680
+  },
+  {
+   "q": 100,
+   "preco": 1290
+  },
+  {
+   "q": 250,
+   "preco": 3062.5
+  }
+ ],
+ "areas": {
+  "Gomo": "até 25 × 12 cm"
+ },
+ "especificacoes": {
+  "Tecido": "Poliéster pongee 190T",
+  "Diâmetro": "130 cm",
+  "Varetas": "8, em fibra de vidro",
+  "Mínimo": "25 unidades"
+ },
+ "titulo": "Guarda-chuva de golfe",
+ "ordem": 41
+}

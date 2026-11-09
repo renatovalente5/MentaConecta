@@ -1,0 +1,63 @@
+{
+ "slug": "colete",
+ "familia": "casacos",
+ "nome": "Colete softshell",
+ "tipo": "Colete",
+ "desenho": "colete",
+ "frase": "As vantagens do softshell, sem mangas.",
+ "descricao": "Colete softshell corta-vento, com fecho completo e bolsos com fecho. Ideal para fardamento.",
+ "cores": [
+  "preto",
+  "cinza-chumbo",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "verde-garrafa"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 259
+  },
+  {
+   "q": 25,
+   "preco": 622.5
+  },
+  {
+   "q": 50,
+   "preco": 1175
+  },
+  {
+   "q": 100,
+   "preco": 2240
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 0,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Peito e costas",
+     "acrescimo": 4,
+     "tecnica": "bordado"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Peito": "até 10 × 8 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "94 % poliéster, 6 % elastano, com membrana",
+  "Tamanhos": "S a 3XL",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 21,
+ "titulo": "Colete softshell"
+}

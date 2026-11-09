@@ -1,0 +1,67 @@
+{
+ "slug": "vouga",
+ "familia": "canetas",
+ "nome": "Vouga",
+ "tipo": "Caneta",
+ "desenho": "caneta-touch",
+ "tinta": "azul",
+ "frase": "Corpo mate com ponteira táctil.",
+ "descricao": "Caneta de alumínio mate com ponteira táctil e anéis metálicos. A combinação do toque suave com o ecrã.",
+ "cores": [
+  "preto",
+  "branco",
+  "azul-royal",
+  "vermelho",
+  "verde",
+  "amarelo",
+  "laranja",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 34
+  },
+  {
+   "q": 50,
+   "preco": 57.5
+  },
+  {
+   "q": 100,
+   "preco": 96
+  },
+  {
+   "q": 250,
+   "preco": 190
+  },
+  {
+   "q": 500,
+   "preco": 325
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Alumínio mate",
+  "Tinta": "Azul",
+  "Área de gravação": "40 × 6 mm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 7,
+ "titulo": "Caneta Vouga"
+}

@@ -1,0 +1,66 @@
+{
+ "slug": "tecnica",
+ "familia": "t-shirts",
+ "nome": "Técnica",
+ "tipo": "T-shirt",
+ "desenho": "tshirt-tecnica",
+ "frase": "Respirável, para desporto e corridas.",
+ "descricao": "T-shirt técnica de poliéster respirável, de secagem rápida e decote em V. Para equipas desportivas e corridas.",
+ "cores": [
+  "branco",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "vermelho",
+  "turquesa",
+  "verde-lima",
+  "amarelo-fluor",
+  "laranja-fluor",
+  "rosa-fluor"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 72
+  },
+  {
+   "q": 25,
+   "preco": 160
+  },
+  {
+   "q": 50,
+   "preco": 289
+  },
+  {
+   "q": 100,
+   "preco": 535
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Frente",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.2
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 29 × 21 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % poliéster, 140 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Impressão": "DTF a cores",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 12,
+ "titulo": "T-shirt Técnica"
+}

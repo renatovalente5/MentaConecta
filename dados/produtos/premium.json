@@ -1,0 +1,66 @@
+{
+ "slug": "premium",
+ "familia": "t-shirts",
+ "nome": "Premium",
+ "tipo": "T-shirt",
+ "desenho": "tshirt",
+ "frase": "210 g, toque pesado e macio.",
+ "descricao": "T-shirt de 210 g em algodão penteado de fio grosso. Cai bem, dura muito e aguenta lavagens sem perder a forma.",
+ "cores": [
+  "branco",
+  "natural",
+  "cinza-mescla",
+  "cinza-chumbo",
+  "preto",
+  "azul-marinho",
+  "verde-garrafa",
+  "bordeaux",
+  "castanho",
+  "areia"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 85
+  },
+  {
+   "q": 25,
+   "preco": 190
+  },
+  {
+   "q": 50,
+   "preco": 345
+  },
+  {
+   "q": 100,
+   "preco": 640
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Impressão",
+   "opcoes": [
+    {
+     "nome": "Frente",
+     "acrescimo": 0
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.2
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 29 × 21 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "100 % algodão penteado, 210 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Impressão": "DTF a cores",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 10,
+ "titulo": "T-shirt Premium"
+}

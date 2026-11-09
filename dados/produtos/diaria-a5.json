@@ -1,0 +1,64 @@
+{
+ "familia": "agendas",
+ "tipo": "Agenda",
+ "desenho": "agenda",
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a seco na capa",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.8,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "cores": [
+  "preto",
+  "azul-marinho",
+  "vermelho",
+  "castanho",
+  "cinza-chumbo",
+  "verde-garrafa"
+ ],
+ "areas": {
+  "Capa": "até 8 × 6 cm"
+ },
+ "slug": "diaria-a5",
+ "nome": "Diária A5",
+ "grupoTipo": "Agenda",
+ "frase": "Um dia por página.",
+ "descricao": "Agenda A5 de 2027 com um dia por página, capa em pele sintética, elástico e fita marcadora.",
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 262.5
+  },
+  {
+   "q": 50,
+   "preco": 490
+  },
+  {
+   "q": 100,
+   "preco": 899
+  },
+  {
+   "q": 250,
+   "preco": 2087.5
+  }
+ ],
+ "especificacoes": {
+  "Formato": "A5 (14,8 × 21 cm)",
+  "Páginas": "352, um dia por página",
+  "Capa": "Pele sintética",
+  "Mínimo": "25 unidades"
+ },
+ "titulo": "Agenda diária A5",
+ "ordem": 43
+}

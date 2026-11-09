@@ -1,0 +1,74 @@
+{
+ "slug": "hoodie",
+ "familia": "sweatshirts",
+ "nome": "Hoodie",
+ "tipo": "Sweatshirt com capuz",
+ "desenho": "hoodie",
+ "frase": "300 g, capuz e bolso canguru.",
+ "descricao": "Sweatshirt com capuz forrado, cordões e bolso canguru, em algodão e poliéster de 300 g.",
+ "cores": [
+  "branco",
+  "cinza-mescla",
+  "cinza-chumbo",
+  "preto",
+  "azul-marinho",
+  "azul-royal",
+  "azul-celeste",
+  "verde-garrafa",
+  "bordeaux",
+  "vermelho",
+  "laranja",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 10,
+   "preco": 239
+  },
+  {
+   "q": 25,
+   "preco": 569
+  },
+  {
+   "q": 50,
+   "preco": 1065
+  },
+  {
+   "q": 100,
+   "preco": 2010
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Impressão na frente",
+     "acrescimo": 0,
+     "tecnica": "cor"
+    },
+    {
+     "nome": "Bordado no peito",
+     "acrescimo": 1.2,
+     "tecnica": "bordado"
+    },
+    {
+     "nome": "Frente e costas",
+     "acrescimo": 2.6,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 25 × 15 cm",
+  "Costas": "até 29 × 21 cm"
+ },
+ "especificacoes": {
+  "Tecido": "80 % algodão, 20 % poliéster, 300 g/m²",
+  "Tamanhos": "XS a 3XL",
+  "Mínimo": "10 unidades"
+ },
+ "ordem": 17,
+ "titulo": "Hoodie"
+}

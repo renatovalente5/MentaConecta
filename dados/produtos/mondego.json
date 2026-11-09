@@ -1,0 +1,65 @@
+{
+ "slug": "mondego",
+ "familia": "canetas",
+ "nome": "Mondego",
+ "tipo": "Caneta",
+ "desenho": "caneta-fina",
+ "tinta": "preta",
+ "frase": "Metal mate, fina e rotativa.",
+ "descricao": "Caneta rotativa de metal com acabamento mate e toque suave. Elegante para reuniões e ofertas a clientes.",
+ "cores": [
+  "preto",
+  "prateado",
+  "azul-marinho",
+  "vermelho",
+  "verde",
+  "roxo"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 40
+  },
+  {
+   "q": 50,
+   "preco": 70
+  },
+  {
+   "q": 100,
+   "preco": 118
+  },
+  {
+   "q": 250,
+   "preco": 262.5
+  },
+  {
+   "q": 500,
+   "preco": 460
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Metal com acabamento mate",
+  "Tinta": "Preta",
+  "Área de gravação": "40 × 5 mm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 4,
+ "titulo": "Caneta Mondego"
+}

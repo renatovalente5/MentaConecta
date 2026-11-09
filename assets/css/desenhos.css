@@ -1,0 +1,69 @@
+/* OS DESENHOS DOS PRODUTOS (scripts/desenhos.mjs).
+   Tudo parte de --cor, posta no elemento que contém o desenho; os tons derivados
+   misturam-na com preto, branco ou cinzento. Mudar de cor anima-se sozinho. */
+/* O sprite não pode ser display:none (os gradientes morriam): fica com 0×0. */
+.sprite-desenhos { position: absolute; width: 0; height: 0; overflow: hidden; }
+.desenho { display: block; width: 100%; height: auto; overflow: visible; }
+.d-cor, .d-esc, .d-esc2, .d-cla, .d-costura, .d-botao, .d-cordao, .d-fecho, .d-alca, .d-asa, .d-dentro-caneca, .d-bordo { transition: fill .3s ease, stroke .3s ease; }
+.d-cor { fill: var(--cor, #c9ccd6); }
+.d-esc { fill: color-mix(in oklab, var(--cor, #c9ccd6) 84%, #000); }
+.d-esc2 { fill: color-mix(in oklab, var(--cor, #c9ccd6) 62%, #000); }
+.d-cla { fill: color-mix(in oklab, var(--cor, #c9ccd6) 70%, #fff); }
+.d-sombra-lados { fill: url(#dg-lados); }
+.d-luz { fill: url(#dg-luz); }
+.d-cil { fill: url(#dg-cilindro); }
+.d-chao { fill: url(#dg-chao); }
+.d-metal { fill: url(#dg-metal); }
+.d-metal-v { fill: url(#dg-metal-v); }
+.d-bambu { fill: url(#dg-bambu); }
+.d-papel { fill: url(#dg-papel); stroke: rgba(21, 26, 51, .14); stroke-width: 1.4; }
+.d-papel-autocolante { fill: #fff; stroke: rgba(21, 26, 51, .12); stroke-width: 1.4; }
+.d-contorno { fill: none; stroke: rgba(21, 26, 51, .18); stroke-width: 1.6; stroke-linejoin: round; }
+.d-costura { fill: none; stroke: color-mix(in oklab, var(--cor, #c9ccd6) 66%, #8a8a8a); stroke-width: 1.5; stroke-dasharray: 3.5 3.5; stroke-linecap: round; opacity: .9; }
+.d-costura--metal { stroke: rgba(21, 26, 51, .25); stroke-dasharray: none; }
+.d-vinco { fill: none; stroke: #000; stroke-opacity: .07; stroke-width: 3; stroke-linecap: round; }
+.d-vinco--largo { stroke-width: 9; stroke-opacity: .045; }
+.d-canelado { fill: url(#dp-canelado); }
+.d-textura-polar { fill: url(#dp-polar); }
+.d-botao { fill: color-mix(in oklab, var(--cor, #c9ccd6) 55%, #fff); stroke: rgba(21, 26, 51, .3); stroke-width: 1; }
+.d-cordao { fill: none; stroke: color-mix(in oklab, var(--cor, #c9ccd6) 50%, #fff); stroke-width: 4; stroke-linecap: round; }
+.d-cordao--grosso { stroke-width: 5; stroke: color-mix(in oklab, var(--cor, #c9ccd6) 70%, #000); }
+.d-ponteira { fill: #D9DCE2; stroke: rgba(21, 26, 51, .25); }
+.d-fecho { fill: none; stroke: color-mix(in oklab, var(--cor, #c9ccd6) 55%, #000); stroke-width: 6; }
+.d-dentes { fill: none; stroke: #C8CCD4; stroke-width: 4; stroke-dasharray: 1.4 1.6; }
+.d-puxador { fill: #2A2E3D; }
+.d-fecho-bolso { fill: none; stroke: #2A2E3D; stroke-width: 3; stroke-linecap: round; opacity: .55; }
+.d-alca { fill: none; stroke: color-mix(in oklab, var(--cor, #c9ccd6) 88%, #000); stroke-width: 15; stroke-linecap: round; }
+.d-mosquetao { fill: none; stroke: #A7ADB7; stroke-width: 5; stroke-linecap: round; }
+.d-mosquetao--grosso { stroke-width: 7; }
+.d-cartao { fill: #fff; stroke: rgba(21, 26, 51, .2); stroke-width: 1.5; }
+.d-cartao-furo { fill: rgba(21, 26, 51, .18); }
+.d-brilho { fill: none; stroke: #fff; stroke-opacity: .35; stroke-width: 6; stroke-linecap: round; }
+.d-tampa { fill: #2A2E3D; }
+.d-tampa-topo { fill: #3A3F51; }
+.d-tampa-furo { fill: #10131F; }
+.d-asa { fill: none; stroke: var(--cor-asa, var(--cor, #c9ccd6)); stroke-width: 20; stroke-linecap: round; }
+.d-asa--fina { stroke-width: 11; }
+.d-asa-luz { fill: none; stroke: #000; stroke-opacity: .12; stroke-width: 20; stroke-linecap: round; }
+.d-dentro-caneca { fill: var(--cor-dentro, color-mix(in oklab, var(--cor, #c9ccd6) 60%, #000)); }
+.d-bordo { fill: none; stroke: color-mix(in oklab, var(--cor, #c9ccd6) 75%, #fff); stroke-width: 4; }
+.d-aro { fill: none; stroke: #23283A; stroke-width: 5; }
+.d-aro-baixo { fill: none; stroke: #23283A; stroke-width: 4; }
+.d-borracha { fill: #3A3F51; }
+.d-ponta { fill: #3A3F51; }
+.d-clip { fill: url(#dg-metal-v); stroke: rgba(21, 26, 51, .25); stroke-width: .8; }
+.d-no-bambu { fill: none; stroke: #7A5428; stroke-width: 1.4; opacity: .7; }
+.d-linha-texto { fill: none; stroke: rgba(21, 26, 51, .22); stroke-width: 6; stroke-linecap: round; }
+.d-folhas { fill: #FBF8F2; stroke: rgba(21, 26, 51, .16); stroke-width: 1.2; }
+.d-linhas-folhas { fill: none; stroke: rgba(21, 26, 51, .14); stroke-width: 1; }
+.d-fita { fill: #FFC83D; }
+.d-elastico { fill: #23283A; }
+.d-pe { fill: none; stroke: #8E949E; stroke-width: 4; stroke-linecap: round; }
+.d-area { fill: none; stroke: var(--area, transparent); stroke-width: 1.5; stroke-dasharray: 5 4; }
+/* O logótipo do cliente: as duas versões estão sempre lá; cada desenho mostra uma
+   (--usa-claro: 1 na gravação a laser), e só quando há logótipo (html.tem-logo). */
+.d-logo, .d-logo-claro { opacity: 0; transition: opacity .3s ease; pointer-events: none; }
+html.tem-logo .desenho { --logo-cor: calc(1 - var(--usa-claro, 0)); --logo-claro: var(--usa-claro, 0); }
+.d-logo { opacity: var(--logo-cor, 0); }
+.d-logo-claro { opacity: var(--logo-claro, 0); }
+.mostrar-area { --area: rgba(21, 26, 51, .45); }

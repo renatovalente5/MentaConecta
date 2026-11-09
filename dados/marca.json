@@ -1,0 +1,50 @@
+{
+ "nome": "Menta Conecta",
+ "assinatura": "Conectando marcas, pessoas e ideias!",
+ "servicos": "Fardamentos · Gráfica rápida · Brindes",
+ "descricao": "Fardamentos, gráfica rápida e brindes com o logótipo da sua empresa. Escolha, simule o preço e peça o orçamento no WhatsApp.",
+ "demo": true,
+ "endereco": "https://renatovalente5.github.io/MentaConecta/",
+ "whatsapp": "351966635602",
+ "telefone": "966 635 602",
+ "email": "encomendas@mentapersonalizado.pt",
+ "firma": "",
+ "nif": "",
+ "morada": "",
+ "codigoPostal": "",
+ "localidade": "Lisboa",
+ "atendimento": "Atendimento por WhatsApp, e-mail e telefone.",
+ "horario": [
+  {
+   "dias": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "abre": "09:00",
+   "fecha": "18:30"
+  }
+ ],
+ "redes": {
+  "instagram": "https://www.instagram.com/menta.conecta/",
+  "facebook": "https://www.facebook.com/mentaconecta",
+  "linkedin": ""
+ },
+ "iva": 23,
+ "entrega": "5 a 7 dias úteis após aprovar a maquete",
+ "portes": "Portes incluídos no continente; ilhas no orçamento",
+ "mensagens": {
+  "geral": "Olá! Gostava de pedir um orçamento.",
+  "duvida": "Olá! Tenho uma dúvida sobre {produto}.",
+  "maquete": "Olá! Gostava de pedir uma maquete. Envio já o logótipo.",
+  "teste": "[Teste — pré-visualização] "
+ },
+ "horarioTexto": [
+  {
+   "dias": "Segunda a sexta",
+   "horas": "9h00 – 18h30"
+  }
+ ]
+}

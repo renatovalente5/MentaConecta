@@ -1,0 +1,67 @@
+{
+ "slug": "douro",
+ "familia": "canetas",
+ "nome": "Douro",
+ "tipo": "Caneta",
+ "desenho": "caneta-clique",
+ "tinta": "azul",
+ "frase": "O clássico de alumínio, ao melhor preço.",
+ "descricao": "Caneta de alumínio com clique e clip metálico. A escolha certa para grandes quantidades e eventos.",
+ "cores": [
+  "preto",
+  "branco",
+  "prateado",
+  "azul-royal",
+  "vermelho",
+  "verde",
+  "amarelo",
+  "laranja"
+ ],
+ "quantidades": [
+  {
+   "q": 25,
+   "preco": 27.5
+  },
+  {
+   "q": 50,
+   "preco": 45
+  },
+  {
+   "q": 100,
+   "preco": 76
+  },
+  {
+   "q": 250,
+   "preco": 145
+  },
+  {
+   "q": 500,
+   "preco": 245
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Impressão UV a cores",
+     "acrescimo": 0.25,
+     "tecnica": "cor"
+    }
+   ]
+  }
+ ],
+ "especificacoes": {
+  "Material": "Alumínio",
+  "Tinta": "Azul",
+  "Área de gravação": "45 × 6 mm",
+  "Mínimo": "25 unidades"
+ },
+ "ordem": 2,
+ "titulo": "Caneta Douro"
+}

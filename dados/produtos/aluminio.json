@@ -1,0 +1,65 @@
+{
+ "slug": "aluminio",
+ "familia": "porta-chaves",
+ "nome": "Alumínio",
+ "tipo": "Porta-chaves",
+ "grupoTipo": "Metal",
+ "desenho": "porta-chaves",
+ "frase": "Retangular, gravado a laser.",
+ "descricao": "Porta-chaves de alumínio anodizado com argola de aço, gravado a laser. Leve e não perde a gravação.",
+ "cores": [
+  "prateado",
+  "preto",
+  "azul-royal",
+  "vermelho",
+  "verde",
+  "laranja",
+  "rosa-choque"
+ ],
+ "quantidades": [
+  {
+   "q": 50,
+   "preco": 79
+  },
+  {
+   "q": 100,
+   "preco": 139
+  },
+  {
+   "q": 250,
+   "preco": 312.5
+  },
+  {
+   "q": 500,
+   "preco": 575
+  }
+ ],
+ "opcoes": [
+  {
+   "grupo": "Personalização",
+   "opcoes": [
+    {
+     "nome": "Gravação a laser numa face",
+     "acrescimo": 0,
+     "tecnica": "gravacao"
+    },
+    {
+     "nome": "Gravação nas duas faces",
+     "acrescimo": 0.35,
+     "tecnica": "gravacao"
+    }
+   ]
+  }
+ ],
+ "areas": {
+  "Frente": "até 3 × 2 cm"
+ },
+ "especificacoes": {
+  "Material": "Alumínio anodizado",
+  "Medidas": "4,5 × 2,5 cm",
+  "Argola": "Aço, 25 mm",
+  "Mínimo": "50 unidades"
+ },
+ "titulo": "Porta-chaves de alumínio",
+ "ordem": 36
+}
