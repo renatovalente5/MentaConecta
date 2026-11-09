@@ -175,7 +175,7 @@ export const LIMITES = Object.freeze({
 export const TAMANHOS = Object.freeze({
   nome: 60, titulo: 80, tipo: 40, grupoTipo: 40, unidade: 20, frase: 120, descricao: 600,
   grupoNome: 40, opcaoNome: 60, areas: 6, areaNome: 30, areaValor: 60, especificacoes: 12, specNome: 40, specValor: 160,
-  familiaNome: 40, familiaGrupo: 40, singular: 40, familiaFrase: 160, sublinhado: 20, vantagens: 6, vantagem: 80, h1: 40,
+  familiaNome: 40, familiaGrupo: 40, singular: 40, familiaFrase: 160, sublinhado: 20, vantagens: 3, vantagem: 80, h1: 40,
   duvidas: 16, duvidasFamilia: 6, pergunta: 160, resposta: 600,
   packNome: 40, packFrase: 120, inclui: 6, incluiTexto: 80,
   corNome: 40,
@@ -758,7 +758,7 @@ export function problemasDasFamilias(valor, { comArtigos = null } = {}) {
     const vs = f.vantagens;
     if (!Array.isArray(vs)) bloqueia('.vantagens', 'vantagens', 'As vantagens da família não estão gravadas como uma lista. Escreva-as outra vez.');
     else {
-      if (vs.length > TAMANHOS.vantagens) avisa('.vantagens:muitas', 'vantagens', `A família tem ${vs.length} vantagens; o máximo é ${TAMANHOS.vantagens} (a página mostra as 3 primeiras).`);
+      if (vs.length > TAMANHOS.vantagens) avisa('.vantagens:muitas', 'vantagens', `A família tem ${vs.length} vantagens; a página só mostra as ${TAMANHOS.vantagens} primeiras.`);
       vs.forEach((v, j) => {
         if (!temTexto(v)) { avisa(`.vantagens.${j}:vazia`, `vantagens.${j}`, `A vantagem ${j + 1} da família está vazia: escreva-a ou tire-a.`); return; }
         umTexto(`vantagens.${j}`, v, `Vantagem ${j + 1}`, TAMANHOS.vantagem, false);
@@ -968,7 +968,7 @@ export function problemas(dados = {}, opcoes = {}) {
       if (l.ilegivel) { dosArtigos.push({ classe: 'bloqueia', chave: `artigo:${slug}:ilegivel`, ...base, mensagem: `O ficheiro deste artigo não se consegue ler (JSON inválido: ${l.ilegivel}). Só o Renato o pode corrigir.` }); continue; }
       if (!eObjecto(l.obj)) { dosArtigos.push({ classe: 'bloqueia', chave: `artigo:${slug}:forma`, ...base, mensagem: 'O ficheiro deste artigo não tem a forma de um artigo. Só o Renato o pode corrigir.' }); continue; }
       if (!slugValido(slug)) { dosArtigos.push({ classe: 'bloqueia', chave: `artigo:${slug}:endereco`, ...base, mensagem: `O nome do ficheiro («${curto(nome, 60)}») não é um endereço válido (só minúsculas, algarismos e hífenes). Só o Renato o pode corrigir.` }); continue; }
-      if (l.obj.slug !== slug) { dosArtigos.push({ classe: 'bloqueia', chave: `artigo:${slug}:slug`, ...base, ecra: ecraDoArtigo(l.obj, slug), campo: 'slug', mensagem: `O endereço escrito no artigo («${curto(l.obj.slug, 60)}») não é o nome do ficheiro («${slug}»). Só o Renato o pode corrigir.` }); continue; }
+      if (l.obj.slug !== slug) { dosArtigos.push({ classe: 'bloqueia', chave: `artigo:${slug}:slug`, ...base, ecra: ecraDoArtigo(l.obj, slug), campo: 'slug', mensagem: typeof l.obj.slug === 'string' ? `O endereço escrito no artigo («${curto(l.obj.slug, 60)}») não é o nome do ficheiro («${slug}»). Só o Renato o pode corrigir.` : `O artigo não tem o endereço escrito (devia ser «${slug}»). Só o Renato o pode corrigir.` }); continue; }
       const ps = problemasDoArtigo(l.obj, { nome, familias, cores: paleta });
       dosArtigos.push(...ps);
       const bytes = l.texto !== null ? bytesDe(l.texto) : bytesDe(serializar(l.obj));
