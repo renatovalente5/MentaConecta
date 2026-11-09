@@ -136,10 +136,10 @@ function cartaoKit(k, { ligacao = true } = {}) {
 /* ———————————————————————————————— INÍCIO ———————————————————————————————— */
 export function inicio() {
   const palco = [
-    ['tshirt', '#FFEC08', 'palco__peca--tshirt'], ['polo', '#1B1D24', 'palco__peca--polo'], ['garrafa-termica', '#209478', 'palco__peca--garrafa'],
-    ['bone', '#D81C5C', 'palco__peca--bone'], ['caneta-touch', '#1B1D24', 'palco__peca--caneta'],
+    ['tshirt', '#FFEC08', 'palco__peca--tshirt'], ['polo', '#1B1D24', 'palco__peca--polo'], ['garrafa-termica', '#D81C5C', 'palco__peca--garrafa'],
+    ['bone', '#FFFFFF', 'palco__peca--bone'], ['caneta-touch', '#1B1D24', 'palco__peca--caneta'],
   ];
-  const ciclos = { tshirt: ['#FFEC08', '#FFFFFF', '#209478', '#FFEC08', '#FFFFFF'], polo: ['#1B1D24', '#FFEC08', '#FFFFFF', '#209478', '#D81C5C'], 'garrafa-termica': ['#209478', '#1B1D24', '#D81C5C', '#F4F4F2', '#F48020'], bone: ['#D81C5C', '#FFFFFF', '#1B1D24', '#FFEC08', '#209478'], 'caneta-touch': ['#1B1D24', '#D81C5C', '#209478', '#F48020', '#FFFFFF'] };
+  const ciclos = { tshirt: ['#FFEC08', '#FFFFFF', '#209478', '#FFEC08', '#FFFFFF'], polo: ['#1B1D24', '#FFEC08', '#FFFFFF', '#209478', '#D81C5C'], 'garrafa-termica': ['#D81C5C', '#1B1D24', '#209478', '#F4F4F2', '#F48020'], bone: ['#FFFFFF', '#1B1D24', '#D81C5C', '#FFEC08', '#209478'], 'caneta-touch': ['#1B1D24', '#D81C5C', '#209478', '#F48020', '#FFFFFF'] };
   const corpo = `
 <section class="heroi">
   <div class="heroi__fundo" aria-hidden="true"></div>
