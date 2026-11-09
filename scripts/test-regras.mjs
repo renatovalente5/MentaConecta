@@ -491,16 +491,17 @@ prova('o horário: manhã e tarde no mesmo dia está bem; horas que se cruzam av
   igual(daMarca((m) => { m.horario = Array.from({ length: 8 }, (_, i) => ({ dias: [(i % 7) + 1] })); }), ['avisa marca:horario:muitas']);
 });
 prova('o NIF (quando existe) e o código postal', () => {
-  igual(daMarca((m) => { m.nif = '123456789'; }), []);
-  igual(daMarca((m) => { m.nif = '123 456 789'; }), []);
-  for (const mau of ['123456780', '023456789', '12345678', 'PT123456789']) igual(daMarca((m) => { m.nif = mau; }), [M('nif')]);
+  igual(daMarca((m) => { m.nif = '500000000'; }), []);
+  igual(daMarca((m) => { m.nif = '500 000 000'; }), []);
+  // O de teste (123456789) e os começados por 4 (menos 45) são recusados, como no legal-comum.
+  for (const mau of ['123456789', '400000008', '123456780', '023456789', '12345678', 'PT123456789']) igual(daMarca((m) => { m.nif = mau; }), [M('nif')]);
   igual(daMarca((m) => { m.codigoPostal = '1000-001'; }), []);
   for (const mau of ['1000', '1000001', '1000-01']) igual(daMarca((m) => { m.codigoPostal = mau; }), ['avisa marca:codigoPostal']);
 });
 prova('com o site a sério (demo: false), a firma, o NIF, a morada e o e-mail são obrigatórios (bloqueia)', () => {
   igual(daMarca((m) => { m.demo = false; }), [M('firma:producao'), M('nif:producao'), M('morada:producao')]);
   igual(daMarca((m) => { m.demo = false; m.email = ''; }), [M('firma:producao'), M('nif:producao'), M('morada:producao'), M('email:producao')]);
-  const completa = (m) => { m.demo = false; m.firma = 'Menta Conecta, Lda.'; m.nif = '123456789'; m.morada = 'Rua das Flores, 1'; m.codigoPostal = '1000-001'; };
+  const completa = (m) => { m.demo = false; m.firma = 'Menta Conecta, Lda.'; m.nif = '500000000'; m.morada = 'Rua das Flores, 1'; m.codigoPostal = '1000-001'; };
   igual(daMarca(completa), []);
   igual(daMarca((m) => { completa(m); m.codigoPostal = ''; }), [M('morada:producao')]);
   igual(daMarca((m) => { completa(m); m.localidade = ''; }), [M('morada:producao')]);
@@ -767,7 +768,7 @@ prova('slugValido', () => {
   for (const mau of ['Roll', 'a--b', '-a', 'a-', 'a b', 'ação', '', 'x'.repeat(81), 5]) assert.ok(!R.slugValido(mau), String(mau));
 });
 prova('nifValido, numeroPortugues, eTelemovel, whatsappValido, emailValido, corValida, horaValida, redeValida', () => {
-  assert.ok(R.nifValido('123456789') && R.nifValido('123 456 789') && R.nifValido(123456789));
+  assert.ok(R.nifValido('500000000') && R.nifValido('500 000 000') && R.nifValido(500000000) && !R.nifValido('123456789'));
   assert.ok(!R.nifValido('123456780') && !R.nifValido('023456789') && !R.nifValido(''));
   assert.equal(R.numeroPortugues('+351 966 635 602'), '966635602');
   assert.equal(R.numeroPortugues('00351212345678'), '212345678');

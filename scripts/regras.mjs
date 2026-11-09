@@ -238,9 +238,12 @@ export function gerarSlug(nome, existentes = []) {
 }
 
 /* NIF português: 9 algarismos (com ou sem espaços), o primeiro nunca é 0, e o de controlo (módulo 11). */
+/* Igual ao validarNif do legal-comum (que o gerar.mjs corre em produção): sem ele, um NIF de
+   teste gravado no painel passava aqui e parava a publicação no gerar. */
 export function nifValido(nif) {
   const s = String(nif ?? '').replace(/\s/g, '');
   if (!/^[1-9][0-9]{8}$/.test(s)) return false;
+  if (s === '123456789' || (s[0] === '4' && s[1] !== '5')) return false;
   let soma = 0;
   for (let i = 0; i < 8; i++) soma += Number(s[i]) * (9 - i);
   const resto = soma % 11;
