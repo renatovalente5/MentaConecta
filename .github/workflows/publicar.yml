@@ -6,8 +6,8 @@ name: Publicar
 #   previa.mentaconecta.pt  ← o site inteiro, em pré-visualização (noindex): é para onde vai o
 #                              «Abrir no site» do painel, e onde a Menta vê o que regista;
 #   mentaconecta.pt         ← a página «Em breve» (em-breve/), pedida pelo Yuri.
-# O LANÇAMENTO: CNAME → mentaconecta.pt, `demo: false` no dados/marca.json, e no passo do FTP o
-# site passa a ir para public_html/ (e o «Em breve» deixa de se publicar).
+# O LANÇAMENTO: CNAME → mentaconecta.pt, `demo: false` no dados/marca.json, e no passo «Publicar no
+# alojamento» a _site passa a ir para public_html/ (e o «Em breve» deixa de se publicar).
 # O painel lê o resultado do job «publicar» pelo nome (src/admin/github.js do painel): não mudar.
 on:
   push:
@@ -45,12 +45,11 @@ jobs:
       # nada carregado de fora, noindex sem domínio. Se falhar, fica no ar o anterior.
       - name: Auditar antes de publicar
         run: node scripts/auditar.mjs
+      # O site gerado passa para o job que publica (com o .htaccess: include-hidden-files).
       - uses: actions/upload-artifact@v4
         with:
-          name: publicar
-          path: |
-            _site
-            em-breve
+          name: site
+          path: _site
           include-hidden-files: true
           retention-days: 3
 
@@ -58,25 +57,19 @@ jobs:
     needs: construir
     runs-on: ubuntu-latest
     steps:
+      # O checkout traz o scripts/publicar-ftp.py e a pasta em-breve/.
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          name: publicar
-      - name: Instalar o lftp
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
-      # A conta de FTP publicar@mentaconecta.pt só serve para isto (a senha é o segredo
-      # FTP_SENHA; a do cPanel nunca vem para aqui). O --delete tira do servidor o que
-      # saiu do site, menos o que o cPanel lá põe (/.well-known/ do certificado, cgi-bin).
-      - name: Enviar por FTP
+          name: site
+          path: _site
+      # A conta de FTP publicar@mentaconecta.pt só serve para isto (a senha é o segredo FTP_SENHA;
+      # a do cPanel nunca vem para aqui). Sobe só o que mudou e apaga só o que ela própria
+      # publicou: o que o cPanel lá põe (/.well-known/ do certificado, cgi-bin) não se toca.
+      # A PRIMEIRA linha é o site (o ensaio do painel lê-a assim); a segunda, o «Em breve».
+      - name: Publicar no alojamento
         env:
-          LFTP_PASSWORD: ${{ secrets.FTP_SENHA }}
+          FTP_SENHA: ${{ secrets.FTP_SENHA }}
         run: |
-          lftp --env-password -u publicar@mentaconecta.pt cpp88.webserver.pt <<'FIM'
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set ssl:verify-certificate true
-          set net:timeout 30
-          set net:max-retries 3
-          set cmd:fail-exit true
-          mirror --reverse --delete --no-perms --parallel=4 --exclude-glob .well-known/ --exclude-glob cgi-bin/ _site/ previa.mentaconecta.pt/
-          mirror --reverse --delete --no-perms --parallel=4 --exclude-glob .well-known/ --exclude-glob cgi-bin/ em-breve/ public_html/
-          FIM
+          python3 scripts/publicar-ftp.py _site previa.mentaconecta.pt
+          python3 scripts/publicar-ftp.py em-breve public_html
