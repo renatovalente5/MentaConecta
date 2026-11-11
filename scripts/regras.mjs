@@ -230,7 +230,8 @@ export const slugValido = (s) => typeof s === 'string' && s.length <= 80 && RE_S
    versões para a web fá-las a publicação (scripts/fotos.py). O desenho continua: é a «Simulação»,
    com a cor e o logótipo que o visitante escolhe. */
 const RE_FOTO = /^media\/fotos\/[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{8}\.jpg$/;
-export const fotoValida = (c) => typeof c === 'string' && c.length <= 120 && RE_FOTO.test(c);
+/* O prefixo é o endereço do artigo (até 80): media/fotos/ (12) + 80 + -<8 hex>.jpg (13). */
+export const fotoValida = (c) => typeof c === 'string' && c.length <= 105 && RE_FOTO.test(c);
 export const caminhoDeFotoNova = (prefixo, hex) => `media/fotos/${prefixo}-${hex}.jpg`;
 /* As que servem de uma lista: válidas, sem repetidas, até ao máximo (é o que o site mostra). */
 export const fotosBoas = (lista) => (Array.isArray(lista) ? [...new Set(lista.filter(fotoValida))].slice(0, LIMITES.fotos[1]) : []);
