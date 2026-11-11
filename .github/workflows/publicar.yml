@@ -1,7 +1,14 @@
 name: Publicar
 
-# Cada envio para a main gera o site, audita-o e publica-o no GitHub Pages.
-# Quando houver painel, os commits dele publicam-se pelo mesmo caminho.
+# Cada envio para a main gera o site, audita-o e publica-o no ALOJAMENTO DA MENTA (o cPanel do
+# Yuri na PTisp, cpp88.webserver.pt), por FTP com TLS. Desde 11 nov 2026 — até aí era o GitHub Pages.
+# Até ao lançamento:
+#   previa.mentaconecta.pt  ← o site inteiro, em pré-visualização (noindex): é para onde vai o
+#                              «Abrir no site» do painel, e onde a Menta vê o que regista;
+#   mentaconecta.pt         ← a página «Em breve» (em-breve/), pedida pelo Yuri.
+# O LANÇAMENTO: CNAME → mentaconecta.pt, `demo: false` no dados/marca.json, e no passo do FTP o
+# site passa a ir para public_html/ (e o «Em breve» deixa de se publicar).
+# O painel lê o resultado do job «publicar» pelo nome (src/admin/github.js do painel): não mudar.
 on:
   push:
     branches: [main]
@@ -9,11 +16,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: publicar
   cancel-in-progress: false
 
 jobs:
@@ -33,25 +38,45 @@ jobs:
       # publicam-se: o gerador aplica a mesma neutralização à cópia que lê.
       - name: Guarda dos dados
         run: node scripts/guarda.mjs
-      # Sem dependências: não há npm ci. O CNAME, quando existir, decide se o
-      # site se constrói para a raiz de um domínio ou para /MentaConecta/.
+      # Sem dependências: não há npm ci. O CNAME decide para que endereço se constrói.
       - name: Gerar o site
         run: node scripts/gerar.mjs
       # O travão: ligações, ids, preços = contas, contrastes, orçamentos de peso,
       # nada carregado de fora, noindex sem domínio. Se falhar, fica no ar o anterior.
       - name: Auditar antes de publicar
         run: node scripts/auditar.mjs
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
-          path: ./_site
+          name: publicar
+          path: |
+            _site
+            em-breve
+          include-hidden-files: true
+          retention-days: 3
 
   publicar:
     needs: construir
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: publicar
+      - name: Instalar o lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      # A conta de FTP publicar@mentaconecta.pt só serve para isto (a senha é o segredo
+      # FTP_SENHA; a do cPanel nunca vem para aqui). O --delete tira do servidor o que
+      # saiu do site, menos o que o cPanel lá põe (/.well-known/ do certificado, cgi-bin).
+      - name: Enviar por FTP
+        env:
+          LFTP_PASSWORD: ${{ secrets.FTP_SENHA }}
+        run: |
+          lftp --env-password -u publicar@mentaconecta.pt cpp88.webserver.pt <<'FIM'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate true
+          set net:timeout 30
+          set net:max-retries 3
+          set cmd:fail-exit true
+          mirror --reverse --delete --no-perms --parallel=4 --exclude-glob .well-known/ --exclude-glob cgi-bin/ _site/ previa.mentaconecta.pt/
+          mirror --reverse --delete --no-perms --parallel=4 --exclude-glob .well-known/ --exclude-glob cgi-bin/ em-breve/ public_html/
+          FIM

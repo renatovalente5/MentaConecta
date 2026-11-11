@@ -7,21 +7,22 @@
 <meta name="description" content="Fardamentos, gráfica rápida e brindes com a sua marca. O site está quase pronto.">
 <!-- A página do «Em breve» (11 nov 2026, pedida pelo Yuri): vive na raiz do domínio até o site
      estar pronto. Não se indexa: o motor de busca fica com o site verdadeiro, não com a espera.
-     Autónoma (sem o gerador do site): copia-se esta pasta tal e qual para o alojamento. -->
+     Autónoma (sem o gerador do site): o CI copia esta pasta tal e qual para o alojamento. Os
+     endereços começam na raiz (/fontes/…) porque qualquer endereço desconhecido mostra esta página. -->
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0E2A22">
 <meta property="og:title" content="Menta Conecta — Em breve">
 <meta property="og:description" content="Fardamentos, gráfica rápida e brindes com a sua marca.">
 <meta property="og:image" content="https://mentaconecta.pt/partilha.png">
 <meta property="og:locale" content="pt_PT">
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" href="fontes/bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fontes/bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* As letras e as cores são as do site (assets/css/base.css): o M do logótipo dá a menta, o
    amarelo e o magenta; o fundo é o verde-escuro das secções escuras. */
-@font-face { font-family: "Bricolage"; src: url("fontes/bricolage-var.woff2") format("woff2"); font-weight: 300 800; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("fontes/inter-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Bricolage"; src: url("/fontes/bricolage-var.woff2") format("woff2"); font-weight: 300 800; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fontes/inter-var.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 :root {
   --fundo: #0E2A22; --texto: #FFFFFF; --texto-2: #C5D3CD;
   --menta: #209478; --menta-claro: #6FD8B9; --magenta: #D81C5C; --magenta-claro: #FF80AA;
@@ -42,7 +43,7 @@ a { color: inherit; }
 :focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; border-radius: 6px; }
 
 /* As facetas do site por trás de tudo, a derivar devagar; o centro escurece para o título. */
-.fundo { position: fixed; inset: -6%; z-index: -2; background: url("facetas-cor.svg") center / cover no-repeat; opacity: .26; animation: deriva 38s ease-in-out infinite alternate; }
+.fundo { position: fixed; inset: -6%; z-index: -2; background: url("/facetas-cor.svg") center / cover no-repeat; opacity: .26; animation: deriva 38s ease-in-out infinite alternate; }
 .fundo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(14, 42, 34, .92), rgba(14, 42, 34, .55) 70%, rgba(14, 42, 34, .35)); }
 @keyframes deriva { to { transform: scale(1.08) translate(-2%, 1.5%) rotate(-1.5deg); } }
 
@@ -103,7 +104,7 @@ h1 .p:nth-child(2) { animation-delay: .08s; }
 <div class="fundo" aria-hidden="true"></div>
 
 <header class="topo">
-  <a class="logo" href="./" aria-label="Menta Conecta"><img src="menta-m-420.png" width="420" height="290" alt=""><span class="logo__nome" aria-hidden="true">Menta<b>Conecta</b></span></a>
+  <a class="logo" href="/" aria-label="Menta Conecta"><img src="/menta-m-420.png" width="420" height="290" alt=""><span class="logo__nome" aria-hidden="true">Menta<b>Conecta</b></span></a>
   <nav class="redes" aria-label="Redes sociais">
     <a class="redondo" href="https://www.instagram.com/menta.conecta/" rel="noopener" aria-label="Instagram"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a>
     <a class="redondo" href="https://www.facebook.com/mentaconecta" rel="noopener" aria-label="Facebook"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4a20 20 0 0 0-2.3-.1c-2.3 0-3.8 1.4-3.8 3.9v2.3H9v3h2.5V21"/></svg></a>

@@ -1,0 +1,23 @@
+# A página «Em breve» na raiz do mentaconecta.pt, até ao lançamento (o .github/workflows/publicar.yml
+# publica-a em public_html/). Qualquer outro endereço mostra-a também, com o estado 404. O www e o
+# http seguem para https://mentaconecta.pt, menos as verificações do certificado (/.well-known/).
+DirectoryIndex index.html
+ErrorDocument 404 /index.html
+AddType font/woff2 .woff2
+# O manifesto da publicação (scripts/publicar-ftp.py) não se serve.
+<Files ".publicado.json">
+  Require all denied
+</Files>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://mentaconecta.pt%{REQUEST_URI} [R=301,L]
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html image/svg+xml
+</IfModule>
+<IfModule mod_headers.c>
+  Header set Cache-Control "max-age=600"
+</IfModule>

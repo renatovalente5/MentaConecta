@@ -16,7 +16,9 @@ const REPO = 'MentaConecta';
 const DONO = 'renatovalente5';
 /* ONDE O SITE VIVE: com um ficheiro CNAME é a raiz de um domínio; sem ele, o
    endereço de projecto do GitHub (/MentaConecta/). Um só facto decide o prefixo e o
-   endereço canónico (lição do NewAuto). */
+   endereço canónico (lição do NewAuto). O nome ficou do GitHub Pages: desde 11 nov 2026 o
+   site vive no alojamento da Menta, e o CNAME diz para que endereço se constrói
+   (previa.mentaconecta.pt até ao lançamento; mentaconecta.pt depois). */
 export const dominio = existsSync(join(RAIZ, 'CNAME')) ? readFileSync(join(RAIZ, 'CNAME'), 'utf8').trim() : null;
 export const BASE = (process.env.BASE ?? (dominio ? '' : `/${REPO}`)).replace(/\/$/, '');
 export const SITE = (process.env.SITE ?? (dominio ? `https://${dominio}` : `https://${DONO}.github.io`)).replace(/\/$/, '');
