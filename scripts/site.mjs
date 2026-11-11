@@ -9,7 +9,7 @@ import { sprite } from '../assets/js/desenhos.js';
 import { desde, euros } from '../assets/js/preco.js';
 import { VERSAO as VERSAO_LEGAL, livroReclamacoes } from '../legal-comum/index.mjs';
 import { conferir } from './guarda.mjs';
-import { ordemDe } from './regras.mjs';
+import { ordemDe, fotosBoas } from './regras.mjs';
 
 export const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REPO = 'MentaConecta';
@@ -45,8 +45,51 @@ export const cores = CORES;
 // As famílias com artigos no site, pela ordem do ficheiro.
 export const familias = conferencia.site.familias;
 // Os produtos: um ficheiro cada (como o painel os vai gravar), só os do site, pela ordem do campo `ordem`.
+/* AS FOTOGRAFIAS (11 nov 2026): as versões para a web vêm do scripts/fotos.py (WebP em 480, 960 e
+   1600 px, no .cache/fotos/ com o manifesto); sem elas (aqui, sem o Python), o site usa o JPEG
+   original, que o painel já reduziu. Uma fotografia que o artigo diz e não está no repositório fica de
+   fora, com um aviso: o artigo volta ao desenho se não sobrar nenhuma. */
+export const CACHE_FOTOS = join(RAIZ, '.cache/fotos');
+const MANIFESTO_FOTOS = existsSync(join(CACHE_FOTOS, 'manifesto.json')) ? JSON.parse(readFileSync(join(CACHE_FOTOS, 'manifesto.json'), 'utf8')) : {};
+/* O tamanho de um JPEG, do cabeçalho (o marcador SOF), sem o abrir. */
+function tamanhoDoJpeg(b) {
+  let i = 2;
+  while (i + 9 < b.length) {
+    if (b[i] !== 0xff) { i++; continue; }
+    const m = b[i + 1];
+    if (m === 0xd8 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+    if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(m)) return { altura: (b[i + 5] << 8) | b[i + 6], largura: (b[i + 7] << 8) | b[i + 8] };
+    i += 2 + ((b[i + 2] << 8) | b[i + 3]);
+  }
+  return null;
+}
+function detalheDaFoto(c, slug) {
+  const base = c.replace(/^media\/fotos\//, '').replace(/\.jpg$/, '');
+  const m = MANIFESTO_FOTOS[c];
+  if (m && m.larguras?.every((w) => existsSync(join(CACHE_FOTOS, `${base}-${w}.webp`)))) {
+    return { original: c, largura: m.largura, altura: m.altura, ficheiros: m.larguras.map((w) => ({ w, de: join(CACHE_FOTOS, `${base}-${w}.webp`), para: `assets/fotos/${base}-${w}.webp` })) };
+  }
+  const t = tamanhoDoJpeg(readFileSync(join(RAIZ, c)));
+  if (!t) { console.log(`  aviso: ${slug}: a fotografia ${c} não se lê (fica de fora)`); return null; }
+  return { original: c, largura: t.largura, altura: t.altura, ficheiros: [{ w: t.largura, de: join(RAIZ, c), para: `assets/fotos/${base}.jpg` }] };
+}
+function fotosDoArtigo(p) {
+  return fotosBoas(p.fotos).filter((c) => {
+    if (existsSync(join(RAIZ, c))) return true;
+    console.log(`  aviso: ${p.slug}: a fotografia ${c} não está no repositório (fica de fora)`);
+    return false;
+  }).map((c) => detalheDaFoto(c, p.slug)).filter(Boolean);
+}
 export const produtos = conferencia.site.artigos
-  .map((p) => ({ ...p, ordem: ordemDe(p), coresDet: p.cores.map((k) => ({ chave: k, ...CORES[k] })) }));
+  .map((p) => ({ ...p, ordem: ordemDe(p), coresDet: p.cores.map((k) => ({ chave: k, ...CORES[k] })), fotosDet: fotosDoArtigo(p) }));
+/* A <img> de uma fotografia: as versões em srcset, a mais próxima de 960 px no src. `tamanhos` é o
+   atributo sizes; `primeira` carrega já (a principal da ficha), as outras quando se aproximam. */
+export function imagemDaFoto(fd, { tamanhos = '100vw', primeira = false, classe = '', alt = '' } = {}) {
+  const fs = [...fd.ficheiros].sort((a, b) => a.w - b.w);
+  const src = (fs.find((f) => f.w >= 960) ?? fs.at(-1)).para;
+  const srcset = fs.length > 1 ? ` srcset="${fs.map((f) => `${u(f.para)} ${f.w}w`).join(', ')}" sizes="${tamanhos}"` : '';
+  return `<img${classe ? ` class="${classe}"` : ''} src="${u(src)}"${srcset} width="${fd.largura}" height="${fd.altura}" alt="${esc(alt)}" ${primeira ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+}
 export const kits = conferencia.site.kits;
 // O que não vai para o site (a auditoria confere que não aparece em lado nenhum).
 export const foraDoSite = conferencia.site.fora;

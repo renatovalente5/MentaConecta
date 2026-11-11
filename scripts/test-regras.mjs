@@ -251,6 +251,21 @@ prova('uma cor que não está na paleta sai do artigo (sem_cor), com a cor e o �
   igual(doArtigo((a) => { a.cores = ['branco', 'azul-roial']; }, { cores: null }), []);
   igual(doArtigo((a) => { a.cores = ['branco', 'preto']; }, { cores: new Set(['branco', 'preto']) }), []);
 });
+prova('as fotografias: até 3, enviadas pelo painel; uma lista mexida à mão não esconde o artigo (sem_fotos)', () => {
+  const F = (h) => `media/fotos/tejo-${h}.jpg`;
+  igual(doArtigo((a) => { a.fotos = [F('0a1b2c3d'), F('9f8e7d6c')]; }), []);
+  igual(doArtigo((a) => { a.fotos = []; }), []);
+  const ps = doArtigo((a) => { a.fotos = [F('0a1b2c3d'), 'fotos/outra.png']; });
+  igual(ps, [N('fotos')]); assert.equal(ps[0].efeito, 'sem_fotos');
+  igual(doArtigo((a) => { a.fotos = [F('0a1b2c3d'), F('0a1b2c3d')]; }), [N('fotos')]);
+  igual(doArtigo((a) => { a.fotos = [F('00000001'), F('00000002'), F('00000003'), F('00000004')]; }), [N('fotos')]);
+  igual(doArtigo((a) => { a.fotos = F('0a1b2c3d'); }), [N('fotos')]);
+  assert.equal(R.fotoValida('media/fotos/tejo-0a1b2c3d.jpg'), true);
+  assert.equal(R.fotoValida('media/fotos/../tejo-0a1b2c3d.jpg'), false);
+  assert.equal(R.fotoValida('media/fotos/Tejo-0a1b2c3d.jpg'), false);
+  assert.equal(R.caminhoDeFotoNova('tejo', '0a1b2c3d'), 'media/fotos/tejo-0a1b2c3d.jpg');
+  assert.deepEqual(R.fotosBoas([F('00000001'), 'x', F('00000001'), F('00000002'), F('00000003'), F('00000004')]), [F('00000001'), F('00000002'), F('00000003')]);
+});
 prova('uma cor mal escrita também sai; sem nenhuma boa, o artigo esconde-se', () => {
   igual(doArtigo((a) => { a.cores = ['Azul Royal']; }), [N('cor-invalida:Azul Royal'), N('sem-cores')]);
   igual(doArtigo((a) => { a.cores = ['azul-roial']; }), [N('cor-desconhecida:azul-roial'), N('sem-cores')]);
@@ -701,6 +716,17 @@ prova('uma cor que não está na paleta sai só do artigo (as outras ficam)', ()
   assert.equal(n.artigos.classica.publicado, undefined);
   assert.deepEqual(n.efeitos.map((e) => [e.slug, e.efeitos.join()]), [['classica', 'sem_cor']]);
   assert.deepEqual(d.artigos.classica.cores, ['branco', 'azul-roial', 'preto', 'rosa']);
+});
+prova('as fotografias que não servem saem só da cópia (sem_fotos); sem nenhuma, o artigo fica sem o campo; e as em uso contam todos os artigos', () => {
+  const F = (h) => `media/fotos/classica-${h}.jpg`;
+  const d = dadosBase((x) => { x.artigos.classica.fotos = [F('0000000a'), 'x.jpg', F('0000000b')]; x.artigos.tejo.fotos = ['so-lixo']; x.artigos.tejo.publicado = false; });
+  const n = R.neutralizar(d, R.problemas(d));
+  assert.deepEqual(n.artigos.classica.fotos, [F('0000000a'), F('0000000b')]);
+  assert.equal('fotos' in n.artigos.tejo, false);
+  assert.deepEqual(n.efeitos.map((e) => [e.slug, e.efeitos.join()]), [['classica', 'sem_fotos']]);
+  assert.equal(R.descreverEfeitos(n.efeitos[0]), 'sem as fotografias que não servem');
+  assert.deepEqual(d.artigos.classica.fotos, [F('0000000a'), 'x.jpg', F('0000000b')]);
+  assert.deepEqual([...R.fotosEmUso(d)].sort(), [F('0000000a'), F('0000000b')]);
 });
 prova('um pack com um erro sai do site; um rascunho não conta como efeito (já estava fora)', () => {
   const d = dadosBase((x) => { x.kits[0].preco = 0; x.artigos.tejo.publicado = false; x.artigos.tejo.desenho = 'nave'; });

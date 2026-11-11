@@ -3,7 +3,7 @@
 // pára aqui, e os rascunhos e os artigos e packs com erros ficam de fora), escreve
 // uma página por endereço, o catálogo que o browser usa (orçamento, kits), o
 // manifesto, o robots e — só com domínio — o sitemap e o .htaccess do alojamento.
-import { writeFileSync, mkdirSync, rmSync, cpSync, readFileSync, readdirSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, rmSync, cpSync, copyFileSync, readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname, relative, resolve } from 'node:path';
 import { RAIZ, BASE, SITE, u, abs, dominio, marca, familias, produtos, kits, cores, conferencia, foraDoSite } from './site.mjs';
 import * as P from './paginas.mjs';
@@ -35,6 +35,12 @@ writeFileSync(join(RAIZ, 'assets/css/site.css'), PARTES.map((n) => `/* ===== ${n
 rmSync(SAIDA, { recursive: true, force: true });
 mkdirSync(SAIDA, { recursive: true });
 cpSync(join(RAIZ, 'assets'), join(SAIDA, 'assets'), { recursive: true, filter: (src) => !/\/assets\/css\/(base|desenhos|componentes|paginas|movimento)\.css$/.test(src) });
+
+// As fotografias dos artigos: as versões do scripts/fotos.py, ou o JPEG original (site.mjs, fotosDet).
+for (const p of produtos) for (const fd of p.fotosDet) for (const f of fd.ficheiros) {
+  mkdirSync(dirname(join(SAIDA, f.para)), { recursive: true });
+  copyFileSync(f.de, join(SAIDA, f.para));
+}
 
 const escrever = (caminho, html) => {
   const destino = join(SAIDA, caminho);

@@ -38,6 +38,20 @@ jobs:
       # publicam-se: o gerador aplica a mesma neutralização à cópia que lê.
       - name: Guarda dos dados
         run: node scripts/guarda.mjs
+      # As fotografias dos artigos (desde 11 nov 2026): as versões para a web, em WebP, pelo
+      # scripts/fotos.py. A pasta .cache/fotos fica entre publicações: só se faz o que falta.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar o Pillow
+        run: pip install --quiet Pillow
+      - uses: actions/cache@v4
+        with:
+          path: .cache/fotos
+          key: fotos-${{ hashFiles('media/fotos/**', 'scripts/fotos.py') }}
+          restore-keys: fotos-
+      - name: Preparar as fotografias
+        run: python scripts/fotos.py
       # Sem dependências: não há npm ci. O CNAME decide para que endereço se constrói.
       - name: Gerar o site
         run: node scripts/gerar.mjs

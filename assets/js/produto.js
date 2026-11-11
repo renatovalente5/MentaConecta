@@ -33,7 +33,17 @@ function porCor(chave, { anunciar = true } = {}) {
   const u = new URL(location.href); u.searchParams.set('cor', c.chave); history.replaceState(history.state, '', u);
   if (anunciar) actualizarVizinhos();
 }
-form.addEventListener('change', (e) => { if (e.target.name === 'cor') porCor(e.target.value); });
+form.addEventListener('change', (e) => { if (e.target.name === 'cor') { porCor(e.target.value); ver('simular'); } });
+
+/* ——— As fotografias e a «Simular» (só num artigo com fotografias) ———
+   A fotografia não muda de cor: escolher uma cor mostra a «Simular» (o logótipo carrega-se lá). */
+const vistas = document.querySelector('[data-vistas]');
+function ver(qual) {
+  if (!vistas || !vistas.querySelector(`[data-vista="${qual}"]`)) return;
+  vistas.querySelectorAll('[data-vista]').forEach((v) => { v.hidden = v.dataset.vista !== qual; });
+  vistas.querySelectorAll('[data-ver]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.ver === qual)));
+}
+vistas?.addEventListener('click', (e) => { const b = e.target.closest('[data-ver]'); if (b) ver(b.dataset.ver); });
 
 /* ——— Quantidade ——— */
 const escaloes = $('[data-escaloes]');

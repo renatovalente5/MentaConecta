@@ -50,7 +50,7 @@
  *   ecra:     o ecrã do painel onde se corrige («Artigos › T-shirt Clássica»);
  *   mensagem: para a dona, em português simples, sem caminhos de JSON;
  *   campo?:   o campo onde o painel mostra o erro ('nome', 'quantidades.2.preco');
- *   efeito?:  só nos «neutraliza»: 'esconder' | 'sem_cor';
+ *   efeito?:  só nos «neutraliza»: 'esconder' | 'sem_cor' | 'sem_fotos';
  *   slug? (o artigo), pack? (o slug do pack), cor?, indice?, campos?, lembrete?
  * }
  *
@@ -77,7 +77,7 @@ export const NOMES_FICHEIROS = Object.freeze({ marca: 'Dados da marca', familias
 /* Os campos de um artigo, PELA ORDEM DO FORMULÁRIO (e de um artigo novo, no ficheiro). Uma chave nova
    entra por esta ordem (ordenarComo()); as que já estão no ficheiro ficam onde estão. */
 export const CAMPOS_ARTIGO = Object.freeze([
-  'slug', 'familia', 'nome', 'titulo', 'tipo', 'grupoTipo', 'desenho', 'corAlvo', 'unidade', 'tinta',
+  'slug', 'familia', 'nome', 'titulo', 'tipo', 'grupoTipo', 'desenho', 'fotos', 'corAlvo', 'unidade', 'tinta',
   'frase', 'descricao', 'cores', 'quantidades', 'opcoes', 'areas', 'especificacoes', 'publicado', 'ordem',
 ]);
 /* Os campos dos outros documentos, pela ordem dos ficheiros de hoje. */
@@ -104,7 +104,7 @@ export const POR_OMISSAO = Object.freeze({ publicado: true, ordem: 500, unidade:
 
 export const NOMES_CAMPOS = Object.freeze({
   slug: 'Endereço', familia: 'Família', nome: 'Nome do modelo', titulo: 'Nome completo', tipo: 'Tipo',
-  grupoTipo: 'Tipo no filtro', desenho: 'Desenho', corAlvo: 'Onde vai a cor', unidade: 'Unidade', tinta: 'Tinta',
+  grupoTipo: 'Tipo no filtro', desenho: 'Desenho', fotos: 'Fotografias', corAlvo: 'Onde vai a cor', unidade: 'Unidade', tinta: 'Tinta',
   frase: 'Frase curta', descricao: 'Descrição', cores: 'Cores', quantidades: 'Quantidades e preços',
   opcoes: 'Opções', areas: 'Áreas de impressão', especificacoes: 'Especificações', publicado: 'Publicado no site',
   ordem: 'Posição na lista',
@@ -169,6 +169,7 @@ export const LIMITES = Object.freeze({
   precoPack: [0.01, 100000],
   minimo: [1, 100000],       /* packs */
   desenhosFamilia: [1, 3],
+  fotos: [0, 3],             /* fotografias de um artigo (a primeira é a principal) */
   coresCapa: [2, 3],
 });
 /* Tamanhos máximos dos textos, em caracteres (e das listas, em linhas). */
@@ -222,6 +223,17 @@ export function serializar(obj, terminacao = '\n') { return JSON.stringify(obj, 
 export const slugDoFicheiro = (nome) => String(nome).replace(/\.json$/, '');
 const RE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export const slugValido = (s) => typeof s === 'string' && s.length <= 80 && RE_SLUG.test(s);
+
+/* AS FOTOGRAFIAS DE UM ARTIGO (11 nov 2026, pedidas pelo Yuri): até 3, e a primeira é a principal (a
+   da lista da família e a que a ficha abre). Cada uma é um JPEG em media/fotos/<endereço do
+   artigo>-<8 hex>.jpg, com um nome novo em cada envio (escreve-o o painel: src/admin/fotos.js), e as
+   versões para a web fá-las a publicação (scripts/fotos.py). O desenho continua: é a «Simulação»,
+   com a cor e o logótipo que o visitante escolhe. */
+const RE_FOTO = /^media\/fotos\/[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{8}\.jpg$/;
+export const fotoValida = (c) => typeof c === 'string' && c.length <= 120 && RE_FOTO.test(c);
+export const caminhoDeFotoNova = (prefixo, hex) => `media/fotos/${prefixo}-${hex}.jpg`;
+/* As que servem de uma lista: válidas, sem repetidas, até ao máximo (é o que o site mostra). */
+export const fotosBoas = (lista) => (Array.isArray(lista) ? [...new Set(lista.filter(fotoValida))].slice(0, LIMITES.fotos[1]) : []);
 
 /* O SLUG DE UM ARTIGO NOVO (ou de um pack, ou de uma cor): gerado UMA vez, ao criar, a partir do nome,
    e nunca mais muda — é o endereço da página que a loja partilha. Minúsculas, sem acentos, o resto
@@ -327,6 +339,18 @@ const nomeDoPack = (k) => (eObjecto(k) && temTexto(k.nome) ? k.nome.trim() : (eO
 
 /* AS CORES EM USO: as dos artigos (também os rascunhos: um rascunho volta a ser publicado) e as das
    peças dos packs. Uma cor só sai da paleta se não estiver aqui. → Map(chave → [nome de quem a usa]) */
+/* AS FOTOGRAFIAS EM USO: as de todos os artigos, publicados ou não (um rascunho guarda as dele). Uma
+   que deixa de estar aqui sai do repositório no mesmo «Gravar» (o painel: src/admin/fotos.js). */
+export function fotosEmUso(dados = {}) {
+  const out = new Set();
+  const mapa = eObjecto(dados.artigos) ? dados.artigos : {};
+  for (const v of Object.values(mapa)) {
+    const a = lerJson(v).obj;
+    if (eObjecto(a) && Array.isArray(a.fotos)) for (const c of a.fotos) if (fotoValida(c)) out.add(c);
+  }
+  return out;
+}
+
 export function coresEmUso(dados = {}) {
   const d = eObjecto(dados) ? dados : {};
   const usadas = new Map();
@@ -429,6 +453,14 @@ export function problemasDoArtigo(a, ctx = {}) {
   const des = a.desenho;
   if (vazio(des)) esconde('desenho', 'desenho', `Falta o desenho. ${FICA} escolher um.`);
   else if (!NOMES_DESENHOS.includes(des)) esconde('desenho', 'desenho', `O desenho não é nenhum dos que o site sabe fazer. ${FICA} escolher um da lista.`);
+  /* As fotografias: só o painel as escreve. Uma lista mexida à mão não esconde o artigo — o site
+     mostra as que servem (neutralizar(), «sem_fotos») e volta ao desenho se não sobrar nenhuma. */
+  if (!ausente(a.fotos)) {
+    const fs = a.fotos;
+    const max = LIMITES.fotos[1];
+    if (!Array.isArray(fs)) neutraliza('fotos', 'sem_fotos', 'fotos', '«Fotografias» tem de ser uma lista. O site mostra o desenho até ser corrigida.');
+    else if (fs.length > max || fs.some((c) => !fotoValida(c)) || new Set(fs).size !== fs.length) neutraliza('fotos', 'sem_fotos', 'fotos', `As fotografias são no máximo ${max}, sem repetidas, e juntam-se no painel. O site mostra só as que servem.`);
+  }
   if (!vazio(a.tinta) && !TINTAS.includes(a.tinta)) esconde('tinta', 'tinta', `A tinta é azul, preta, ou fica vazia. ${FICA} ser corrigida.`);
   if (!ausente(a.unidade) && typeof a.unidade !== 'string') esconde('unidade', 'unidade', `A unidade tem de ser texto (ex.: cartões). ${FICA} ser corrigida.`);
 
@@ -1006,7 +1038,8 @@ export function problemas(dados = {}, opcoes = {}) {
 /* neutralizar(dados, lista) → { artigos: { <nome>: objecto }, kits: [objecto] | null, efeitos, mudou }
  *   Os problemas «neutraliza» aplicados a uma CÓPIA (o repositório não muda):
  *     · esconder — publicado: false (sai do site, como um rascunho): um artigo, ou um pack;
- *     · sem_cor  — a cor que não está na paleta sai do artigo (as outras ficam).
+ *     · sem_cor  — a cor que não está na paleta sai do artigo (as outras ficam);
+ *     · sem_fotos — as fotografias que não servem saem (fotosBoas); sem nenhuma, volta o desenho.
  *   efeitos: o que muda NO SITE: [{ ficheiro, tipo: 'artigo' | 'pack', slug, nome, efeitos, motivos }] */
 export function neutralizar(dados = {}, lista = []) {
   const d = eObjecto(dados) ? dados : {};
@@ -1042,6 +1075,12 @@ export function neutralizar(dados = {}, lista = []) {
       mudou = true;
       if (!feitos.length && a.publicado !== false) { feitos.push('sem_cor'); motivos.push(...semCor.map((p) => p.mensagem)); }
     }
+    if (prs.some((p) => p.efeito === 'sem_fotos')) {
+      const boas = fotosBoas(a.fotos);
+      if (boas.length) a.fotos = boas; else delete a.fotos;
+      mudou = true;
+      if (!feitos.length && a.publicado !== false) { feitos.push('sem_fotos'); motivos.push(...prs.filter((p) => p.efeito === 'sem_fotos').map((p) => p.mensagem)); }
+    }
     artigos[nome] = a;
     if (feitos.length) efeitos.push({ ficheiro: ficheiroDoArtigo(nome), tipo: 'artigo', slug: nome, nome: nomeDoArtigo(l.obj, nome), efeitos: feitos, motivos });
   }
@@ -1063,7 +1102,7 @@ export function neutralizar(dados = {}, lista = []) {
   return { artigos, kits, efeitos, mudou };
 }
 
-const DESCRICAO_EFEITOS = { esconder: 'escondido do site', sem_cor: 'sem as cores que não estão na paleta' };
+const DESCRICAO_EFEITOS = { esconder: 'escondido do site', sem_cor: 'sem as cores que não estão na paleta', sem_fotos: 'sem as fotografias que não servem' };
 export const descreverEfeitos = (e) => e.efeitos.map((x) => DESCRICAO_EFEITOS[x] || x).join(' e ');
 
 /* O QUE VAI PARA O SITE, a partir da cópia neutralizada (o gerador escreve isto e só isto; o painel

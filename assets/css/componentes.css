@@ -191,6 +191,10 @@ html.menu-aberto { overflow: hidden; }
 .cartao__desenho::before { content: ""; position: absolute; inset: 18% 18% 22%; border-radius: 50%; background: var(--cor); opacity: .1; filter: blur(30px); transition: background-color .35s; }
 .cartao__desenho .desenho { position: absolute; inset: 7%; width: 86%; transition: transform .6s var(--mola); }
 .cartao__ligacao:hover .desenho { transform: scale(1.05) rotate(-2deg); }
+/* A fotografia do artigo (a primeira), no lugar do desenho: fundo branco, inteira. */
+.cartao__foto { position: relative; display: block; aspect-ratio: 1; background: #FFFFFF; }
+.cartao__foto img { position: absolute; inset: 6%; width: 88%; height: 88%; object-fit: contain; transition: transform .6s var(--mola); }
+.cartao__ligacao:hover .cartao__foto img { transform: scale(1.04); }
 .cartao__corpo { display: flex; flex-direction: column; gap: 6px; padding: 14px 18px 18px; flex: 1; }
 .cartao__tipo { font: 650 .72rem/1 var(--letra); letter-spacing: .14em; text-transform: uppercase; color: var(--realce); }
 .cartao__nome { font: 750 1.32rem/1.1 var(--letra-titulo); letter-spacing: -.01em; }

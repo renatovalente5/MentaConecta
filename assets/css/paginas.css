@@ -137,6 +137,17 @@ html[data-cor="castanhos"] .p-familia .cartao:not([data-grupos~="castanhos"]), h
 .produto__fundo { position: absolute; inset: 14%; border-radius: 50%; background: var(--cor); opacity: .16; filter: blur(40px); transition: background-color .4s ease; }
 .produto__palco .desenho { position: absolute; inset: 7%; width: 86%; view-transition-name: desenho; }
 .produto__logo { position: absolute; right: 14px; bottom: 14px; }
+/* AS FOTOGRAFIAS (até 3) e a «Simular» (o palco com o desenho): uma vista de cada vez. */
+.produto__visual [data-vista][hidden] { display: none; }
+.produto__foto { margin: 0; aspect-ratio: 1; border-radius: calc(var(--r-3) + 8px); background: #FFFFFF; border: 1px solid var(--linha); overflow: hidden; display: grid; place-items: center; }
+.produto__foto img { width: 100%; height: 100%; object-fit: contain; padding: 6%; }
+.vistas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.vistas__botao { display: grid; place-items: center; width: 72px; height: 72px; padding: 0; border-radius: var(--r-2); border: 2px solid var(--linha); background: #FFFFFF; overflow: hidden; cursor: pointer; transition: border-color .2s; }
+.vistas__botao img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.vistas__botao:hover { border-color: var(--linha-forte); }
+.vistas__botao[aria-pressed="true"] { border-color: var(--acento, var(--tinta)); }
+.vistas__botao--simular { gap: 2px; align-content: center; background: var(--papel-2); color: var(--tinta); font-size: .72rem; font-weight: 650; }
+.vistas__botao--simular svg { width: 20px; height: 20px; }
 .nota-desenho { margin-top: 10px; font-size: .84rem; color: var(--tinta-3); text-align: center; }
 .configurador { display: flex; flex-direction: column; gap: 22px; }
 .produto__nome { position: relative; display: inline-block; align-self: flex-start; font-size: clamp(2.4rem, 1.6rem + 3vw, 3.6rem); margin: 6px 0 4px; }

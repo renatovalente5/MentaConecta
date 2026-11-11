@@ -1,5 +1,5 @@
 // AS PÁGINAS. Cada função devolve o HTML de uma página inteira (via `pagina()`).
-import { pagina, titulo, esc, u, abs, marca, familias, produtos, kits, cores, produtosDe, familia, desdeFamilia, whatsapp, telefoneHtml, porDefinir, ou, ler, legal, logotipo, ogDaFamilia } from './site.mjs';
+import { pagina, titulo, esc, u, abs, marca, familias, produtos, kits, cores, produtosDe, familia, desdeFamilia, whatsapp, telefoneHtml, porDefinir, ou, ler, legal, logotipo, ogDaFamilia, imagemDaFoto } from './site.mjs';
 import { icone, iconeFamilia } from './icones.mjs';
 import { instancia, AREAS } from '../assets/js/desenhos.js';
 import { euros, comIva, desde, unitario, total, minimo, GRUPOS_COR, textoSobre } from '../assets/js/preco.js';
@@ -105,7 +105,9 @@ function cartaoProduto(p, i = 0) {
   const areas = p.areas ? Object.entries(p.areas).slice(0, 2).map(([n, v]) => `<span class="chip">${esc(n)} ${esc(v.replace(/^até /, ''))}</span>`).join('') : '';
   return `<li class="cartao" style="--i:${i};--cor-base:${c.hex};${vars}" data-grupos="${grupos(p).join(' ')}" data-preco="${d}" data-ordem="${p.ordem}" data-tipo="${esc(p.grupoTipo || '')}" data-tinta="${esc(p.tinta || '')}" data-hex="${c.hex}" data-chave="${c.chave}"${porGrupoAttr}${dentro ? ' data-alvo="dentro"' : ''}>
   <a class="cartao__ligacao" href="${u(`produtos/${p.familia}/${p.slug}/`)}">
-    <span class="cartao__desenho">${instancia(p.desenho, { cor: null, classe: dentro ? 'desenho--dentro' : '' })}</span>
+    ${p.fotosDet.length
+    ? `<span class="cartao__foto">${imagemDaFoto(p.fotosDet[0], { tamanhos: '(max-width: 560px) 46vw, (max-width: 1100px) 30vw, 280px' })}</span>`
+    : `<span class="cartao__desenho">${instancia(p.desenho, { cor: null, classe: dentro ? 'desenho--dentro' : '' })}</span>`}
     <span class="cartao__corpo">
       <span class="cartao__tipo">${esc(p.tipo)}</span>
       <span class="cartao__nome">${esc(p.nome)}</span>
@@ -317,6 +319,7 @@ export function paginaProduto(p) {
   const unidade = p.unidade || 'un.';
   const areaTec = AREAS[p.desenho]?.tecnica || 'cor';
   const dentro = p.corAlvo === 'dentro';
+  const fotos = p.fotosDet;
   const combina = produtos.filter((x) => x.familia !== p.familia).filter((x, k, arr) => arr.findIndex((y) => y.familia === x.familia) === k).slice(0, 3);
   const corpo = `
 <div class="produto-topo contentor">
@@ -327,13 +330,18 @@ export function paginaProduto(p) {
   </nav>
 </div>
 <section class="produto contentor" data-produto="${p.slug}" data-familia="${f.slug}">
-  <div class="produto__visual">
-    <div class="produto__palco" style="--cor:var(--cor-vt, ${c.hex})"${dentro ? ' data-alvo="dentro"' : ''} data-palco-produto>
+  <div class="produto__visual"${fotos.length ? ' data-vistas' : ''}>
+    ${fotos.map((fd, k) => `<figure class="produto__foto" data-vista="foto-${k}"${k ? ' hidden' : ''}>${imagemDaFoto(fd, { tamanhos: '(max-width: 900px) 92vw, 560px', primeira: k === 0, alt: fotos.length > 1 ? `${p.titulo}, fotografia ${k + 1} de ${fotos.length}` : p.titulo })}</figure>`).join('')}
+    <div class="produto__palco" style="--cor:var(--cor-vt, ${c.hex})"${dentro ? ' data-alvo="dentro"' : ''} data-palco-produto${fotos.length ? ' data-vista="simular" hidden' : ''}>
       <div class="produto__fundo" aria-hidden="true"></div>
       ${instancia(p.desenho, { cor: null, rotulo: rotuloDesenho(p, c), classe: dentro ? 'desenho--dentro' : '' })}
       <button class="botao botao--branco botao--pequeno produto__logo" type="button" data-logo-carregar>${icone('carregar')}<span data-logo-texto>Ver com o meu logótipo</span></button>
     </div>
-    <p class="nota-desenho">O desenho mostra o modelo e a cor; o tom exacto confirma-se na maquete.</p>
+    ${fotos.length ? `<div class="vistas" role="group" aria-label="Fotografias e simulação">
+      ${fotos.map((fd, k) => `<button class="vistas__botao" type="button" data-ver="foto-${k}" aria-pressed="${k === 0}" aria-label="Fotografia ${k + 1}">${imagemDaFoto(fd, { tamanhos: '72px' })}</button>`).join('')}
+      <button class="vistas__botao vistas__botao--simular" type="button" data-ver="simular" aria-pressed="false">${icone('pincel')}<span>Simular</span></button>
+    </div>` : ''}
+    <p class="nota-desenho">${fotos.length ? 'Em «Simular» vê a cor e o seu logótipo; o tom exacto confirma-se na maquete.' : 'O desenho mostra o modelo e a cor; o tom exacto confirma-se na maquete.'}</p>
   </div>
   <form class="configurador" data-configurador novalidate>
     <p class="etiqueta">${esc(p.tipo)}</p>
@@ -415,7 +423,7 @@ ${f.duvidas?.length ? duvidas(f.duvidas, { id: 'duvidas-produto', tituloAntes: '
   const ld = [m.ld];
   if (!marca.demo) {
     const precos = p.quantidades.map((l) => comI(unitario(p, l.q)) / 100);
-    ld.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.titulo, description: p.descricao, brand: { '@type': 'Brand', name: marca.nome }, image: abs(`assets/${ogDaFamilia(p.familia)}`), url: abs(`produtos/${f.slug}/${p.slug}/`), offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: Math.min(...precos).toFixed(2), highPrice: Math.max(...precos).toFixed(2), offerCount: p.quantidades.length } });
+    ld.push({ '@context': 'https://schema.org', '@type': 'Product', name: p.titulo, description: p.descricao, brand: { '@type': 'Brand', name: marca.nome }, image: p.fotosDet.length ? p.fotosDet.map((fd) => abs([...fd.ficheiros].sort((a, b) => b.w - a.w)[0].para)) : abs(`assets/${ogDaFamilia(p.familia)}`), url: abs(`produtos/${f.slug}/${p.slug}/`), offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: Math.min(...precos).toFixed(2), highPrice: Math.max(...precos).toFixed(2), offerCount: p.quantidades.length } });
   }
   return pagina({ caminho: `produtos/${f.slug}/${p.slug}/`, titulo: `${p.titulo} personalizad${f.artigo === 'o' ? 'o' : 'a'}`, descricao: `${p.descricao} Desde ${euros(desde(p))} + IVA por unidade, com ${(p.opcoes?.[0]?.opcoes?.[0]?.nome || 'personalização').toLowerCase()} e maquete grátis.`, corpo, classe: 'p-produto', jsonld: ld, desenhos: [p.desenho, ...combina.map((x) => x.desenho)], scripts: ['produto.js'], og: ogDaFamilia(f.slug) });
 }
