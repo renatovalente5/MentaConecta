@@ -4,6 +4,9 @@
  "nome": "Vouga",
  "tipo": "Caneta",
  "desenho": "caneta-touch",
+ "fotos": [
+  "media/fotos/vouga-a0391966.jpg"
+ ],
  "tinta": "azul",
  "frase": "Corpo mate com ponteira táctil.",
  "descricao": "Caneta de alumínio mate com ponteira táctil e anéis metálicos. A combinação do toque suave com o ecrã.",
@@ -62,6 +65,7 @@
   "Área de gravação": "40 × 6 mm",
   "Mínimo": "25 unidades"
  },
+ "publicado": true,
  "ordem": 7,
  "titulo": "Caneta Vouga"
 }
